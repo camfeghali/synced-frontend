@@ -1,7 +1,5 @@
 import React from 'react'
 import Coverflow from 'react-coverflow';
-import { Segment } from 'semantic-ui-react'
-import Gallery from 'react-photo-gallery'
 
 class ArtistContainer extends React.Component{
   render(){
@@ -13,8 +11,10 @@ class ArtistContainer extends React.Component{
           navigation={false}
           enableScroll={true}
           clickable={true}
+          enableHeading={true}
           active={0}>
           <div
+            style={{background: 'yellow'}}
             role="menuitem"
             tabIndex="0">
           <img

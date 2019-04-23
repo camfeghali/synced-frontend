@@ -2,7 +2,7 @@ import React from 'react'
 import MediaPlayer from './MediaPlayer'
 import MediaContainer from './MediaContainer/MediaContainer'
 import PlaylistsContainer from './PlaylistsContainer'
-import { Grid, Button } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 
 
 class CreateChannel extends React.Component{

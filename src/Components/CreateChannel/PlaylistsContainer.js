@@ -18,8 +18,8 @@ class PlaylistsContainer extends React.Component{
     console.log("My state is:", this.props)
     return(
       this.props.playlistShow ? <PlaylistShow /> :
-      <Segment onClick={this.handleClick}>
-      <Segment>
+      <Segment onClick={this.handleClick} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
+      <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
         <div>
           <Button onClick = {this.handleClick} floated='right' inverted color='blue'> Create playlist </Button>
           <Container textAlign='left'>

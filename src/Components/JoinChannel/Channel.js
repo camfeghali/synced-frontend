@@ -5,7 +5,7 @@ class Channel extends React.Component{
   render(){
     return(
       <List.Item>
-      <Segment textAlign='left'>
+      <Segment textAlign='left' style={{borderStyle: 'solid', borderColor:'purple', boxShadow: '0px 0px 2px 1px grey'}}>
         <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
         <Item.Content textAlign='left'>
           <Item.Header as='a' textAlign='left'>Daniel Louise</Item.Header>

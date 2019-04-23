@@ -5,7 +5,7 @@ import { Segment, Dropdown, List } from 'semantic-ui-react'
 class MediaPlayer extends React.Component{
   render(){
     return(
-      <Segment className={'largeContainer'}>
+      <Segment className={'largeContainer'} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
         <List>
           <List.Item textAlign='left'>
           <ReactAudioPlayer

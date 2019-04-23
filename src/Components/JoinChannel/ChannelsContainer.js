@@ -7,8 +7,8 @@ import { Segment, List, Container } from 'semantic-ui-react'
 class FavoritesContainer extends React.Component{
   render(){
     return(
-      <Segment>
-      <Segment>
+      <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
+      <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
         <div>
           <Container textAlign='left'>
             <h1> On the airways ... </h1>

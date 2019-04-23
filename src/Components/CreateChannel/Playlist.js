@@ -4,7 +4,7 @@ import { Image, List, Button, Item, Segment } from 'semantic-ui-react'
 class Playlist extends React.Component{
   render(){
     return(
-      <List.Item textAlign='left'>
+      <List.Item textAlign='left' >
         <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
         <Item.Content textAlign='left'>
 

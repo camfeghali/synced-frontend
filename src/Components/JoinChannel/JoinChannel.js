@@ -13,8 +13,8 @@ class JoinChannel extends React.Component{
           <Grid.Column width={1}>
           </Grid.Column>
           <Grid.Column width={14}>
-            <div style={{ height:'80em', borderStyle: 'solid'}}>
-            <Grid celled>
+            <div style={{ height:'80em'}}>
+            <Grid celled style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 35px 2px grey'}}>
               <Grid.Row>
                 <Grid.Column width={11}>
                   {<ListeningTo />}
