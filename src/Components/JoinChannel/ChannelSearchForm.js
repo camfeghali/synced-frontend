@@ -21,7 +21,7 @@ class SearchExampleCategory extends Component {
 
     return (
           <Search
-            category results={results} onChange={this.handleValueChange} />
+            category onChange={this.handleValueChange} />
     )
   }
 }

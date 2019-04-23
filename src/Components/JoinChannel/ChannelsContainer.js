@@ -1,15 +1,32 @@
 import React from 'react'
-import { Segment } from 'semantic-ui-react'
+import Channel from './Channel'
+import ChannelSearchForm from './ChannelSearchForm'
+import { Segment, List, Container } from 'semantic-ui-react'
 
 
-class ChannelsContainer extends React.Component{
+class FavoritesContainer extends React.Component{
   render(){
     return(
-      <Segment style={{borderStyle:'solid', padding:'0px'}}>
-        This is the Channels Container Comp !
+      <Segment>
+      <Segment>
+        <div>
+          <Container textAlign='left'>
+            <h1> On the airways ... </h1>
+          </Container>
+        </div>
+      </Segment>
+      {<ChannelSearchForm />}
+
+      <List relaxed>
+        {<Channel/>}
+        {<Channel/>}
+        {<Channel/>}
+        {<Channel/>}
+        {<Channel/>}
+        </List>
       </Segment>
     )
   }
 }
 
-export default ChannelsContainer
+export default FavoritesContainer
