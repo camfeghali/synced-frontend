@@ -2,7 +2,7 @@ import React from 'react'
 import MediaPlayer from './MediaPlayer'
 import MediaContainer from './MediaContainer/MediaContainer'
 import PlaylistsContainer from './PlaylistsContainer'
-import { Grid } from 'semantic-ui-react'
+import { Grid, Button } from 'semantic-ui-react'
 
 
 class CreateChannel extends React.Component{
@@ -14,8 +14,8 @@ class CreateChannel extends React.Component{
           <Grid.Column width={1}>
           </Grid.Column>
           <Grid.Column width={14}>
-            <div style={{ height:'80em', borderStyle: 'solid'}}>
-            <Grid celled>
+            <div style={{ height:'80em'}}>
+            <Grid celled style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 35px 2px grey'}}>
               <Grid.Row>
                 <Grid.Column width={11}>
                   {/* Add Currently Listening to Component here */}

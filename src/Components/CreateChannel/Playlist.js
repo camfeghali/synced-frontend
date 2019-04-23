@@ -4,8 +4,7 @@ import { Image, List, Button, Item, Segment } from 'semantic-ui-react'
 class Playlist extends React.Component{
   render(){
     return(
-      <List.Item>
-      <Segment textAlign='left'>
+      <List.Item textAlign='left'>
         <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
         <Item.Content textAlign='left'>
 
@@ -18,10 +17,9 @@ class Playlist extends React.Component{
             Walla.
           </Item.Description>
           </Item.Content>
-          <Button inverted color='red'>
-            Delete
+          <Button floated="right" size='mini' inverted color='red'>
+          Delete
           </Button>
-          </Segment>
       </List.Item>
     )
   }

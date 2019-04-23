@@ -7,8 +7,8 @@ class Navbar extends React.Component{
   render(){
     return(
       <div>
-        <Menu>
-          <Container>
+        <Menu style={{borderStyle:'solid', borderBottomColor:'#757575'}}>
+          <Container >
             <Menu.Item as="a" header>
               <Image
                 size="small"

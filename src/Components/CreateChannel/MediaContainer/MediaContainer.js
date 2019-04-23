@@ -3,15 +3,15 @@ import ArtistContainer from './ArtistContainer'
 import AlbumContainer from './AlbumContainer'
 import SongContainer from './SongContainer'
 import MediaSearchForm from '../MediaSearchForm'
-import { Segment, List, Container, Grid } from 'semantic-ui-react'
+import { Segment, Grid } from 'semantic-ui-react'
 
 
 class MediaContainer extends React.Component{
   render(){
     return(
       <Segment>
-        <MediaSearchForm />
         <Grid.Row >
+        <MediaSearchForm />
           <Segment>
             Artists
             {<ArtistContainer/>}
