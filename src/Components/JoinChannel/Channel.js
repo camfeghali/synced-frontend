@@ -8,7 +8,6 @@ class Channel extends React.Component{
       <Segment textAlign='left'>
         <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
         <Item.Content textAlign='left'>
-
           <Item.Header as='a' textAlign='left'>Daniel Louise</Item.Header>
           <Item.Description >
             Last seen watching{' '}
@@ -18,8 +17,11 @@ class Channel extends React.Component{
             just now.
           </Item.Description>
           </Item.Content>
-          <Button inverted color='green'>
+          <Button  inverted color='blue'>
             Join
+          </Button>
+          <Button  inverted color='purple'>
+            Add to Favs
           </Button>
           </Segment>
       </List.Item>

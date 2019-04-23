@@ -19,7 +19,7 @@ class MediaSearchForm extends Component {
   render() {
     return (
       <div>
-        <Segment>
+        <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
           <Search category valute={this.state.value} onChange={this.handleValueChange} />
         </Segment>
       </div>

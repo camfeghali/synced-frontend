@@ -5,3 +5,9 @@
 .prompt{
   width: 800px;
 }
+
+.largeContainer{
+  borderStyle: solid;
+  borderColor: grey;
+  boxShadow: 0px 0px 2px 1px grey
+}

@@ -18,8 +18,11 @@ class Favorite extends React.Component{
             just now.
           </Item.Description>
           </Item.Content>
-          <Button inverted color='orange'>
+          <Button inverted color='blue'>
             Join
+          </Button>
+          <Button  inverted color='orange'>
+            Remove from Favs
           </Button>
           </Segment>
       </List.Item>
