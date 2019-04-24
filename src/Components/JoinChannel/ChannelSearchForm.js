@@ -22,7 +22,7 @@ class SearchExampleCategory extends Component {
     return (
       <div class="ui search">
         <div class="ui icon input">
-          <input placeholder="Look for channels ..." style={{background: 'rgb(74, 74, 74, 0.3)'}} class="prompt" type="text" />
+          <input placeholder="Look for channels ..." style={{color:'black', background: 'rgb(74, 74, 74, 0.075)'}} class="prompt" type="text" />
           <i style={{color: 'black'}} class="search icon"></i>
           </div>
         <div class="results"></div>

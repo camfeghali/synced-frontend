@@ -21,7 +21,7 @@ class MediaSearchForm extends Component {
         <Segment>
           <div class="ui search">
             <div class="ui icon input">
-              <input style={{background: 'rgb(74, 74, 74, 0.3)'}} class="prompt" type="text" placeholder="Common passwords..."/>
+              <input style={{background: 'rgb(74, 74, 74, 0.075)'}} class="prompt" type="text" placeholder="Common passwords..."/>
               <i style={{color: 'black'}} class="search icon"></i>
               </div>
             <div class="results"></div>
