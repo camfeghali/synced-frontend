@@ -1,4 +1,5 @@
 import React from 'react'
+import favoriteMonkeyAvatar from'./favoriteMonkeyAvatar.png';
 import { List, Item, Button, Image, Segment } from 'semantic-ui-react'
 
 class Favorite extends React.Component{
@@ -6,7 +7,7 @@ class Favorite extends React.Component{
     return(
       <List.Item>
       <Segment textAlign='left' style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
-        <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
+        <Image avatar src={favoriteMonkeyAvatar} />
         <Item.Content textAlign='left'>
 
           <Item.Header as='a' textAlign='left'>Daniel Louise</Item.Header>

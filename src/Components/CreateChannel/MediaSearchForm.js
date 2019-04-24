@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Search, Grid, Header, Segment, Label } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 
 class MediaSearchForm extends Component {
 
@@ -12,15 +12,20 @@ class MediaSearchForm extends Component {
   }
 
   handleValueChange = () =>{
-
     console.log("changing")
   }
 
   render() {
     return (
       <div>
-        <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
-          <Search category valute={this.state.value} onChange={this.handleValueChange} />
+        <Segment>
+          <div class="ui search">
+            <div class="ui icon input">
+              <input style={{background: 'rgb(74, 74, 74, 0.3)'}} class="prompt" type="text" placeholder="Common passwords..."/>
+              <i style={{color: 'black'}} class="search icon"></i>
+              </div>
+            <div class="results"></div>
+          </div>
         </Segment>
       </div>
     )

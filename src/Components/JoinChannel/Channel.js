@@ -1,4 +1,5 @@
 import React from 'react'
+import monkeyAvatar from'./monkeyAvatar.png';
 import { Image, List, Button, Item, Segment } from 'semantic-ui-react'
 
 class Channel extends React.Component{
@@ -6,7 +7,7 @@ class Channel extends React.Component{
     return(
       <List.Item>
       <Segment textAlign='left' style={{borderStyle: 'solid', borderColor:'purple', boxShadow: '0px 0px 2px 1px grey'}}>
-        <Image avatar src='https://react.semantic-ui.com/images/avatar/small/daniel.jpg' />
+        <Image avatar src={monkeyAvatar} />
         <Item.Content textAlign='left'>
           <Item.Header as='a' textAlign='left'>Daniel Louise</Item.Header>
           <Item.Description >
@@ -20,7 +21,7 @@ class Channel extends React.Component{
           <Button  inverted color='blue'>
             Join
           </Button>
-          <Button  inverted color='purple'>
+          <Button  floated='right' inverted color='purple'>
             Add to Favs
           </Button>
           </Segment>

@@ -6,7 +6,9 @@ class ArtistContainer extends React.Component{
 
     return(
       <React.Fragment>
-        <Coverflow width="960" height="200"
+        <Coverflow
+          style={{borderStyle:'solid !important'}}
+          width="960" height="200"
           displayQuantityOfSide={2}
           navigation={false}
           enableScroll={true}
@@ -27,6 +29,7 @@ class ArtistContainer extends React.Component{
           </div>
           <img src='image/path' alt='title or description' data-action="http://andyyou.github.io/react-coverflow/"/>
           <img src='image/path' alt='title or description' data-action="http://andyyou.github.io/react-coverflow/"/>
+          
         </Coverflow>
       </React.Fragment>
     )
