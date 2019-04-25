@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid } from 'semantic-ui-react'
 import FavoritesContainer from './FavoritesContainer'
 import ListeningTo from './ListeningTo'
-import ChannelsContainer from './ChannelsContainer'
+import StationsContainer from './StationsContainer'
 
 class JoinChannel extends React.Component{
   render(){
@@ -18,7 +18,7 @@ class JoinChannel extends React.Component{
               <Grid.Row>
                 <Grid.Column width={11}>
                   {<ListeningTo />}
-                  {<ChannelsContainer />}
+                  {<StationsContainer />}
                 </Grid.Column>
                 <Grid.Column width={5}>
                 {<FavoritesContainer />}

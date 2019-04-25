@@ -1,24 +1,32 @@
 import React from 'react'
 import monkeyAvatar from'./monkeyAvatar.png';
+import { connect } from 'react-redux'
+import { listenTo } from '../../Actions'
 import { Image, List, Button, Item, Segment } from 'semantic-ui-react'
 
 class Channel extends React.Component{
+
+  handleClick = () =>{
+    this.props.listenTo(this.props.station.id)
+  }
+
   render(){
+
     return(
       <List.Item>
       <Segment textAlign='left' style={{borderStyle: 'solid', borderColor:'purple', boxShadow: '0px 0px 2px 1px grey'}}>
         <Image avatar src={monkeyAvatar} />
         <Item.Content textAlign='left'>
-          <Item.Header as='a' textAlign='left'>Daniel Louise</Item.Header>
+          <Item.Header as='a' textAlign='left'>Host ID: {this.props.station.host_id}</Item.Header>
           <Item.Description >
-            Last seen watching{' '}
+            Listening to {this.props.station.song_id}
             <a>
-              <b>Arrested Development</b>
+              <b> - {this.props.station.name} - </b>
             </a>{' '}
-            just now.
+            {this.props.station.timestamp} .
           </Item.Description>
           </Item.Content>
-          <Button  inverted color='blue'>
+          <Button onClick={this.handleClick} inverted color='blue'>
             Join
           </Button>
           <Button  floated='right' inverted color='purple'>
@@ -29,5 +37,9 @@ class Channel extends React.Component{
     )
   }
 }
-
-export default Channel
+const mapStateToProps = (state) => {
+  return{
+    listeningTo: state.listeningTo
+  }
+}
+export default connect(mapStateToProps,{listenTo})(Channel)
