@@ -1,6 +1,6 @@
 import React from 'react'
 import Coverflow from 'react-coverflow';
-import { Image, List, Button, Item, Segment } from 'semantic-ui-react'
+import { } from 'semantic-ui-react'
 
 class AlbumContainer extends React.Component{
   render(){

@@ -14,15 +14,13 @@ class Channel extends React.Component{
 
     return(
       <List.Item>
-      <Segment textAlign='left' style={{borderStyle: 'solid', borderColor:'purple', boxShadow: '0px 0px 2px 1px grey'}}>
+      <Segment textalign='left' style={{borderStyle: 'solid', borderColor:'purple', boxShadow: '0px 0px 2px 1px grey'}}>
         <Image avatar src={monkeyAvatar} />
-        <Item.Content textAlign='left'>
-          <Item.Header as='a' textAlign='left'>Host ID: {this.props.station.host_id}</Item.Header>
+        <Item.Content textalign='left'>
+          <Item.Header as='a' textalign='left'>Host ID: {this.props.station.host_id}</Item.Header>
           <Item.Description >
             Listening to {this.props.station.song_id}
-            <a>
               <b> - {this.props.station.name} - </b>
-            </a>{' '}
             {this.props.station.timestamp} .
           </Item.Description>
           </Item.Content>

@@ -24,7 +24,7 @@ class FavoritesContainer extends React.Component{
   }
 
   render(){
-    let stations = this.state.stations.map(station => <Station station={station}/>)
+    let stations = this.state.stations.map(station => <Station key={station.id} station={station}/>)
     console.log("Number of stations:", this.state.stations.length)
     console.log("state was updated")
     return(
