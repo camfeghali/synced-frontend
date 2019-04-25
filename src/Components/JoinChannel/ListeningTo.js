@@ -7,26 +7,43 @@ import ReactAudioPlayer from 'react-audio-player'
 
 class ListeningTo extends React.Component{
 
-  handleReceived = (data) => {
-    console.log("data received:", data)
+  state = {
+    stationId: null,
+    song_url: null,
+    timestamp: null,
+    playing: false
   }
 
+  handleReceived = (data) => {
+    console.log("data received:", data)
+    let audioPlayer = document.querySelector("audio")
+    this.setState({
+      song_url: data.song_url,
+      playing: data.playing,
+      timestamp: data.timestamp
+    })
+    if(data.playing === true){
+      audioPlayer.play()
+    }else if (data.playing === false){
+      audioPlayer.pause()
+    }
+  }
+
+  handleJoin = () => {
+    this.setState({stationId: this.props.listeningTo})
+  }
+
+
   render(){
-    console.log("props are:", this.props)
+    console.log("hooked Up to Station: ", this.props.listeningTo)
     return(
       <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
-      <ActionCableConsumer channel={{channel: 'StationChannel', stationId: this.props.listeningTo}} onReceived={(data) => {this.handleReceived(data)}}/>
+      <ActionCableConsumer channel={{channel: 'StationChannel', station_id: this.props.listeningTo}} onReceived={(data) => {this.handleReceived(data)}}/>
         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <h3 style={{marginBottom:'0px'}}> Listening to ...</h3>
           <div>
-          <ReactAudioPlayer
-            floated='left'
-            style={{width:'35.3em'}}
-            src="my_audio_file.ogg"
-            autoPlay
-            controls
-            />
-          <Button onClick={this.handleClick} inverted color='green' floated ='right'> Add to Favs </Button>
+          <audio paused ='true' ref="audio_tag" src={this.state.song_url} controls />
+          <Button onClick={this.handleJoin} inverted color='green' floated ='right'> Add to Favs </Button>
           </div>
         </div>
       </Segment>

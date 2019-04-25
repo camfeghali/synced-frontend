@@ -9,13 +9,10 @@ import { Segment, List, Container, Button } from 'semantic-ui-react'
 class PlaylistsContainer extends React.Component{
 
   handleClick = () =>{
-    console.log("Playlist container being clicked!")
-    console.log("Available functions:", this.props)
     this.props.togglePlaylist()
   }
 
   render(){
-    console.log("My state is:", this.props)
     return(
       this.props.playlistShow ? <PlaylistShow /> :
       <Segment onClick={this.handleClick} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
@@ -40,7 +37,6 @@ class PlaylistsContainer extends React.Component{
 }
 
 const mapStateToProps = (state) =>{
-  console.log("In map state to props, my state is:", state)
   return{
     playlistShow: state.playlistShow,
     togglePlaylist: state.togglePlaylist

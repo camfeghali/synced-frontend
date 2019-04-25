@@ -17,7 +17,7 @@ class Channel extends React.Component{
       <Segment textalign='left' style={{borderStyle: 'solid', borderColor:'purple', boxShadow: '0px 0px 2px 1px grey'}}>
         <Image avatar src={monkeyAvatar} />
         <Item.Content textalign='left'>
-          <Item.Header as='a' textalign='left'>Host ID: {this.props.station.host_id}</Item.Header>
+          <Item.Header as='a' textalign='left'>Station ID: {this.props.station.id}</Item.Header>
           <Item.Description >
             Listening to {this.props.station.song_id}
               <b> - {this.props.station.name} - </b>
