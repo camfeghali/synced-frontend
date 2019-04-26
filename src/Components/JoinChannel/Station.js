@@ -10,6 +10,21 @@ class Channel extends React.Component{
     this.props.listenTo(this.props.station.id)
   }
 
+  joinChannel = () => {
+    console.log("join channel!: ",this.state.listeningTo)
+    let url = `http://localhost:3000/stations/${this.state.stationId}`
+    console.log("the url i'm hitting is: ", url)
+    let data = this.props.station.id
+    let config = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }
+    fetch(url, config)
+  }
+
   render(){
 
     return(

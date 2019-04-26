@@ -29,8 +29,11 @@ class ListeningTo extends React.Component{
     }
   }
 
+
+
   handleJoin = () => {
-    this.setState({stationId: this.props.listeningTo})
+    this.setState({stationId: this.props.listeningTo}, this.joinChannel())
+
   }
 
 
