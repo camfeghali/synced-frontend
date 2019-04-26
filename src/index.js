@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import reduxThunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import myReducer from './Reducers/MyReducer'
 import './index.css';
@@ -11,7 +12,7 @@ import 'semantic-ui/dist/semantic.min.css';
 import { ActionCableProvider } from 'react-actioncable-provider'
 
 
-const store = createStore(myReducer)
+const store = createStore(myReducer, applyMiddleware(reduxThunk))
 
 ReactDOM.render(
   <ActionCableProvider url='ws://localhost:3000/cable'>

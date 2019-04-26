@@ -1,5 +1,5 @@
 import React from 'react'
-import MediaPlayer from './MediaPlayer'
+import MediaPlayer from './Mediaplayer'
 import MediaContainer from './MediaContainer/MediaContainer'
 import PlaylistsContainer from './PlaylistsContainer'
 import { Grid } from 'semantic-ui-react'

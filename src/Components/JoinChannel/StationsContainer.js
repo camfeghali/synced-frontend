@@ -19,14 +19,11 @@ class FavoritesContainer extends React.Component{
   }
 
   handleReceived = (data) => {
-    console.log("handle received ran!")
     this.setState({stations: data.stations})
   }
 
   render(){
     let stations = this.state.stations.map(station => <Station key={station.id} station={station}/>)
-    console.log("Number of stations:", this.state.stations.length)
-    console.log("state was updated")
     return(
       <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
       <ActionCableConsumer channel={{channel: 'LobbyChannel', cat: "piss"}} onReceived={(data) => {this.handleReceived(data)}}/>

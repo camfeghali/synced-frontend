@@ -8,13 +8,17 @@ class Channel extends React.Component{
 
   handleClick = () =>{
     this.props.listenTo(this.props.station.id)
+    this.syncToStation()
   }
 
-  joinChannel = () => {
-    console.log("join channel!: ",this.state.listeningTo)
-    let url = `http://localhost:3000/stations/${this.state.stationId}`
-    console.log("the url i'm hitting is: ", url)
-    let data = this.props.station.id
+  syncToStation = () => {
+    // console.log("syncing! to station #: ",this.props.listeningTo)
+    let url = `http://localhost:3000/stations/${this.props.listeningTo}`
+    // console.log("the url i'm hitting is: ", url)
+    let data = {
+      stationId: this.props.station.id,
+      joining: true
+    }
     let config = {
       method: "PATCH",
       headers: {
@@ -26,7 +30,6 @@ class Channel extends React.Component{
   }
 
   render(){
-
     return(
       <List.Item>
       <Segment textalign='left' style={{borderStyle: 'solid', borderColor:'purple', boxShadow: '0px 0px 2px 1px grey'}}>

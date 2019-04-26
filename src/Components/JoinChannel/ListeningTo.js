@@ -2,7 +2,7 @@ import React from 'react'
 import { Segment, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { ActionCableConsumer } from 'react-actioncable-provider'
-import ReactAudioPlayer from 'react-audio-player'
+// import ReactAudioPlayer from 'react-audio-player'
 
 
 class ListeningTo extends React.Component{
@@ -15,7 +15,7 @@ class ListeningTo extends React.Component{
   }
 
   handleReceived = (data) => {
-    console.log("data received:", data)
+    console.log("handle firing!, data received in Lobby:", data)
     let audioPlayer = document.querySelector("audio")
     this.setState({
       song_url: data.song_url,
@@ -29,11 +29,8 @@ class ListeningTo extends React.Component{
     }
   }
 
-
-
   handleJoin = () => {
     this.setState({stationId: this.props.listeningTo}, this.joinChannel())
-
   }
 
 

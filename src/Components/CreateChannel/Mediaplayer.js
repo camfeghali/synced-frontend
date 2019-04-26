@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import ReactAudioPlayer from 'react-audio-player'
 import { Segment, Dropdown, Button } from 'semantic-ui-react'
+import { ActionCableConsumer } from 'react-actioncable-provider'
+
 
 class MediaPlayer extends React.Component{
 
@@ -8,11 +11,11 @@ class MediaPlayer extends React.Component{
     stationId: null,
     song_url: "https://p.scdn.co/mp3-preview/c931b6bd0e7d4b9913656d31de6ba4df43699cc2?cid=febb891cfd5e4e45b5153a63683d7c88",
     timestamp: null,
-    playing: false
+    playing: false,
+    firstTime: true
   }
 
   broadcast = () => {
-    console.log("broadcasting!")
     let url = "http://localhost:3000/stations"
     let config = {
       method: "POST",
@@ -26,10 +29,8 @@ class MediaPlayer extends React.Component{
 
   }
 
-  editPlayback = () => {
-    console.log("editing playback!")
+  sharePlayback = () => {
     let url = `http://localhost:3000/stations/${this.state.stationId}`
-    console.log("the url i'm hitting is: ", url)
     let data = this.state
     let config = {
       method: "PATCH",
@@ -38,25 +39,44 @@ class MediaPlayer extends React.Component{
       },
       body: JSON.stringify(data)
     }
+    console.log("gonna hit this url:", url)
     fetch(url, config)
   }
 
   handlePause = () => {
-    console.log('PAUSING!')
     this.setState({playing: false}, () => {
-    this.editPlayback()
+    this.sharePlayback()
     })
   }
   handlePlay = () => {
     this.setState({playing: true}, () => {
-      this.editPlayback()
+      this.sharePlayback()
     })
+  }
+
+  handleReceived = (returnData) => {
+    console.log("my return data is:", returnData)
+    if (returnData.joining){
+      console.log("first time handle received is firing!!")
+      let url = `http://localhost:3000/stations/${this.state.stationId}`
+      let data = this.state
+      let config = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      }
+      console.log("About to make a fetch, should hit a broadcast in B.E")
+      fetch(url, config)
+    }
   }
 
   render(){
     return(
       <Segment className={'largeContainer'} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
       <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+      <ActionCableConsumer channel={{channel: 'StationChannel', station_id: this.state.stationId}} onReceived={(data) => this.handleReceived(data) }/>
         <ReactAudioPlayer
           onPause = {this.handlePause}
           onPlay = {this.handlePlay}
@@ -81,5 +101,6 @@ class MediaPlayer extends React.Component{
     )
   }
 }
+
 
 export default MediaPlayer
