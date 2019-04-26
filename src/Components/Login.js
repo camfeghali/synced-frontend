@@ -1,11 +1,17 @@
 import React from 'react'
+import { Form, Button } from 'semantic-ui-react'
 
 class Login extends React.Component{
   render(){
     return(
-      <div>
-        This is Login Page !
-      </div>
+      <Form unstackable>
+        <Form.Group widths={2}>
+          <Form.Input label='First name' placeholder='First name' />
+          <Form.Input label='Last name' placeholder='Last name' />
+        </Form.Group>
+        <Form.Checkbox label='I agree to the Terms and Conditions' />
+        <Button type='submit'>Submit</Button>
+      </Form>
     )
   }
 }

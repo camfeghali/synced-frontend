@@ -1,7 +1,5 @@
-import PropTypes from 'prop-types'
-import _ from 'lodash'
 import React, { Component } from 'react'
-import { Search } from 'semantic-ui-react'
+import {  } from 'semantic-ui-react'
 
 class SearchExampleCategory extends Component {
 
@@ -20,12 +18,13 @@ class SearchExampleCategory extends Component {
     // const { isLoading, value, results } = this.state
 
     return (
-      <div class="ui search">
-        <div class="ui icon input">
-          <input placeholder="Look for channels ..." style={{color:'black', background: 'rgb(74, 74, 74, 0.075)'}} class="prompt" type="text" />
-          <i style={{color: 'black'}} class="search icon"></i>
+      <div className="ui search">
+        <div className="ui icon input">
+          <input placeholder="Look for channels ..." style={{background: 'rgb(74, 74, 74, 0.3)'}} className="prompt" type="text" />
+          <i style={{color: 'black'}} className="search icon"></i>
+
           </div>
-        <div class="results"></div>
+        <div className="results"></div>
       </div>
     )
   }

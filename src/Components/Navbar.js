@@ -18,11 +18,11 @@ class Navbar extends React.Component{
             </Menu.Item>
 
             <Menu.Menu position="right">
-            <Menu.Item as="a" name="join" href="/join">
-              Join
+            <Menu.Item as="a" name="lobby" href="/lobby">
+              Lobby
             </Menu.Item>
-            <Menu.Item as="a" name="create" href="/create">
-              Create
+            <Menu.Item as="a" name="my_station" href="/my_station">
+              My Station
             </Menu.Item>
             <Menu.Item as="a" name="login" href="/login">
               Login

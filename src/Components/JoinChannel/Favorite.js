@@ -8,14 +8,12 @@ class Favorite extends React.Component{
       <List.Item>
       <Segment textAlign='left' style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
         <Image avatar src={favoriteMonkeyAvatar} />
-        <Item.Content textAlign='left'>
+        <Item.Content textalign='left'>
 
-          <Item.Header as='a' textAlign='left'>Daniel Louise</Item.Header>
+          <Item.Header as='a' textalign='left'>Daniel Louise</Item.Header>
           <Item.Description >
             Last seen watching{' '}
-            <a>
               <b>Arrested Development</b>
-            </a>{' '}
             just now.
           </Item.Description>
           </Item.Content>

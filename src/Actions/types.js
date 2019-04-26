@@ -1,1 +1,3 @@
 export const TOGGLE_PLAYLIST = "TOGGLE_PLAYLIST"
+export const APPEND_CHANNEL = "APPEND_CHANNEL"
+export const LISTEN_TO = "LISTEN_TO"
