@@ -31,7 +31,7 @@ class MediaPlayer extends React.Component{
 
   sharePlayback = () => {
     let url = `http://localhost:3000/stations/${this.state.stationId}`
-    let data = this.state
+    let data = {...this.state, timestamp: this.timestamp()}
     let config = {
       method: "PATCH",
       headers: {
@@ -59,7 +59,8 @@ class MediaPlayer extends React.Component{
     if (returnData.joining){
       console.log("first time handle received is firing!!")
       let url = `http://localhost:3000/stations/${this.state.stationId}`
-      let data = this.state
+      let data = {...this.state, timestamp: this.timestamp()}
+      console.log("state being sent on received from host is:", data)
       let config = {
         method: "PATCH",
         headers: {
@@ -70,6 +71,12 @@ class MediaPlayer extends React.Component{
       console.log("About to make a fetch, should hit a broadcast in B.E")
       fetch(url, config)
     }
+  }
+
+  timestamp = () => {
+    let audioPlayer = document.querySelector("audio")
+    let timestamp = audioPlayer.currentTime
+    return timestamp
   }
 
   render(){
@@ -88,6 +95,7 @@ class MediaPlayer extends React.Component{
           />
         <div>
         <Button onClick={this.broadcast}> Broadcast! </Button>
+        <Button onClick={this.timestamp}> Test Timestamp! </Button>
         <Dropdown style={{padding:'8px', borderRadius:'4px', borderStyle:'solid', borderColor:'rgb(143, 208, 135)', color: 'blue'}} text='Add to playlist' >
           <Dropdown.Menu style={{borderStyle:'solid', borderColor:'green'}}>
             <Dropdown.Item style={{color:'greenrgb(143, 208, 135)'}} text='Playlist 1' />

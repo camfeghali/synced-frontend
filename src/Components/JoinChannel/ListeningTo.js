@@ -21,6 +21,11 @@ class ListeningTo extends React.Component{
       song_url: data.song_url,
       playing: data.playing,
       timestamp: data.timestamp
+    }, () => {
+      // console.log
+      if (data.timestamp){
+        this.setTimestamp(data.timestamp)
+      }
     })
     if(data.playing === true){
       audioPlayer.play()
@@ -33,6 +38,11 @@ class ListeningTo extends React.Component{
     this.setState({stationId: this.props.listeningTo}, this.joinChannel())
   }
 
+  setTimestamp = (timestamp) => {
+    let stamp = Number.parseFloat(timestamp).toPrecision(3)
+
+    document.querySelector("audio").currentTime = stamp
+  }
 
   render(){
     console.log("hooked Up to Station: ", this.props.listeningTo)
@@ -44,6 +54,7 @@ class ListeningTo extends React.Component{
           <div>
           <audio paused ='true' ref="audio_tag" src={this.state.song_url} controls />
           <Button onClick={this.handleJoin} inverted color='green' floated ='right'> Add to Favs </Button>
+          <Button onClick={this.test} inverted color='green' floated ='right'> Test </Button>
           </div>
         </div>
       </Segment>
