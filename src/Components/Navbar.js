@@ -20,7 +20,7 @@ class Navbar extends React.Component{
               />
             </Menu.Item>
             <Menu.Item as="a" name="username" >
-              {this.props.user ? this.props.user.username : null}
+              {this.props.user ? this.props.user.username : " "}
             </Menu.Item>
             <Menu.Menu position="right">
             <Menu.Item as="a" name="lobby" href="/lobby">

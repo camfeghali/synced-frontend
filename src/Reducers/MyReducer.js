@@ -3,6 +3,7 @@ import {
   LISTEN_TO,
   CREATE_USER,
   PERSIST_USER,
+  LOGIN,
  } from '../Actions/types'
 
 const initialState = {
@@ -19,11 +20,12 @@ function myReducer (state = initialState, action) {
     case LISTEN_TO:
       return {...state, listeningTo: action.payload}
     case CREATE_USER:
-    console.log('IN CREATE_USER')
-    return{...state, user: action.payload.user}
+      return{...state, user: action.payload.user}
     case PERSIST_USER:
-    console.log("action.payload:", action.payload)
-    return{...state, user: action.payload}
+      return{...state, user: action.payload}
+    case LOGIN:
+      console.log("my action is:", action)
+      return {...state, user: action.payload}
     default:
       return state
   }

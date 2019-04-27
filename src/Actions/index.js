@@ -2,7 +2,8 @@ import {
   TOGGLE_PLAYLIST,
   LISTEN_TO,
   CREATE_USER,
-  PERSIST_USER
+  PERSIST_USER,
+  LOGIN
 } from './types'
 
 export const togglePlaylist = () => {
@@ -69,5 +70,38 @@ export const persistUser = () => {
       dispatch({
       type: PERSIST_USER, payload: data.user
     })})
+  }
+}
+
+export const loginUser = (userInfo) => {
+  return (dispatch) => {
+    console.log("info coming from signup form: ", userInfo)
+    let token = localStorage.getItem("token")
+    console.log("the token is: ", token)
+    let url = "http://localhost:3000/login"
+    console.log("to this url:", url)
+    let user = {
+      user: userInfo
+    }
+    let config = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json",
+        // authorization: `${token}`
+      },
+      body: JSON.stringify(user)
+    }
+    console.log("when i try to sign up")
+    console.log("userInfo")
+    fetch(url, config)
+    .then(resp => resp.json())
+    .then(data => {
+      console.log("return data is:", data)
+      localStorage.setItem("token", data.jwt)
+      dispatch({
+      type: LOGIN, payload: data.user
+    })
+  })
   }
 }
