@@ -13,7 +13,6 @@ class App extends React.Component{
   // console.log("local storage is: ",localStorage)
 
   componentDidMount(){
-    console.log("props in App", this.props)
     this.props.persistUser()
   }
 

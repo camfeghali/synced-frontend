@@ -54,12 +54,11 @@ class MediaPlayer extends React.Component{
   }
 
   handleReceived = (returnData) => {
-    console.log("my return data is:", returnData)
+    console.log("my return data when someone joins in HOST is:", returnData)
     if (returnData.joining){
-      console.log("first time handle received is firing!!")
       let url = `http://localhost:3000/stations/${this.state.stationId}`
       let data = {...this.state, timestamp: this.timestamp()}
-      console.log("state being sent on received from host is:", data)
+      console.log("data being sent back received from HOST is:", data)
       let config = {
         method: "PATCH",
         headers: {

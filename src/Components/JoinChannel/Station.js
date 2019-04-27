@@ -7,26 +7,29 @@ import { Image, List, Button, Item, Segment } from 'semantic-ui-react'
 class Channel extends React.Component{
 
   handleClick = () =>{
+    console.log("join is firing!")
+    console.log("my props in station are: ", this.props)
+    console.log("my station id is: ", this.props.station.id)
     this.props.listenTo(this.props.station.id)
-    this.syncToStation()
+    // this.syncToStation()
   }
 
   syncToStation = () => {
     // console.log("syncing! to station #: ",this.props.listeningTo)
-    let url = `http://localhost:3000/stations/${this.props.listeningTo}`
+    // let url = `http://localhost:3000/stations/${this.props.listeningTo}`
     // console.log("the url i'm hitting is: ", url)
-    let data = {
-      stationId: this.props.station.id,
-      joining: true
-    }
-    let config = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    }
-    fetch(url, config)
+    // let data = {
+    //   stationId: this.props.station.id,
+    //   joining: true
+    // }
+    // let config = {
+    //   method: "PATCH",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify(data)
+    // }
+    // fetch(url, config)
   }
 
   render(){
@@ -53,9 +56,9 @@ class Channel extends React.Component{
     )
   }
 }
-const mapStateToProps = (state) => {
-  return{
-    listeningTo: state.listeningTo
-  }
-}
-export default connect(mapStateToProps,{listenTo})(Channel)
+// const mapStateToProps = (state) => {
+//   return{
+//     listeningTo: state.listeningTo
+//   }
+// }
+export default connect(null,{listenTo})(Channel)

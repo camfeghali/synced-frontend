@@ -7,7 +7,6 @@ import logo from'./logo1.png';
 
 class Navbar extends React.Component{
   render(){
-    console.log("what are my props in Navbar?", this.props)
     return(
       <div>
         <Menu style={{borderStyle:'solid', borderBottomColor:'#757575'}}>
@@ -48,7 +47,6 @@ class Navbar extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log("what is my state here?: ", state)
   return {
     user: state.user.user
   }

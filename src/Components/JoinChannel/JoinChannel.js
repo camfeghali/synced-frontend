@@ -7,7 +7,7 @@ import StationsContainer from './StationsContainer'
 
 class JoinChannel extends React.Component{
   render(){
-    console.log("props in join channel: ", this.props )
+    console.log("what are my props in JoinChannel component?: ", this.props ? this.props : "nothing")
     return(
       <div>
       <Grid divided='vertically'>
@@ -39,9 +39,9 @@ class JoinChannel extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log("what is state?: ", state)
   return {
-    user: state.user
+    user: state.user,
+    state: state
   }
 }
 

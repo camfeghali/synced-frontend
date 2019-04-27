@@ -1,10 +1,10 @@
 import {
-  TOGGLE_PLAYLIST,
-  LISTEN_TO,
-  CREATE_USER,
-  PERSIST_USER,
-  LOGIN,
-  LOGOUT
+  // TOGGLE_PLAYLIST,
+  // LISTEN_TO,
+  // CREATE_USER,
+  // PERSIST_USER,
+  // LOGIN,
+  // LOGOUT
  } from '../Actions/types'
 
 import { combineReducers } from 'redux'
