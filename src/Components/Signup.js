@@ -20,7 +20,7 @@ class Signup extends React.Component{
   }
 
   render(){
-    console.log("what are my props in signup?", this.props)
+    // console.log("what are my props in signup?", this.props)
     return(
       <Form unstackable>
         <Form.Group widths={2}>

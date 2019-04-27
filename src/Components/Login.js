@@ -24,8 +24,8 @@ class Login extends React.Component{
     return(
       <Form unstackable>
         <Form.Group widths={2}>
-          <Form.Input onChange={this.handleChange} name='username' label='First name' placeholder='First name' />
-          <Form.Input onChange={this.handleChange} name='password' label='Last name' placeholder='Password' />
+          <Form.Input onChange={this.handleChange} name='username' label='Username' placeholder='First name' />
+          <Form.Input onChange={this.handleChange} name='password' label='Password' type='password' placeholder='Password' />
         </Form.Group>
         <Form.Checkbox label='I agree to the Terms and Conditions' />
         <Button onClick={this.handleSubmit} type='submit'>Submit</Button>

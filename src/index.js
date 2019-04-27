@@ -10,13 +10,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'semantic-ui/dist/semantic.min.css';
 import { ActionCableProvider } from 'react-actioncable-provider'
+import configureStore from './configureStore';
 
-
-const store = createStore(myReducer, applyMiddleware(reduxThunk))
+// const store = createStore(myReducer, applyMiddleware(reduxThunk))
+const combinedStore = configureStore()
 
 ReactDOM.render(
   <ActionCableProvider url='ws://localhost:3000/cable'>
-    <Provider store={store}>
+    <Provider store={combinedStore}>
       <Router>
         <App />
       </Router>

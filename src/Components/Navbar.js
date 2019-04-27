@@ -48,8 +48,9 @@ class Navbar extends React.Component{
 }
 
 const mapStateToProps = (state) => {
+  console.log("what is my state here?: ", state)
   return {
-    user: state.user
+    user: state.user.user
   }
 }
 
