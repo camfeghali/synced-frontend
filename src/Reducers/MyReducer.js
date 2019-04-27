@@ -1,23 +1,34 @@
 import {
   TOGGLE_PLAYLIST,
-  LISTEN_TO
+  LISTEN_TO,
+  CREATE_USER,
+  PERSIST_USER,
  } from '../Actions/types'
 
 const initialState = {
   playlistShow: false,
-  listeningTo: null
+  listeningTo: null,
+  user: null
 }
 
 function myReducer (state = initialState, action) {
-  console.log('action:', action, 'state:', state);
+  console.log('my action is:', action, 'my state is:', state);
   switch(action.type) {
     case TOGGLE_PLAYLIST:
       return {...state, playlistShow: !state.playlistShow}
     case LISTEN_TO:
       return {...state, listeningTo: action.payload}
+    case CREATE_USER:
+    console.log('IN CREATE_USER')
+    return{...state, user: action.payload.user}
+    case PERSIST_USER:
+    console.log("action.payload:", action.payload)
+    return{...state, user: action.payload}
     default:
       return state
   }
 }
+
+
 
 export default myReducer

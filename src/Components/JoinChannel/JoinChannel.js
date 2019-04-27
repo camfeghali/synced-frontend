@@ -1,11 +1,13 @@
 import React from 'react'
 import { Grid } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 import FavoritesContainer from './FavoritesContainer'
 import ListeningTo from './ListeningTo'
 import StationsContainer from './StationsContainer'
 
 class JoinChannel extends React.Component{
   render(){
+    console.log("props in join channel: ", this.props )
     return(
       <div>
       <Grid divided='vertically'>
@@ -36,4 +38,11 @@ class JoinChannel extends React.Component{
   }
 }
 
-export default JoinChannel
+const mapStateToProps = (state) => {
+  console.log("what is state?: ", state)
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(JoinChannel)

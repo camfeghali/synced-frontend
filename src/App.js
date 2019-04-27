@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { persistUser} from './Actions'
 import { Route, Switch } from 'react-router-dom';
 import Login from './Components/Login'
 import Signup from './Components/Signup'
@@ -7,29 +9,38 @@ import CreateChannel from './Components/CreateChannel/CreateChannel'
 import JoinChannel from './Components/JoinChannel/JoinChannel'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-    <Navbar/>
-    <Switch>
+class App extends React.Component{
+  // console.log("local storage is: ",localStorage)
+
+  componentDidMount(){
+    console.log("props in App", this.props)
+    this.props.persistUser()
+  }
+
+  render(){
+    return (
+      <div className="App">
+      <Navbar/>
+      <Switch>
       <Route path="/login" render={routerProps => (
-          <Login />
-        )}/>
+        <Login />
+      )}/>
       <Route path="/signup" render={routerProps => {
-          console.log("routerProps", routerProps);
-          return (
-            <Signup/>
-          );
-        }}/>
-        <Route path="/lobby" render={routerProps => (
-            <JoinChannel />
-          )}/>
-        <Route path="/my_station" render={routerProps => (
-            <CreateChannel />
-          )}/>
-    </Switch>
-    </div>
-  );
+        return (
+          <Signup/>
+        );
+      }}/>
+      <Route path="/lobby" render={routerProps => (
+        <JoinChannel />
+      )}/>
+      <Route path="/my_station" render={routerProps => (
+        <CreateChannel />
+      )}/>
+      </Switch>
+      </div>
+    );
+  }
+
 }
 
-export default App;
+export default connect(null, {persistUser})(App);

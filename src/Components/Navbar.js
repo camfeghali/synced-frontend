@@ -1,4 +1,5 @@
 import React from 'react'
+// import { setUrl } from '../Actions'
 import { Container, Image, Menu } from 'semantic-ui-react';
 import logo from'./logo1.png';
 

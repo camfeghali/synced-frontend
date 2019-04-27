@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { createUser } from '../Actions'
 import { Form, Button } from 'semantic-ui-react'
 
 class Signup extends React.Component{
@@ -13,30 +15,17 @@ class Signup extends React.Component{
   }
 
   createUser = () => {
-    let data = {
-      username: this.state.username,
-      password: this.state.password
-    }
-    let url = "http://localhost:3000/users"
-    let config = {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
-        headers: {
-            "Content-Type": "application/json",
-            // "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
-    }
-    fetch(url,config)
-    console.log("trololol")
+    console.log("create user is firing")
+    this.props.createUser(this.state)
   }
 
   render(){
+    console.log("what are my props in signup?", this.props)
     return(
       <Form unstackable>
         <Form.Group widths={2}>
           <Form.Input onChange={this.onChange} name='username' placeholder='Username' value={this.state.username} />
-          <Form.Input onChange={this.onChange} name='password' placeholder='Password' value={this.state.password}/>
+          <Form.Input onChange={this.onChange} name='password' type='password' placeholder='Password' value={this.state.password}/>
         </Form.Group>
         <Form.Checkbox label='I agree to the Terms and Conditions' />
         <Button onClick={this.createUser}>Submit</Button>
@@ -45,4 +34,10 @@ class Signup extends React.Component{
   }
 }
 
-export default Signup
+const mapStateToProps = (state) => {
+  return{
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, {createUser})(Signup)
