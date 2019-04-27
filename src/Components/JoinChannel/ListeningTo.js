@@ -54,7 +54,6 @@ class ListeningTo extends React.Component{
           <div>
           <audio paused ='true' ref="audio_tag" src={this.state.song_url} controls />
           <Button onClick={this.handleJoin} inverted color='green' floated ='right'> Add to Favs </Button>
-          <Button onClick={this.test} inverted color='green' floated ='right'> Test </Button>
           </div>
         </div>
       </Segment>

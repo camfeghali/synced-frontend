@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import ReactAudioPlayer from 'react-audio-player'
 import { Segment, Dropdown, Button } from 'semantic-ui-react'
 import { ActionCableConsumer } from 'react-actioncable-provider'
@@ -95,7 +94,6 @@ class MediaPlayer extends React.Component{
           />
         <div>
         <Button onClick={this.broadcast}> Broadcast! </Button>
-        <Button onClick={this.timestamp}> Test Timestamp! </Button>
         <Dropdown style={{padding:'8px', borderRadius:'4px', borderStyle:'solid', borderColor:'rgb(143, 208, 135)', color: 'blue'}} text='Add to playlist' >
           <Dropdown.Menu style={{borderStyle:'solid', borderColor:'green'}}>
             <Dropdown.Item style={{color:'greenrgb(143, 208, 135)'}} text='Playlist 1' />

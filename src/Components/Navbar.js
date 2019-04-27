@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import { setUrl } from '../Actions'
+import { logOut } from '../Actions'
 import { Container, Image, Menu } from 'semantic-ui-react';
 import logo from'./logo1.png';
 
@@ -35,7 +35,7 @@ class Navbar extends React.Component{
             <Menu.Item as="a" name="register" href="/signup">
               Signup
             </Menu.Item>
-            <Menu.Item as="a" name="register" href="/signup">
+            <Menu.Item onClick={this.props.logOut} as="a" name="register" href="/signup">
               Logout
             </Menu.Item>
           </Menu.Menu>
@@ -53,4 +53,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Navbar)
+export default connect(mapStateToProps, { logOut })(Navbar)

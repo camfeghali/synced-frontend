@@ -4,6 +4,7 @@ import {
   CREATE_USER,
   PERSIST_USER,
   LOGIN,
+  LOGOUT
  } from '../Actions/types'
 
 const initialState = {
@@ -24,7 +25,8 @@ function myReducer (state = initialState, action) {
     case PERSIST_USER:
       return{...state, user: action.payload}
     case LOGIN:
-      console.log("my action is:", action)
+      return {...state, user: action.payload}
+    case LOGOUT:
       return {...state, user: action.payload}
     default:
       return state

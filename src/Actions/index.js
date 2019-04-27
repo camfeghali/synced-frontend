@@ -3,7 +3,8 @@ import {
   LISTEN_TO,
   CREATE_USER,
   PERSIST_USER,
-  LOGIN
+  LOGIN,
+  LOGOUT
 } from './types'
 
 export const togglePlaylist = () => {
@@ -16,8 +17,6 @@ export const listenTo = (stationId) => {
 
 export const createUser = (userInfo) => {
   return (dispatch) => {
-    // console.log("whatisthis?:", whatisthis)
-    // return {type:CREATE_USER, payload: []}
     console.log("inside create user action")
     let data = {
       user: {
@@ -104,4 +103,9 @@ export const loginUser = (userInfo) => {
     })
   })
   }
+}
+
+export const logOut = () => {
+  localStorage.setItem("token", null)
+  return { type: LOGOUT, payload: null }
 }
