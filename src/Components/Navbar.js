@@ -7,7 +7,6 @@ import logo from'./logo1.png';
 
 class Navbar extends React.Component{
   render(){
-    console.log("What are my props in Navbar? :", this.props)
     return(
       <div>
         <Menu style={{borderStyle:'solid', borderBottomColor:'#757575'}}>

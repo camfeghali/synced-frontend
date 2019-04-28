@@ -19,30 +19,29 @@ const initialState = {
 function userReducer (state = initialState, action) {
   switch(action.type) {
     case CREATE_USER:
-      console.log("creating a user, my payload is:", action.payload)
       return{...state, username: action.payload}
     case PERSIST_USER:
-      console.log("PERSIST_USER has run")
       return{...state, username: action.payload}
     case LOGIN:
-      return {...state,
+      return {
+        ...state,
         username: action.payload.username,
         token: action.payload.token,
       }
     case LOGOUT:
-      return {...state,
+      return {
+        ...state,
         username: null,
         token: null,
       }
     case CONNECT:
-    console.log("Hittin CONNECT in user Reducer")
       return {...state, tuned: true}
     case DISCONNECT:
       return {...state, tuned: false}
-    // case ON_AIR:
-    //   return {...state, user: action.payload}
-    // case OFF_AIR:
-    //   return {...state, user: action.payload}
+    case ON_AIR:
+      return {...state, broadcasting: true}
+    case OFF_AIR:
+      return {...state, broadcasting: false}
     default:
       return state
   }

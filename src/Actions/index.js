@@ -6,7 +6,9 @@ import {
   LOGIN,
   LOGOUT,
   CONNECT,
-  DISCONNECT
+  DISCONNECT,
+  ON_AIR,
+  OFF_AIR,
 } from './types'
 
 import adapter from '../Utilities/adapter'
@@ -70,9 +72,20 @@ export const logOut = () => {
 }
 
 export const connectToStation = (stationId) => {
+  console.log("connect to station in: action creator")
+  console.log("dispatching with payload: ", stationId)
   return (dispatch) => {
-    adapter.listenTo(stationId)
-    dispatch({type: CONNECT, payload: stationId})
+    adapter.connectTo(stationId)
+    .then(
+      dispatch({type: CONNECT, payload: stationId})
+    )
+    // .then(resp => {
+    //   console.log("resp: ", resp)
+    //   resp.json()
+    // })
+    // .then(data => {
+    //   console.log("Return data from server: ", data)
+    // })
   }
 }
 
@@ -80,4 +93,13 @@ export const disconnectFromStation = (stationId) => {
   return (dispatch) => {
     dispatch({type: DISCONNECT, payload: stationId})
   }
+}
+
+export const goOnAir = () => {
+    console.log("go On Air firing from action creator!")
+    return (dispatch) => {
+      adapter.goOnAir()
+      .then(resp => resp.json())
+      .then(data => dispatch({type: ON_AIR, payload: data}))
+    }
 }

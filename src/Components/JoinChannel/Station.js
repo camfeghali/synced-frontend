@@ -16,11 +16,11 @@ class Channel extends React.Component{
   }
 
   syncToStation = () => {
-    // console.log("syncing! to station #: ",this.props.listeningTo)
-    // let url = `http://localhost:3000/stations/${this.props.listeningTo}`
+    // console.log("AAAAAAAAAA syncing! to station #: ",this.props.connectedTo)
+    // let url = `http://localhost:3000/stations/${this.props.connectedTo}`
     // console.log("the url i'm hitting is: ", url)
     // let data = {
-    //   stationId: this.props.station.id,
+    //   stationId: this.props.connectedTo,
     //   joining: true
     // }
     // let config = {
@@ -57,9 +57,10 @@ class Channel extends React.Component{
     )
   }
 }
-// const mapStateToProps = (state) => {
-//   return{
-//     listeningTo: state.listeningTo
-//   }
-// }
-export default connect(null,{listenTo, connectToStation})(Channel)
+const mapStateToProps = (state) => {
+  return{
+    // listeningTo: state.listeningTo,
+    connectedTo: state.station.tunedTo.stationId
+  }
+}
+export default connect(mapStateToProps,{listenTo, connectToStation})(Channel)

@@ -2,7 +2,6 @@ import React from 'react'
 import { Segment, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { ActionCableConsumer } from 'react-actioncable-provider'
-// import ReactAudioPlayer from 'react-audio-player'
 
 
 class ListeningTo extends React.Component{
@@ -45,11 +44,12 @@ class ListeningTo extends React.Component{
   }
 
   render(){
+    console.log("Connected To: ", this.props.connectedTo)
     return(
       <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
       <ActionCableConsumer channel={{channel: 'StationChannel', station_id: this.props.connectedTo }} onReceived={(data) => {this.handleReceived(data)}}/>
         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-          <h3 style={{marginBottom:'0px'}}> Listening to ...</h3>
+          <h4 style={{marginBottom:'0px'}}> Connected to station {this.props.connectedTo ? this.props.connectedTo : null}</h4>
           <div>
           <audio paused ='true' ref="audio_tag" src={this.state.song_url} controls />
           <Button onClick={this.handleJoin} inverted color='green' floated ='right'> Add to Favs </Button>

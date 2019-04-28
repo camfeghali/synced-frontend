@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
     user : state.user,
     username : state.user.username,
     station : state.station,
-    stationTunedTo : state.station.tunedTo,
+    tunedTo : state.station.tunedTo,
   }
 }
 

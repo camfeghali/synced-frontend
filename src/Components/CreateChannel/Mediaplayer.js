@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { goOnAir } from '../../Actions'
 import ReactAudioPlayer from 'react-audio-player'
 import { Segment, Dropdown, Button } from 'semantic-ui-react'
 import { ActionCableConsumer } from 'react-actioncable-provider'
@@ -15,21 +17,13 @@ class MediaPlayer extends React.Component{
   }
 
   broadcast = () => {
-    let url = "http://localhost:3000/stations"
-    let config = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-    }
-    fetch(url, config)
-    .then(resp => resp.json())
-    .then(data => this.setState({stationId: data.id}, () => {console.log("station Id is:", this.state.stationId)}))
-
+    console.log("Broadcast from MediaPlayer firing!")
+    this.props.goOnAir()
   }
 
   sharePlayback = () => {
-    let url = `http://localhost:3000/stations/${this.state.stationId}`
+    console.log("Share playback firing from MediaPlayer:")
+    let url = `http://localhost:3000/stations/${this.props.stationId}`
     let data = {...this.state, timestamp: this.timestamp()}
     let config = {
       method: "PATCH",
@@ -38,7 +32,8 @@ class MediaPlayer extends React.Component{
       },
       body: JSON.stringify(data)
     }
-    console.log("gonna hit this url:", url)
+    console.log("Gonna hit this url:", url)
+    console.log("And send this data:", data)
     fetch(url, config)
   }
 
@@ -54,11 +49,10 @@ class MediaPlayer extends React.Component{
   }
 
   handleReceived = (returnData) => {
-    console.log("my return data when someone joins in HOST is:", returnData)
+    console.log("MediaPlayer is receiving data: ", returnData)
     if (returnData.joining){
-      let url = `http://localhost:3000/stations/${this.state.stationId}`
+      let url = `http://localhost:3000/stations/${this.props.stationId}`
       let data = {...this.state, timestamp: this.timestamp()}
-      console.log("data being sent back received from HOST is:", data)
       let config = {
         method: "PATCH",
         headers: {
@@ -66,7 +60,6 @@ class MediaPlayer extends React.Component{
         },
         body: JSON.stringify(data)
       }
-      console.log("About to make a fetch, should hit a broadcast in B.E")
       fetch(url, config)
     }
   }
@@ -78,10 +71,11 @@ class MediaPlayer extends React.Component{
   }
 
   render(){
+    console.log("Broadcasting in station ID: ", this.props.stationId)
     return(
       <Segment className={'largeContainer'} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
       <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-      <ActionCableConsumer channel={{channel: 'StationChannel', station_id: this.state.stationId}} onReceived={(data) => this.handleReceived(data) }/>
+      <ActionCableConsumer channel={{channel: 'StationChannel', station_id: this.props.stationId}} onReceived={(data) => {this.handleReceived(data)} }/>
         <ReactAudioPlayer
           onPause = {this.handlePause}
           onPlay = {this.handlePlay}
@@ -92,6 +86,7 @@ class MediaPlayer extends React.Component{
           controls
           />
         <div>
+        <h1> I am broadcasting: {this.props.broadcasting ? "true" : "false"}</h1>
         <Button onClick={this.broadcast}> Broadcast! </Button>
         <Dropdown style={{padding:'8px', borderRadius:'4px', borderStyle:'solid', borderColor:'rgb(143, 208, 135)', color: 'blue'}} text='Add to playlist' >
           <Dropdown.Menu style={{borderStyle:'solid', borderColor:'green'}}>
@@ -107,5 +102,11 @@ class MediaPlayer extends React.Component{
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    broadcasting: state.user.broadcasting,
+    stationId: state.station.broadcast.stationId
+  }
+}
 
-export default MediaPlayer
+export default connect(mapStateToProps, { goOnAir })(MediaPlayer)
