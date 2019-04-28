@@ -14,5 +14,5 @@ import stationReducer from './station'
 
 export default combineReducers({
   user: userReducer,
-  stationReducer: stationReducer
+  station: stationReducer
 })

@@ -34,10 +34,10 @@ class Signup extends React.Component{
   }
 }
 
-const mapStateToProps = (state) => {
-  return{
-    user: state.user
-  }
-}
+// const mapStateToProps = (state) => {
+//   return{
+//     user: state.user
+//   }
+// }
 
-export default connect(mapStateToProps, {createUser})(Signup)
+export default connect(null, {createUser})(Signup)

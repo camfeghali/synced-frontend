@@ -1,7 +1,7 @@
 import React from 'react'
 import monkeyAvatar from'./monkeyAvatar.png';
 import { connect } from 'react-redux'
-import { listenTo } from '../../Actions'
+import { listenTo, connectToStation } from '../../Actions'
 import { Image, List, Button, Item, Segment } from 'semantic-ui-react'
 
 class Channel extends React.Component{
@@ -10,7 +10,8 @@ class Channel extends React.Component{
     console.log("join is firing!")
     console.log("my props in station are: ", this.props)
     console.log("my station id is: ", this.props.station.id)
-    this.props.listenTo(this.props.station.id)
+    // this.props.listenTo(this.props.station.id)
+    this.props.connectToStation(this.props.station.id)
     // this.syncToStation()
   }
 
@@ -61,4 +62,4 @@ class Channel extends React.Component{
 //     listeningTo: state.listeningTo
 //   }
 // }
-export default connect(null,{listenTo})(Channel)
+export default connect(null,{listenTo, connectToStation})(Channel)

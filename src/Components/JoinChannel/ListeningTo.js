@@ -45,10 +45,9 @@ class ListeningTo extends React.Component{
   }
 
   render(){
-    console.log("what are my props in listening to component?: ", this.props ? this.props : "nothing")
     return(
       <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
-      <ActionCableConsumer channel={{channel: 'StationChannel', station_id: this.props.listeningTo }} onReceived={(data) => {this.handleReceived(data)}}/>
+      <ActionCableConsumer channel={{channel: 'StationChannel', station_id: this.props.connectedTo }} onReceived={(data) => {this.handleReceived(data)}}/>
         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <h3 style={{marginBottom:'0px'}}> Listening to ...</h3>
           <div>
@@ -63,9 +62,7 @@ class ListeningTo extends React.Component{
 
 const mapStateToProps = (state) => {
   return{
-    // listeningTo: state,
-    // state: state,
-    listeningTo: state.stationReducer.listeningTo
+    connectedTo: state.station.tunedTo.stationId
   }
 }
 

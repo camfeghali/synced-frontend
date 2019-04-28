@@ -7,6 +7,7 @@ import logo from'./logo1.png';
 
 class Navbar extends React.Component{
   render(){
+    console.log("What are my props in Navbar? :", this.props)
     return(
       <div>
         <Menu style={{borderStyle:'solid', borderBottomColor:'#757575'}}>
@@ -19,7 +20,7 @@ class Navbar extends React.Component{
               />
             </Menu.Item>
             <Menu.Item as="a" name="username" >
-              {this.props.user ? this.props.user.username : " "}
+              {this.props.username ? this.props.username : " "}
             </Menu.Item>
             <Menu.Menu position="right">
             <Menu.Item as="a" name="lobby" href="/lobby">
@@ -48,7 +49,7 @@ class Navbar extends React.Component{
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user.user
+    username: state.user.username
   }
 }
 

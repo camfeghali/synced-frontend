@@ -4,7 +4,9 @@ import {
   CREATE_USER,
   PERSIST_USER,
   LOGIN,
-  LOGOUT
+  LOGOUT,
+  CONNECT,
+  DISCONNECT
 } from './types'
 
 import adapter from '../Utilities/adapter'
@@ -25,8 +27,9 @@ export const createUser = (userInfo) => {
     adapter.createUser(userInfo)
     .then(resp => resp.json())
     .then(userData => {
+      console.log("What is my user data ?", userData)
       localStorage.setItem("token", userData.token)
-      dispatch({type: CREATE_USER, payload: userData})
+      dispatch({type: CREATE_USER, payload: userData.user.username})
     })
   }
 
@@ -34,12 +37,17 @@ export const createUser = (userInfo) => {
 
 export const persistUser = () => {
   return (dispatch) => {
-    adapter.persistUser()
-    .then(resp => resp.json())
-    .then(data => {
-      dispatch({
-      type: PERSIST_USER, payload: data.user
-    })})
+    console.log("In persist user Action, about to call adapter")
+      adapter.persistUser()
+      .then(resp => resp.json())
+      .then(data => {
+        console.log("Data returned from server on persist user is:", data)
+        if(data.user){
+          dispatch({
+            type: PERSIST_USER, payload: data.user.username
+          })
+        }
+      })
   }
 }
 
@@ -59,4 +67,17 @@ export const loginUser = (userInfo) => {
 export const logOut = () => {
   localStorage.setItem("token", null)
   return { type: LOGOUT, payload: null }
+}
+
+export const connectToStation = (stationId) => {
+  return (dispatch) => {
+    adapter.listenTo(stationId)
+    dispatch({type: CONNECT, payload: stationId})
+  }
+}
+
+export const disconnectFromStation = (stationId) => {
+  return (dispatch) => {
+    dispatch({type: DISCONNECT, payload: stationId})
+  }
 }

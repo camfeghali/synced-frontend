@@ -41,7 +41,9 @@ const createUser = (userInfo) => {
 }
 
 const persistUser = () => {
+  console.log("Inside persist user adapter")
   let token = localStorage.getItem("token")
+  console.log("Sending the following token:", token)
   let config = {
     method: "GET",
     headers: {

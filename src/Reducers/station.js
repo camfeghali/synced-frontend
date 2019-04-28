@@ -1,22 +1,48 @@
 import {
   TOGGLE_PLAYLIST,
-  LISTEN_TO
+  LISTEN_TO,
+  CONNECT,
+  DISCONNECT,
+  ON_AIR,
+  OFF_AIR
  } from '../Actions/types'
 
 const initialState = {
   playlistShow: false,
   listeningTo: null,
+  tunedTo:{
+    stationId: null,
+    trackId: null,
+    trackUrl: null,
+    timestamps: null,
+    playing: false,
+  },
+  broadcast:{
+    stationId: null,
+    trackId: null,
+    trackUrl: null,
+    timestamps: null,
+    playing: false,
+  }
 }
 
 function stationReducer (state = initialState, action) {
-  console.log('my action is:', action, 'my state is:', state);
   switch(action.type) {
     case TOGGLE_PLAYLIST:
-    console.log("here")
       return {...state, playlistShow: !state.playlistShow}
     case LISTEN_TO:
-    console.log("here in LISTEN_TO action in station reducer, action.payload is:", action.payload)
       return {...state, listeningTo: action.payload}
+    case CONNECT:
+      return {...state, tunedTo: {
+        ...state.tunedTo,
+        stationId: action.payload
+      }}
+    // case DISCONNECT:
+    //   return {...state, user: action.payload}
+    // case ON_AIR:
+    //   return {...state, user: action.payload}
+    // case OFF_AIR:
+    //   return {...state, user: action.payload}
     default:
       return state
   }

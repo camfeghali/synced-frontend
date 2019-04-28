@@ -13,10 +13,12 @@ class App extends React.Component{
   // console.log("local storage is: ",localStorage)
 
   componentDidMount(){
+    console.log("App refreshed!")
     this.props.persistUser()
   }
 
   render(){
+    console.log("Props in App component: ", this.props)
     return (
       <div className="App">
       <Navbar/>
@@ -42,4 +44,14 @@ class App extends React.Component{
 
 }
 
-export default connect(null, {persistUser})(App);
+const mapStateToProps = (state) => {
+  return {
+    state : state,
+    user : state.user,
+    username : state.user.username,
+    station : state.station,
+    stationTunedTo : state.station.tunedTo,
+  }
+}
+
+export default connect(mapStateToProps, {persistUser})(App);
