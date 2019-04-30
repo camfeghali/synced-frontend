@@ -19,5 +19,9 @@ const createPlaylist = (playlistName, username) => {
   return fetch(PLAYLISTS_URL, config)
 }
 
+const getPlaylists = (username) => {
+  return fetch(`${PLAYLISTS_URL}?username=${username}`)
+}
 
-export default { createPlaylist }
+
+export default { createPlaylist, getPlaylists }

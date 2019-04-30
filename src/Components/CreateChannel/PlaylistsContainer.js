@@ -3,8 +3,8 @@ import Playlist from './Playlist'
 import PlaylistShow from './PlaylistShow'
 import ChannelNameForm from './ChannelNameForm'
 import { connect } from 'react-redux'
-import { createPlaylist } from '../../Actions/playlistActions'
-import { Segment, List, Container, Button, Popup, Input } from 'semantic-ui-react'
+import { createPlaylist, getPlaylists } from '../../Actions/playlistActions'
+import { Segment, List, Container, Button, Popup } from 'semantic-ui-react'
 
 
 class PlaylistsContainer extends React.Component{
@@ -13,7 +13,12 @@ class PlaylistsContainer extends React.Component{
     playlistName: ""
   }
 
-  createPlaylist = () =>{
+  componentDidMount(){
+    console.log("what is username in playlist contianer??", this.props.username)
+    this.props.getPlaylists(this.props.username)
+  }
+
+  createPlaylist = () => {
     console.log("SENDING:")
     console.log("NAME:", this.state.playlistName)
     console.log("USERNAME:", this.props.username)
@@ -25,7 +30,8 @@ class PlaylistsContainer extends React.Component{
   }
 
   render(){
-    console.log("What is my state in Playlists Container?: ", this.state)
+    console.log("What are my props in Playlists Container?: ", this.props)
+    let playlists = this.props.playlists.map(playlist => <Playlist name = {playlist.name}/>)
     return(
       this.props.playlistShow ? <PlaylistShow /> :
       <Segment onClick={this.handleClick} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
@@ -53,11 +59,7 @@ class PlaylistsContainer extends React.Component{
         </div>
       </Segment>
       <List divided relaxed>
-        {<Playlist/>}
-        {<Playlist/>}
-        {<Playlist/>}
-        {<Playlist/>}
-        {<Playlist/>}
+          {playlists}
         </List>
       </Segment>
     )
@@ -72,4 +74,4 @@ const mapStateToProps = (state) =>{
   }
 }
 
-export default connect(mapStateToProps, {createPlaylist})(PlaylistsContainer)
+export default connect(mapStateToProps, {createPlaylist, getPlaylists})(PlaylistsContainer)

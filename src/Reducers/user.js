@@ -11,6 +11,8 @@ import {
 
  import {
   CREATE_PLAYLIST,
+  GET_PLAYLISTS,
+
 } from '../Actions/playlistTypes'
 
 const initialState = {
@@ -49,8 +51,11 @@ function userReducer (state = initialState, action) {
     case OFF_AIR:
       return {...state, broadcasting: false}
     case CREATE_PLAYLIST:
-    console.log("INSIDE CREATE PLAYLIST CASE, MY PAYLOAD IS:", action.payload)
-    return state
+      console.log("INSIDE CREATE PLAYLIST CASE, MY PAYLOAD IS:", action.payload)
+      return {...state, playlists: [...state.playlists, action.payload]}
+    case GET_PLAYLISTS:
+      console.log("INSIDE GET PLAYLIST CASE, MY PAYLOAD IS:", action.payload)
+      return {...state, playlists: action.payload}
     default:
       return state
   }
