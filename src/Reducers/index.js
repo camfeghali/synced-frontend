@@ -11,8 +11,10 @@ import { combineReducers } from 'redux'
 
 import userReducer from './user'
 import stationReducer from './station'
+import mediaReducer from './media'
 
 export default combineReducers({
   user: userReducer,
-  station: stationReducer
+  station: stationReducer,
+  media: mediaReducer
 })

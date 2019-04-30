@@ -48,10 +48,9 @@ const mapStateToProps = (state) => {
   return {
     state : state,
     user : state.user,
-    username : state.user.username,
     station : state.station,
-    tunedTo : state.station.tunedTo,
+    media : state.media,
   }
 }
 
-export default connect(mapStateToProps, {persistUser})(App);
+export default connect(null, {persistUser})(App);

@@ -11,3 +11,13 @@
   borderColor: grey;
   boxShadow: 0px 0px 2px 1px grey
 }
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

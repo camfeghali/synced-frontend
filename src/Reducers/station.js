@@ -4,12 +4,16 @@ import {
   CONNECT,
   DISCONNECT,
   ON_AIR,
-  OFF_AIR
+  OFF_AIR,
  } from '../Actions/types'
+
+import {
+  SELECT_SONG
+} from '../Actions/mediaTypes'
 
 const initialState = {
   playlistShow: false,
-  listeningTo: null,
+  // listeningTo: null,
   tunedTo:{
     stationId: null,
     trackId: null,
@@ -42,8 +46,6 @@ function stationReducer (state = initialState, action) {
     // case DISCONNECT:
     //   return {...state, user: action.payload}
     case ON_AIR:
-    console.log("Hitting the station reducer ON_AIR case")
-    console.log("My payload is:", action.payload)
       return {
         ...state,
         broadcast: {
@@ -54,8 +56,26 @@ function stationReducer (state = initialState, action) {
         timestamp: action.payload.timestamp,
         playing: action.payload.playing,
       }}
-    // case OFF_AIR:
-    //   return {...state, user: action.payload}
+    case OFF_AIR:
+      return {
+        ...state,
+        broadcast: {
+          ...state.broadcast,
+        stationId: null,
+        trackId: null,
+        trackUrl: null,
+        timestamp: null,
+        playing: null,
+      }}
+    case SELECT_SONG:
+      return {
+        ...state,
+        broadcast : {
+          ...state.broadcast,
+          trackId: action.payload.songId,
+          trackUrl: action.payload.previewUrl,
+        }
+      }
     default:
       return state
   }

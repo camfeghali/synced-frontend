@@ -28,7 +28,7 @@ class Login extends React.Component{
           <Form.Input onChange={this.handleChange} name='password' label='Password' type='password' placeholder='Password' />
         </Form.Group>
         <Form.Checkbox label='I agree to the Terms and Conditions' />
-        <Button onClick={this.handleSubmit} type='submit'>Submit</Button>
+        <Button onClick={this.handleSubmit} type='submit'>Sign In</Button>
       </Form>
     )
   }

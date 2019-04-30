@@ -9,9 +9,14 @@ import {
   DISCONNECT,
   ON_AIR,
   OFF_AIR,
+  LOAD_PLAYLISTS,
 } from './types'
 
 import adapter from '../Utilities/adapter'
+
+export const loadPlaylists = () => {
+  
+}
 
 export const togglePlaylist = () => {
   return {type: TOGGLE_PLAYLIST}
@@ -29,21 +34,17 @@ export const createUser = (userInfo) => {
     adapter.createUser(userInfo)
     .then(resp => resp.json())
     .then(userData => {
-      console.log("What is my user data ?", userData)
       localStorage.setItem("token", userData.token)
       dispatch({type: CREATE_USER, payload: userData.user.username})
     })
   }
-
 }
 
 export const persistUser = () => {
   return (dispatch) => {
-    console.log("In persist user Action, about to call adapter")
       adapter.persistUser()
       .then(resp => resp.json())
       .then(data => {
-        console.log("Data returned from server on persist user is:", data)
         if(data.user){
           dispatch({
             type: PERSIST_USER, payload: data.user.username
@@ -72,8 +73,6 @@ export const logOut = () => {
 }
 
 export const connectToStation = (stationId) => {
-  console.log("connect to station in: action creator")
-  console.log("dispatching with payload: ", stationId)
   return (dispatch) => {
     adapter.connectTo(stationId)
     .then(
@@ -96,10 +95,17 @@ export const disconnectFromStation = (stationId) => {
 }
 
 export const goOnAir = () => {
-    console.log("go On Air firing from action creator!")
     return (dispatch) => {
       adapter.goOnAir()
       .then(resp => resp.json())
       .then(data => dispatch({type: ON_AIR, payload: data}))
+    }
+}
+
+export const goOffAir = (stationId) => {
+    return (dispatch) => {
+      adapter.goOffAir(stationId)
+      .then(resp => resp.json())
+      .then(data => dispatch({type: OFF_AIR, payload: data}))
     }
 }

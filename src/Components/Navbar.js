@@ -1,11 +1,37 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { logOut } from '../Actions'
+import { withRouter } from "react-router-dom";
 import { Container, Image, Menu } from 'semantic-ui-react';
 import logo from'./logo1.png';
 
 
 class Navbar extends React.Component{
+
+  directToLobby = () => {
+    this.props.history.push("/lobby")
+  }
+
+  directToStation = () => {
+    this.props.history.push("/my_station")
+  }
+
+  directToLogout = () => {
+    this.props.history.push("/login")
+  }
+
+  directToLogin = () => {
+    this.props.history.push("/login")
+  }
+
+  directToLoginFromLogoutButton = () => {
+    this.props.history.push("/login")
+  }
+
+  directToSignup = () => {
+    this.props.history.push("/signup")
+  }
+
   render(){
     return(
       <div>
@@ -22,19 +48,19 @@ class Navbar extends React.Component{
               {this.props.username ? this.props.username : " "}
             </Menu.Item>
             <Menu.Menu position="right">
-            <Menu.Item as="a" name="lobby" href="/lobby">
+            <Menu.Item as="a" name="lobby" onClick={this.directToLobby}>
               Lobby
             </Menu.Item>
-            <Menu.Item as="a" name="my_station" href="/my_station">
+            <Menu.Item as="a" name="my_station" onClick={this.directToStation}>
               My Station
             </Menu.Item>
-            <Menu.Item as="a" name="login" href="/login">
+            <Menu.Item as="a" name="login" onClick={this.directToLogin}>
               Login
             </Menu.Item>
-            <Menu.Item as="a" name="register" href="/signup">
+            <Menu.Item as="a" name="register" onClick={this.directToSignup}>
               Signup
             </Menu.Item>
-            <Menu.Item onClick={this.props.logOut} as="a" name="register" href="/signup">
+            <Menu.Item onClick={this.directToLogin} as="a" name="register">
               Logout
             </Menu.Item>
           </Menu.Menu>
@@ -52,4 +78,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { logOut })(Navbar)
+export default withRouter(connect(mapStateToProps, { logOut })(Navbar))

@@ -3,21 +3,7 @@ const USERS_URL = `http://localhost:3000/users`
 const GET_USER = 'http://localhost:3000/get_user'
 const USER_LOGIN = 'http://localhost:3000/login'
 
-// const listenTo = (stationId) => {
-//   // let url = `${STATION_URL}/${stationId}`
-//   // let data = {
-//   //   stationId: stationId,
-//   //   joining: true
-//   // }
-//   // let config = {
-//   //   method: "PATCH",
-//   //   headers: {
-//   //     "Content-Type": "application/json"
-//   //   },
-//   //   body: JSON.stringify(data)
-//   }
-//   fetch(url, config)
-// }
+
 
 const connectTo = (stationId) => {
   let url = `${STATION_URL}/${stationId}`
@@ -50,7 +36,6 @@ const createUser = (userInfo) => {
       mode: "cors",
       headers: {
           "Content-Type": "application/json",
-
       },
       body: JSON.stringify(data),
   }
@@ -95,4 +80,17 @@ const goOnAir = () => {
   return fetch(STATION_URL, config)
 }
 
-export default { connectTo, createUser, persistUser, loginUser, goOnAir }
+const goOffAir = (stationId) => {
+  console.log("GO OFF AIR IS FIRING!")
+  let url = `${STATION_URL}/${stationId}`
+  console.log("Hittin this URL", url)
+  let config = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+  return fetch(url, config)
+}
+
+export default { connectTo, createUser, persistUser, loginUser, goOffAir, goOnAir  }

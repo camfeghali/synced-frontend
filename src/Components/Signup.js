@@ -24,8 +24,8 @@ class Signup extends React.Component{
     return(
       <Form unstackable>
         <Form.Group widths={2}>
-          <Form.Input onChange={this.onChange} name='username' placeholder='Username' value={this.state.username} />
-          <Form.Input onChange={this.onChange} name='password' type='password' placeholder='Password' value={this.state.password}/>
+          <Form.Input onChange={this.onChange} name='username' label='Username' placeholder='Username' value={this.state.username} />
+          <Form.Input onChange={this.onChange} name='password' label='Password' type='password' placeholder='Password' value={this.state.password}/>
         </Form.Group>
         <Form.Checkbox label='I agree to the Terms and Conditions' />
         <Button onClick={this.createUser}>Submit</Button>

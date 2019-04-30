@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { goOffAir } from '../../Actions'
 import MediaPlayer from './Mediaplayer'
 import MediaContainer from './MediaContainer/MediaContainer'
 import PlaylistsContainer from './PlaylistsContainer'
@@ -6,7 +8,15 @@ import { Grid } from 'semantic-ui-react'
 
 
 class CreateChannel extends React.Component{
+
+  componentWillUnmount(){
+    // adapter.killBroadcast()
+    console.log("Component will unmount firing!")
+    this.props.goOffAir(this.props.stationId)
+  }
+
   render(){
+    console.log("What is my station ID?:", this.props.stationId)
     return(
       <div>
       <Grid divided='vertically' >
@@ -41,4 +51,8 @@ class CreateChannel extends React.Component{
   }
 }
 
-export default CreateChannel
+const mapStateToProps = (state) => {
+  return { stationId: state.station.broadcast.stationId }
+}
+
+export default connect(mapStateToProps, { goOffAir })(CreateChannel)

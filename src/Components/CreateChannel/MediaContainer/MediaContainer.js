@@ -12,15 +12,16 @@ class MediaContainer extends React.Component{
       <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
         <Grid.Row >
         <MediaSearchForm />
-          <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
-            Artists
-            {<ArtistContainer/>}
+          <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey', height:'250px'}}>
+            Songs
+            {<SongContainer/>}
           </Segment>
         </Grid.Row >
         <Grid.Row >
-          <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
-            Songs
+          <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey', height:'250px'}}>
+            Artists
             {<SongContainer/>}
+            {<ArtistContainer/>}
           </Segment>
         </Grid.Row >
         <Grid.Row >

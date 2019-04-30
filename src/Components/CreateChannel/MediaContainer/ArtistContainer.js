@@ -1,39 +1,48 @@
 import React from 'react'
-import Coverflow from 'react-coverflow';
+import { connect } from 'react-redux'
+import Slider from "react-slick";
+import { selectSong } from '../../../Actions/mediaActions'
 
-class ArtistContainer extends React.Component{
-  render(){
 
-    return(
-      <React.Fragment>
-        <Coverflow
-          style={{borderStyle:'solid !important'}}
-          width="960" height="200"
-          displayQuantityOfSide={2}
-          navigation={false}
-          enableScroll={true}
-          clickable={true}
-          enableHeading={true}
-          active={0}>
-          <div
-            style={{background: 'yellow'}}
-            role="menuitem"
-            tabIndex="0">
-          <img
-            src='image/path'
-            alt='title or description'
-            style={{
-              display: 'block',
-              width: '100%',
-              }}/>
-          </div>
-          <img src='image/path' alt='title or description' data-action="http://andyyou.github.io/react-coverflow/"/>
-          <img src='image/path' alt='title or description' data-action="http://andyyou.github.io/react-coverflow/"/>
+class SimpleSlider extends React.Component {
+
+  onSongClick = (e) =>{
+    let songInfo = {
+      previewUrl: e.target.alt,
+      songId: parseInt(e.target.songid)
+    }
+    this.props.selectSong(songInfo)
+  }
+
+  render() {
+    console.log("Props are:", this.props)
+    const settings = {
+      focusOnSelect: true,
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      speed: 500,
+      centerMode: true,
+      arrows:false
+    };
+    let artists = this.props.artists.map(artist => {return (
+      <div key={artist.id}>
+        <img id={artist.id} style={{position:'relative', width:'100%'}} onClick = {this.onSongClick} src={artist.image_url}/>
+      </div>
+    )})
+    console.log("Artists are:", artists)
+    return (
+      <Slider {...settings} style={{height:'200px'}}>
           
-        </Coverflow>
-      </React.Fragment>
-    )
+      </Slider>
+    );
   }
 }
 
-export default ArtistContainer
+const mapStateToProps = (state) => {
+  return {
+    artists: state.media.artists
+  }
+}
+
+export default connect(mapStateToProps,{selectSong})(SimpleSlider)

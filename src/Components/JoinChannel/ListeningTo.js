@@ -8,16 +8,16 @@ class ListeningTo extends React.Component{
 
   state = {
     stationId: null,
-    song_url: null,
+    trackUrl: null,
     timestamp: null,
     playing: false
   }
 
   handleReceived = (data) => {
-    console.log("handle firing!, data received in Lobby:", data)
+    console.log('%c Receiving This! ', 'background: #222; color: #bada55', data)
     let audioPlayer = document.querySelector("audio")
     this.setState({
-      song_url: data.song_url,
+      trackUrl: data.trackUrl,
       playing: data.playing,
       timestamp: data.timestamp
     }, () => {
@@ -51,7 +51,7 @@ class ListeningTo extends React.Component{
         <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <h4 style={{marginBottom:'0px'}}> Connected to station {this.props.connectedTo ? this.props.connectedTo : null}</h4>
           <div>
-          <audio paused ='true' ref="audio_tag" src={this.state.song_url} controls />
+          <audio paused ='true' ref="audio_tag" src={this.state.trackUrl} controls />
           <Button onClick={this.handleJoin} inverted color='green' floated ='right'> Add to Favs </Button>
           </div>
         </div>

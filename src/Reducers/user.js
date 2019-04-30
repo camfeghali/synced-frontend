@@ -7,13 +7,15 @@ import {
   DISCONNECT,
   ON_AIR,
   OFF_AIR,
+  LOAD_PLAYLISTS,
  } from '../Actions/types'
 
 const initialState = {
   username: null,
   token: null,
   tuned: false,
-  broadcasting: false
+  broadcasting: false,
+  playlists: []
 }
 
 function userReducer (state = initialState, action) {
@@ -42,6 +44,8 @@ function userReducer (state = initialState, action) {
       return {...state, broadcasting: true}
     case OFF_AIR:
       return {...state, broadcasting: false}
+    case LOAD_PLAYLISTS:
+    return state
     default:
       return state
   }

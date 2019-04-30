@@ -24,7 +24,13 @@ class MediaPlayer extends React.Component{
   sharePlayback = () => {
     console.log("Share playback firing from MediaPlayer:")
     let url = `http://localhost:3000/stations/${this.props.stationId}`
-    let data = {...this.state, timestamp: this.timestamp()}
+    // let data = {...this.state, timestamp: this.timestamp()}
+    let data = {
+      trackUrl: this.props.playback.trackUrl,
+      timestamp: this.timestamp(),
+      playing: this.state.playing
+    }
+    console.log('%c Sending This', 'background: #ff0000; color: #2400ff', data)
     let config = {
       method: "PATCH",
       headers: {
@@ -32,8 +38,6 @@ class MediaPlayer extends React.Component{
       },
       body: JSON.stringify(data)
     }
-    console.log("Gonna hit this url:", url)
-    console.log("And send this data:", data)
     fetch(url, config)
   }
 
@@ -52,7 +56,11 @@ class MediaPlayer extends React.Component{
     console.log("MediaPlayer is receiving data: ", returnData)
     if (returnData.joining){
       let url = `http://localhost:3000/stations/${this.props.stationId}`
-      let data = {...this.state, timestamp: this.timestamp()}
+      let data = {
+        trackUrl: this.props.playback.trackUrl,
+        timestamp: this.timestamp(),
+        playing: this.state.playing
+      }
       let config = {
         method: "PATCH",
         headers: {
@@ -72,6 +80,7 @@ class MediaPlayer extends React.Component{
 
   render(){
     console.log("Broadcasting in station ID: ", this.props.stationId)
+    console.log("My PROPS in media player are: ", this.props)
     return(
       <Segment className={'largeContainer'} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
       <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -81,7 +90,7 @@ class MediaPlayer extends React.Component{
           onPlay = {this.handlePlay}
           floated='left'
           style={{width:'35.3em'}}
-          src={this.state.song_url}
+          src={this.props.playback.trackUrl}
           autoPlay={false}
           controls
           />
@@ -105,7 +114,11 @@ class MediaPlayer extends React.Component{
 const mapStateToProps = (state) => {
   return {
     broadcasting: state.user.broadcasting,
-    stationId: state.station.broadcast.stationId
+    stationId: state.station.broadcast.stationId,
+    playback: {
+      trackUrl: state.station.broadcast.trackUrl,
+      playing: state.station.broadcast.playing
+    }
   }
 }
 
