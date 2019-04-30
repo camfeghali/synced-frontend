@@ -14,9 +14,6 @@ import {
 
 import adapter from '../Utilities/adapter'
 
-export const loadPlaylists = () => {
-  
-}
 
 export const togglePlaylist = () => {
   return {type: TOGGLE_PLAYLIST}
@@ -55,10 +52,12 @@ export const persistUser = () => {
 }
 
 export const loginUser = (userInfo) => {
+  console.log("userInfo in login Action creator is: ", userInfo)
   return (dispatch) => {
     adapter.loginUser(userInfo)
     .then(resp => resp.json())
     .then(data => {
+      console.log("My return data from the server is: ", data)
       localStorage.setItem("token", data.jwt)
       dispatch({
       type: LOGIN, payload: data.user

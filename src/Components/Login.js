@@ -21,6 +21,7 @@ class Login extends React.Component{
   }
 
   render(){
+    console.log("Local state in login is: ", this.state)
     return(
       <Form unstackable>
         <Form.Group widths={2}>

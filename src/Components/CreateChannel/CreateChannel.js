@@ -16,7 +16,6 @@ class CreateChannel extends React.Component{
   }
 
   render(){
-    console.log("What is my station ID?:", this.props.stationId)
     return(
       <div>
       <Grid divided='vertically' >
