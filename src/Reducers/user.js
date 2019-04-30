@@ -7,8 +7,11 @@ import {
   DISCONNECT,
   ON_AIR,
   OFF_AIR,
-  LOAD_PLAYLISTS,
  } from '../Actions/types'
+
+ import {
+  CREATE_PLAYLIST,
+} from '../Actions/playlistTypes'
 
 const initialState = {
   username: null,
@@ -25,6 +28,7 @@ function userReducer (state = initialState, action) {
     case PERSIST_USER:
       return{...state, username: action.payload}
     case LOGIN:
+      console.log("MY PAYLOAD IS: ", action.payload)
       return {
         ...state,
         username: action.payload.username,
@@ -44,7 +48,8 @@ function userReducer (state = initialState, action) {
       return {...state, broadcasting: true}
     case OFF_AIR:
       return {...state, broadcasting: false}
-    case LOAD_PLAYLISTS:
+    case CREATE_PLAYLIST:
+    console.log("INSIDE CREATE PLAYLIST CASE, MY PAYLOAD IS:", action.payload)
     return state
     default:
       return state
