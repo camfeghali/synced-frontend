@@ -78,6 +78,7 @@ class MediaPlayer extends React.Component{
   render(){
     console.log("Broadcasting in station ID: ", this.props.stationId)
     console.log("My PROPS in media player are: ", this.props)
+    let playlists = this.props.playlists.map( playlist => <Dropdown.Item text={playlist.name} />)
     return(
       <Segment className={'largeContainer'} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
       <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -96,9 +97,7 @@ class MediaPlayer extends React.Component{
         <Button onClick={this.broadcast}> Broadcast! </Button>
         <Dropdown style={{padding:'8px', borderRadius:'4px', borderStyle:'solid', borderColor:'rgb(143, 208, 135)', color: 'blue'}} text='Add to playlist' >
           <Dropdown.Menu style={{borderStyle:'solid', borderColor:'green'}}>
-            <Dropdown.Item style={{color:'greenrgb(143, 208, 135)'}} text='Playlist 1' />
-            <Dropdown.Item text='Playlist 2' />
-            <Dropdown.Item text='Playlist 3' />
+            {playlists}
           </Dropdown.Menu>
         </Dropdown>
         </div>
@@ -110,6 +109,7 @@ class MediaPlayer extends React.Component{
 
 const mapStateToProps = (state) => {
   return {
+    playlists: state.user.playlists,
     broadcasting: state.user.broadcasting,
     stationId: state.station.broadcast.stationId,
     playback: {
