@@ -19,9 +19,21 @@ const createPlaylist = (playlistName, username) => {
   return fetch(PLAYLISTS_URL, config)
 }
 
+const deletePlaylist = (playlistId) => {
+  console.log("My playlist name is:", playlistId)
+  console.log('%c createPlaylists firing in playlist adapter! ', 'background: #222; color: #80058b')
+  let config = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+  return fetch(`${PLAYLISTS_URL}/${playlistId}`, config)
+}
+
 const getPlaylists = (username) => {
   return fetch(`${PLAYLISTS_URL}?username=${username}`)
 }
 
 
-export default { createPlaylist, getPlaylists }
+export default { createPlaylist, getPlaylists, deletePlaylist }

@@ -31,7 +31,7 @@ class PlaylistsContainer extends React.Component{
 
   render(){
     console.log("What are my props in Playlists Container?: ", this.props)
-    let playlists = this.props.playlists.map(playlist => <Playlist name = {playlist.name}/>)
+    let playlists = this.props.playlists.map(playlist => <Playlist id={playlist.id} name = {playlist.name}/>)
     return(
       this.props.playlistShow ? <PlaylistShow /> :
       <Segment onClick={this.handleClick} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
