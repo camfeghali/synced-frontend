@@ -22,7 +22,7 @@ class Playlist extends React.Component{
         <Image onClick={this.view} id={this.props.id} avatar src={playlistIcon} />
         <Item.Content onClick={this.view} id={this.props.id} textalign='left'>
 
-          <Item.Header  onClick={this.view} id={this.props.id} as='a' textAlign='left'>{this.props.name}</Item.Header>
+          <Item.Header  onClick={this.view} id={this.props.id} as='a' textalign='left'>{this.props.name}</Item.Header>
           </Item.Content>
           <Button id = {this.props.id} onClick={this.deletePlaylist} floated="right" size='mini' inverted color='red'>
           Delete

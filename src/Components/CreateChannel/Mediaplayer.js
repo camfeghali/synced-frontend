@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { goOnAir } from '../../Actions'
+import { addToPlaylist } from '../../Actions/playlistActions'
 import ReactAudioPlayer from 'react-audio-player'
 import { Segment, Dropdown, Button } from 'semantic-ui-react'
 import { ActionCableConsumer } from 'react-actioncable-provider'
@@ -75,10 +76,16 @@ class MediaPlayer extends React.Component{
     return timestamp
   }
 
+  addToPlaylist = (e) => {
+    let playlistName = e.target.innerText
+    let songId = this.props.playback.songId
+    this.props.addToPlaylist(songId, playlistName)
+  }
+
   render(){
     console.log("Broadcasting in station ID: ", this.props.stationId)
     console.log("My PROPS in media player are: ", this.props)
-    let playlists = this.props.playlists.map( playlist => <Dropdown.Item text={playlist.name} />)
+    let playlists = this.props.playlists.map( playlist => <Dropdown.Item key={playlist.name} onClick={this.addToPlaylist} text={playlist.name} />)
     return(
       <Segment className={'largeContainer'} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
       <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -113,10 +120,11 @@ const mapStateToProps = (state) => {
     broadcasting: state.user.broadcasting,
     stationId: state.station.broadcast.stationId,
     playback: {
+      songId: state.station.broadcast.trackId,
       trackUrl: state.station.broadcast.trackUrl,
       playing: state.station.broadcast.playing
     }
   }
 }
 
-export default connect(mapStateToProps, { goOnAir })(MediaPlayer)
+export default connect(mapStateToProps, { goOnAir, addToPlaylist })(MediaPlayer)

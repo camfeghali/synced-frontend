@@ -34,8 +34,6 @@ function stationReducer (state = initialState, action) {
   switch(action.type) {
     case TOGGLE_PLAYLIST:
       return {...state, playlistShow: !state.playlistShow}
-    case LISTEN_TO:
-      return {...state, listeningTo: action.payload}
     case CONNECT:
       console.log("CONNECT CASE in Station reducer")
       console.log("Payload is: ", action.payload)
@@ -68,6 +66,7 @@ function stationReducer (state = initialState, action) {
         playing: null,
       }}
     case SELECT_SONG:
+    console.log("IN SELECT SONG CASE, PAYLOAD IS:", action.payload)
       return {
         ...state,
         broadcast : {

@@ -2,6 +2,25 @@ const BASE_URL = `http://localhost:3000/`
 const PLAYLISTS_URL = `${BASE_URL}playlists`
 const SONG_PLAYLISTS_URL = `${BASE_URL}song_playlists`
 
+
+const addToPlaylist = (songId, playlistName) => {
+  console.log('%c addToPlaylist firing in playlist adapter! ', 'background: #222; color: #80058b')
+  console.log("trackname:", songId)
+  console.log("playlistname:", playlistName)
+  let data = {
+    songId: songId,
+    playlistName: playlistName
+  }
+  let config = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }
+  return fetch(SONG_PLAYLISTS_URL, config)
+}
+
 const createPlaylist = (playlistName, username) => {
   console.log("My username is:", username)
   console.log('%c createPlaylists firing in playlist adapter! ', 'background: #222; color: #80058b')
@@ -36,4 +55,4 @@ const getPlaylists = (username) => {
 }
 
 
-export default { createPlaylist, getPlaylists, deletePlaylist }
+export default { createPlaylist, getPlaylists, deletePlaylist, addToPlaylist }

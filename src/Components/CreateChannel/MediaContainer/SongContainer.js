@@ -9,7 +9,7 @@ class SimpleSlider extends React.Component {
   onSongClick = (e) =>{
     let songInfo = {
       previewUrl: e.target.alt,
-      songId: parseInt(e.target.songid)
+      songId: parseInt(e.target.id),
     }
     this.props.selectSong(songInfo)
   }

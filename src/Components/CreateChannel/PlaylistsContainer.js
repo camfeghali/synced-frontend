@@ -27,7 +27,7 @@ class PlaylistsContainer extends React.Component{
   }
 
   render(){
-    let playlists = this.props.playlists.map(playlist => <Playlist id={playlist.id} name = {playlist.name}/>)
+    let playlists = this.props.playlists.map(playlist => <Playlist key={playlist.name} id={playlist.id} name = {playlist.name}/>)
     return(
       <Switch>
         <Route
@@ -35,7 +35,7 @@ class PlaylistsContainer extends React.Component{
         render={routerProps => {
           let id = parseInt(routerProps.match.params.id);
           let playlist = this.props.playlists.find(playlist => playlist.id === id);
-          return <PlaylistShow playlist={playlist}/>;
+          return <PlaylistShow key={playlist.name} playlist={playlist}/>;
         }}
         />
         <Route

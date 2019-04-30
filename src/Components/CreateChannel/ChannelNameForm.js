@@ -1,5 +1,5 @@
 import React from 'react'
-import { Segment, Button } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 
 class ChannelNameForm extends React.Component{
   render(){
@@ -7,7 +7,7 @@ class ChannelNameForm extends React.Component{
       <Segment>
         <div className="ui input">
           <input type="text" placeholder="Channel name"/>
-          <a className="ui label">
+          <a className="ui label" >
           <h4> Channel Name</h4>
         </a>
         </div>

@@ -1,10 +1,21 @@
 import {
   CREATE_PLAYLIST,
   DELETE_PLAYLIST,
-  GET_PLAYLISTS
+  GET_PLAYLISTS,
+  ADD_TO_PLAYLIST
 } from './playlistTypes'
 
 import adapter from '../Utilities/playlistsAdapter'
+
+export const addToPlaylist = (songId, playlistName) => {
+  return (dispatch) => {
+    adapter.addToPlaylist(songId, playlistName)
+    .then(resp => resp.json())
+    .then(data => {
+      dispatch({type: ADD_TO_PLAYLIST, payload: data})
+    })
+  }
+}
 
 export const getPlaylists = (username) => {
   return (dispatch) => {
