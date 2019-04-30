@@ -1,23 +1,25 @@
 import React from 'react'
 import Song from './Song'
 import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
 import { togglePlaylist } from '../../Actions'
 import { Button, Segment, List, Container } from 'semantic-ui-react'
 
 class PlaylistShow extends React.Component{
 
   handleClick = () =>{
-    this.props.togglePlaylist()
+    this.props.history.push("/my_station")
   }
 
   render(){
+    console.log("what are my props in playlist show? ", this.props)
     return(
       <Segment>
       <Segment>
         <div>
           <Button onClick = {this.handleClick} floated='left' inverted color='green'> Back </Button>
           <Container textAlign='left'>
-            <h1> Playlist Name Goes here... </h1>
+            <h1> {this.props.playlist.name} </h1>
           </Container>
         </div>
       </Segment>
@@ -34,4 +36,4 @@ class PlaylistShow extends React.Component{
 
 }
 
-export default connect(null, {togglePlaylist})(PlaylistShow)
+export default withRouter(connect(null, {togglePlaylist})(PlaylistShow))

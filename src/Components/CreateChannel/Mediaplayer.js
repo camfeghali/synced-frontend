@@ -17,12 +17,10 @@ class MediaPlayer extends React.Component{
   }
 
   broadcast = () => {
-    console.log("Broadcast from MediaPlayer firing!")
     this.props.goOnAir()
   }
 
   sharePlayback = () => {
-    console.log("Share playback firing from MediaPlayer:")
     let url = `http://localhost:3000/stations/${this.props.stationId}`
     // let data = {...this.state, timestamp: this.timestamp()}
     let data = {
@@ -30,7 +28,6 @@ class MediaPlayer extends React.Component{
       timestamp: this.timestamp(),
       playing: this.state.playing
     }
-    console.log('%c Sending This', 'background: #ff0000; color: #2400ff', data)
     let config = {
       method: "PATCH",
       headers: {

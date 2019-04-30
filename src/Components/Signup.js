@@ -15,7 +15,6 @@ class Signup extends React.Component{
   }
 
   createUser = () => {
-    console.log("create user is firing")
     this.props.createUser(this.state)
   }
 
@@ -34,10 +33,5 @@ class Signup extends React.Component{
   }
 }
 
-// const mapStateToProps = (state) => {
-//   return{
-//     user: state.user
-//   }
-// }
 
 export default connect(null, {createUser})(Signup)

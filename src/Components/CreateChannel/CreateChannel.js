@@ -10,8 +10,6 @@ import { Grid } from 'semantic-ui-react'
 class CreateChannel extends React.Component{
 
   componentWillUnmount(){
-    // adapter.killBroadcast()
-    console.log("Component will unmount firing!")
     this.props.goOffAir(this.props.stationId)
   }
 

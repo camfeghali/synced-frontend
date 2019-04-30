@@ -13,10 +13,8 @@ const initialState = {
 function mediaReducer (state = initialState, action) {
   switch(action.type) {
     case POPULATE_SONGS:
-      console.log("IN POPULATE SONGS, PAYLOAD IS: ",action.payload)
       return {...state, songs: action.payload}
     case POPULATE_ALBUMS:
-      console.log("IN POPULATE ALBUMS, PAYLOAD IS: ",action.payload)
       return {...state, albums: action.payload}
     case POPULATE_ARTISTS:
       return {...state, artists: action.payload}

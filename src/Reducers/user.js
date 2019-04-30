@@ -31,7 +31,6 @@ function userReducer (state = initialState, action) {
     case PERSIST_USER:
       return{...state, username: action.payload}
     case LOGIN:
-      console.log("MY PAYLOAD IS: ", action.payload)
       return {
         ...state,
         username: action.payload.username,
@@ -57,7 +56,6 @@ function userReducer (state = initialState, action) {
       let playlists = state.playlists.filter(playlist => playlist.id !== action.payload.id)
       return {...state, playlists: playlists}
     case GET_PLAYLISTS:
-      console.log("INSIDE GET PLAYLIST CASE, MY PAYLOAD IS:", action.payload)
       return {...state, playlists: action.payload}
     default:
       return state

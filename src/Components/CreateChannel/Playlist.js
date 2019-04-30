@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
 import { deletePlaylist } from '../../Actions/playlistActions'
 import playlistIcon from './playlistIcon.png'
 import { Image, List, Button, Item } from 'semantic-ui-react'
@@ -7,18 +8,21 @@ import { Image, List, Button, Item } from 'semantic-ui-react'
 class Playlist extends React.Component{
 
   deletePlaylist = (e) => {
-    console.log("target is:", e.target)
     this.props.deletePlaylist(e.target.id)
   }
 
-  render(){
-    console.log("props in playlist are: ", this.props)
-    return(
-      <List.Item name = {this.props.name} textalign='left' >
-        <Image avatar src={playlistIcon} />
-        <Item.Content textalign='left'>
+  view = (e) => {
+    console.log(e.target.id)
+    this.props.history.push(`/my_station/${e.target.id}`)
+  }
 
-          <Item.Header as='a' textAlign='left'>{this.props.name}</Item.Header>
+  render(){
+    return(
+      <List.Item onClick={this.view} id={this.props.id} textalign='left' >
+        <Image onClick={this.view} id={this.props.id} avatar src={playlistIcon} />
+        <Item.Content onClick={this.view} id={this.props.id} textalign='left'>
+
+          <Item.Header  onClick={this.view} id={this.props.id} as='a' textAlign='left'>{this.props.name}</Item.Header>
           </Item.Content>
           <Button id = {this.props.id} onClick={this.deletePlaylist} floated="right" size='mini' inverted color='red'>
           Delete
@@ -30,4 +34,4 @@ class Playlist extends React.Component{
 
 
 
-export default connect(null, { deletePlaylist })(Playlist)
+export default withRouter(connect(null, { deletePlaylist })(Playlist))

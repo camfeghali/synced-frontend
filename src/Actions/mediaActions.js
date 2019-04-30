@@ -16,7 +16,6 @@ export const getSongs = (searchTerm) => {
     adapter.getSongs(searchTerm)
     .then(resp => resp.json())
     .then(data => {
-      console.log('%c Songs returned from GET to Songs Controller ', 'background: #9c9c9c; color: #ff0000', data)
       dispatch({type: POPULATE_SONGS, payload: data})
     })
   }

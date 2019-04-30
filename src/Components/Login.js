@@ -11,8 +11,6 @@ class Login extends React.Component{
   }
 
   handleSubmit = (state) => {
-    console.log("on submit, i send this state: ", this.state)
-    console.log("my props are: ", this.props)
     this.props.loginUser(this.state)
   }
 
@@ -21,7 +19,6 @@ class Login extends React.Component{
   }
 
   render(){
-    console.log("Local state in login is: ", this.state)
     return(
       <Form unstackable>
         <Form.Group widths={2}>
