@@ -12,7 +12,8 @@ class PlaylistShow extends React.Component{
   }
 
   render(){
-    console.log("what are my props in playlist show? ", this.props)
+    console.log("Do I have Songs in playlist show? ", this.props.playlist.songs)
+    let songs = this.props.playlist.songs.map(song => <Song key={song.name} albumId={song.album_id} id={song.id} imageUrl={song.image_url} previewUrl={song.preview_url} name={song.name}/>)
     return(
       <Segment>
       <Segment>
@@ -24,11 +25,7 @@ class PlaylistShow extends React.Component{
         </div>
       </Segment>
       <List celled>
-        {<Song/>}
-        {<Song/>}
-        {<Song/>}
-        {<Song/>}
-        {<Song/>}
+        {songs}
         </List>
       </Segment>
     )

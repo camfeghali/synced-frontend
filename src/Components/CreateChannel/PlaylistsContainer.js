@@ -27,7 +27,8 @@ class PlaylistsContainer extends React.Component{
   }
 
   render(){
-    let playlists = this.props.playlists.map(playlist => <Playlist key={playlist.name} id={playlist.id} name = {playlist.name}/>)
+    console.log("What are my props in playlist container? :", this.props.playlists)
+    let playlists = this.props.playlists.map(playlist => <Playlist key={playlist.name} id={playlist.id} name={playlist.name} songs={playlist.songs}/>)
     return(
       <Switch>
         <Route

@@ -8,8 +8,8 @@ class Song extends React.Component{
       <List.Item textAlign='left'>
         <Image floated='left' avatar src={songIcon} />
         <Item.Content>
-          <Item.Header>Song 1</Item.Header>
-          
+          <Item.Header>{this.props.name}</Item.Header>
+          <Item.Content> Album: {this.props.albumId}</Item.Content>
         </Item.Content>
         <Button floated="right" size='mini' inverted color='orange'> Remove </Button>
       </List.Item>
