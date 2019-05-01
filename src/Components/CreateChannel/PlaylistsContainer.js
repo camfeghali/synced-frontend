@@ -27,6 +27,7 @@ class PlaylistsContainer extends React.Component{
   }
 
   render(){
+    console.log("PROPS changing in Playlist Container")
     console.log("What are my props in playlist container? :", this.props.playlists)
     let playlists = this.props.playlists.map(playlist => <Playlist key={playlist.name} id={playlist.id} name={playlist.name} songs={playlist.songs}/>)
     return(
@@ -36,7 +37,7 @@ class PlaylistsContainer extends React.Component{
         render={routerProps => {
           let id = parseInt(routerProps.match.params.id);
           let playlist = this.props.playlists.find(playlist => playlist.id === id);
-          return <PlaylistShow key={playlist.name} playlist={playlist}/>;
+          return <PlaylistShow key={playlist.id} playlist={playlist}/>;
         }}
         />
         <Route

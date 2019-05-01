@@ -2,16 +2,29 @@ import {
   CREATE_PLAYLIST,
   DELETE_PLAYLIST,
   GET_PLAYLISTS,
-  ADD_TO_PLAYLIST
+  ADD_TO_PLAYLIST,
+  REMOVE_FROM_PLAYLIST,
 } from './playlistTypes'
 
 import adapter from '../Utilities/playlistsAdapter'
+
+export const removeFromPlaylist = () => {
+  return (dispatch) => {
+    adapter.removeFromPlaylist()
+    .then(resp => resp.json())
+    .then(data => {
+      console.log("Return data is: ", data)
+      dispatch({type: REMOVE_FROM_PLAYLIST, payload: data})
+    })
+  }
+}
 
 export const addToPlaylist = (songId, playlistName) => {
   return (dispatch) => {
     adapter.addToPlaylist(songId, playlistName)
     .then(resp => resp.json())
     .then(data => {
+      console.log("Return data is: ", data)
       dispatch({type: ADD_TO_PLAYLIST, payload: data})
     })
   }

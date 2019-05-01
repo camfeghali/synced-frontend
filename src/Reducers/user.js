@@ -13,6 +13,8 @@ import {
   CREATE_PLAYLIST,
   DELETE_PLAYLIST,
   GET_PLAYLISTS,
+  ADD_TO_PLAYLIST,
+  REMOVE_FROM_PLAYLIST,
 
 } from '../Actions/playlistTypes'
 
@@ -57,6 +59,15 @@ function userReducer (state = initialState, action) {
       return {...state, playlists: playlists}
     case GET_PLAYLISTS:
       return {...state, playlists: action.payload}
+    case ADD_TO_PLAYLIST:
+      let playlist = state.playlists.find(playlist => playlist.id === action.payload.playlist.id)
+      playlist.songs.push(action.payload.song)
+      let playlistIndex = state.playlists.indexOf(playlist)
+      let newPlaylists = state.playlists
+      newPlaylists[playlistIndex] = playlist;
+      return {...state, playlists: newPlaylists}
+    case REMOVE_FROM_PLAYLIST:
+      return state
     default:
       return state
   }

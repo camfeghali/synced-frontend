@@ -17,9 +17,8 @@ class Playlist extends React.Component{
   }
 
   render(){
-    console.log("Do I have my Songs here?", this.props)
     return(
-      <List.Item onClick={this.view} id={this.props.id} textalign='left' >
+      <List.Item  id={this.props.id} textalign='left' >
         <Image onClick={this.view} id={this.props.id} avatar src={playlistIcon} />
         <Item.Content onClick={this.view} id={this.props.id} textalign='left'>
 

@@ -11,9 +11,19 @@ class PlaylistShow extends React.Component{
     this.props.history.push("/my_station")
   }
 
+  songs = (thisPlaylistId, playlists) => {
+    let foundPlaylist = playlists.filter(playlist => playlist.id === thisPlaylistId)
+    let foundSongs = foundPlaylist[0].songs
+    console.log("foundPlaylist: ", foundPlaylist)
+    console.log("found Songs : ", foundSongs)
+    return foundSongs
+  }
+
   render(){
-    console.log("Do I have Songs in playlist show? ", this.props.playlist.songs)
-    let songs = this.props.playlist.songs.map(song => <Song key={song.name} albumId={song.album_id} id={song.id} imageUrl={song.image_url} previewUrl={song.preview_url} name={song.name}/>)
+    console.log("What are my props in playlistShow? ", this.props)
+    let zongz = this.songs(this.props.playlist.id, this.props.playlists)
+    console.log("ZongZ: ", zongz)
+    let songs = this.songs(this.props.playlist.id, this.props.playlists).map(song => <Song joinId={song.join} playlistId={this.props.playlist.id} key={song.id} albumId={song.album_id} id={song.id} imageUrl={song.image_url} previewUrl={song.preview_url} name={song.name}/>)
     return(
       <Segment>
       <Segment>
@@ -30,7 +40,14 @@ class PlaylistShow extends React.Component{
       </Segment>
     )
   }
-
 }
 
-export default withRouter(connect(null, {togglePlaylist})(PlaylistShow))
+const mapStateToProps = (state) => {
+  return {playlists: state.user.playlists}
+}
+
+
+
+//
+
+export default withRouter(connect(mapStateToProps, {togglePlaylist})(PlaylistShow))

@@ -15,7 +15,6 @@ class SimpleSlider extends React.Component {
   }
 
   render() {
-    console.log("Props are:", this.props)
     const settings = {
       focusOnSelect: true,
       infinite: true,
@@ -30,10 +29,9 @@ class SimpleSlider extends React.Component {
         <img id={artist.id} style={{position:'relative', width:'100%'}} onClick = {this.onSongClick} src={artist.image_url}/>
       </div>
     )})
-    console.log("Artists are:", artists)
     return (
       <Slider {...settings} style={{height:'200px'}}>
-          
+
       </Slider>
     );
   }

@@ -16,6 +16,7 @@ export const getSongs = (searchTerm) => {
     adapter.getSongs(searchTerm)
     .then(resp => resp.json())
     .then(data => {
+      console.log("Return data from song fetch is: ", data)
       dispatch({type: POPULATE_SONGS, payload: data})
     })
   }

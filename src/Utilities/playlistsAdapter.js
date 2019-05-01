@@ -3,10 +3,22 @@ const PLAYLISTS_URL = `${BASE_URL}playlists`
 const SONG_PLAYLISTS_URL = `${BASE_URL}song_playlists`
 
 
+const removeFromPlaylist = (songId, playlistId) => {
+  let data = {
+    songId: songId,
+    playlistId: playlistId
+  }
+  let config = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }
+  return fetch(SONG_PLAYLISTS_URL, config)
+}
+
 const addToPlaylist = (songId, playlistName) => {
-  console.log('%c addToPlaylist firing in playlist adapter! ', 'background: #222; color: #80058b')
-  console.log("trackname:", songId)
-  console.log("playlistname:", playlistName)
   let data = {
     songId: songId,
     playlistName: playlistName
@@ -55,4 +67,4 @@ const getPlaylists = (username) => {
 }
 
 
-export default { createPlaylist, getPlaylists, deletePlaylist, addToPlaylist }
+export default { createPlaylist, getPlaylists, deletePlaylist, addToPlaylist, removeFromPlaylist }

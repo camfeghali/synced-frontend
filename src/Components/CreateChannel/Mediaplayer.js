@@ -51,7 +51,6 @@ class MediaPlayer extends React.Component{
   }
 
   handleReceived = (returnData) => {
-    console.log("MediaPlayer is receiving data: ", returnData)
     if (returnData.joining){
       let url = `http://localhost:3000/stations/${this.props.stationId}`
       let data = {
@@ -83,8 +82,6 @@ class MediaPlayer extends React.Component{
   }
 
   render(){
-    console.log("Broadcasting in station ID: ", this.props.stationId)
-    console.log("My PROPS in media player are: ", this.props)
     let playlists = this.props.playlists.map( playlist => <Dropdown.Item key={playlist.name} onClick={this.addToPlaylist} text={playlist.name} />)
     return(
       <Segment className={'largeContainer'} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
