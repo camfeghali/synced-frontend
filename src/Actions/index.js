@@ -64,6 +64,7 @@ export const loginUser = (userInfo) => {
 }
 
 export const logOut = () => {
+  console.log("FIRIN!")
   localStorage.setItem("token", null)
   return { type: LOGOUT, payload: null }
 }
@@ -74,13 +75,6 @@ export const connectToStation = (stationId) => {
     .then(
       dispatch({type: CONNECT, payload: stationId})
     )
-    // .then(resp => {
-    //   console.log("resp: ", resp)
-    //   resp.json()
-    // })
-    // .then(data => {
-    //   console.log("Return data from server: ", data)
-    // })
   }
 }
 
@@ -99,6 +93,7 @@ export const goOnAir = () => {
 }
 
 export const goOffAir = (stationId) => {
+    window.localStorage.setItem("token", null)
     return (dispatch) => {
       adapter.goOffAir(stationId)
       .then(resp => resp.json())

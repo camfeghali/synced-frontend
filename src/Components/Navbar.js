@@ -17,6 +17,8 @@ class Navbar extends React.Component{
   }
 
   directToLogout = () => {
+    console.log("FIRING!")
+    this.props.logOut()
     this.props.history.push("/login")
   }
 
@@ -33,6 +35,7 @@ class Navbar extends React.Component{
   }
 
   render(){
+    console.log("PROPS IN NAVBAR: ", this.props)
     return(
       <div>
         <Menu style={{borderStyle:'solid', borderBottomColor:'#757575'}}>
@@ -60,7 +63,7 @@ class Navbar extends React.Component{
             <Menu.Item as="a" name="register" onClick={this.directToSignup}>
               Signup
             </Menu.Item>
-            <Menu.Item onClick={this.directToLogin} as="a" name="register">
+            <Menu.Item onClick={this.directToLogout} as="a" name="register">
               Logout
             </Menu.Item>
           </Menu.Menu>
