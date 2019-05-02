@@ -2,7 +2,7 @@ import React from 'react'
 import favoriteMonkeyAvatar from'./favoriteMonkeyAvatar.png';
 import { List, Item, Button, Image, Segment } from 'semantic-ui-react'
 
-class Favorite extends React.Component{
+class User extends React.Component{
   render(){
     return(
       <List.Item>
@@ -10,7 +10,7 @@ class Favorite extends React.Component{
         <Image avatar src={favoriteMonkeyAvatar} />
         <Item.Content textalign='left'>
 
-          <Item.Header as='a' textalign='left'>Daniel Louise</Item.Header>
+          <Item.Header as='a' textalign='left'>{this.props.username}</Item.Header>
           <Item.Description >
             Last seen watching{' '}
               <b>Arrested Development</b>
@@ -29,4 +29,4 @@ class Favorite extends React.Component{
   }
 }
 
-export default Favorite
+export default User

@@ -7,6 +7,8 @@ import {
   DISCONNECT,
   ON_AIR,
   OFF_AIR,
+  ADD_ONLINE_USER,
+  GET_ONLINE_USERS
  } from '../Actions/types'
 
  import {
@@ -23,7 +25,8 @@ const initialState = {
   token: null,
   tuned: false,
   broadcasting: false,
-  playlists: []
+  playlists: [],
+  onlineUsers: []
 }
 
 function userReducer (state = initialState, action) {
@@ -67,14 +70,13 @@ function userReducer (state = initialState, action) {
       newPlaylists[playlistIndex] = playlist;
       return {...state, playlists: state.playlists}
     case REMOVE_FROM_PLAYLIST:
-      console.log("What is my payload? ", action.payload)
-      // let playlistToEdit = state.playlists.find(playlist => playlist.id === action.payload.playlist_id)
-      // console.log("Playlist To Edit: ", playlistToEdit)
-      // let playlistToSwitchIndex = state.playlists.indexOf(playlistToEdit)
-      // console.log("Playlists' Index to swtich at: ", playlistToSwitchIndex)
-      // let newPlaylist = playlistToEdit.songs.filter(song => song.id !== action.payload.song_id)
-      // console.log("New Playlist is: ", newPlaylist)
       return {...state, playlists: action.payload}
+    case ADD_ONLINE_USER:
+      console.log("INSIDE ADD ONLINE USER IN REDUCER, payload is: ", action.payload)
+      return {...state, onlineUsers: [...state.onlineUsers, action.payload]}
+    case GET_ONLINE_USERS:
+    console.log("INSIDE GET ONLINE USERS IN REDUCER, payload is: ", action.payload)
+      return{...state, onlineUsers: action.payload}
     default:
       return state
   }

@@ -9,10 +9,25 @@ import {
   DISCONNECT,
   ON_AIR,
   OFF_AIR,
+  ADD_ONLINE_USER,
+  GET_ONLINE_USERS
 } from './types'
 
 import adapter from '../Utilities/adapter'
 
+export const getOnlineUsers = () => {
+  return (dispatch) => {
+    adapter.getOnlineUsers()
+    .then(resp => resp.json())
+    .then(data => {
+      dispatch({type: GET_ONLINE_USERS, payload: data})
+    })
+  }
+}
+
+export const addOnlineUser = (user) => {
+  return {type: ADD_ONLINE_USER, payload :user}
+}
 
 export const togglePlaylist = () => {
   return {type: TOGGLE_PLAYLIST}

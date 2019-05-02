@@ -4,6 +4,10 @@ const GET_USER = 'http://localhost:3000/get_user'
 const USER_LOGIN = 'http://localhost:3000/login'
 
 
+const getOnlineUsers = () => {
+  console.log("is this firing! ?")
+  return fetch(USERS_URL)
+}
 
 const connectTo = (stationId) => {
   let url = `${STATION_URL}/${stationId}`
@@ -93,4 +97,4 @@ const goOffAir = (stationId) => {
   return fetch(url, config)
 }
 
-export default { connectTo, createUser, persistUser, loginUser, goOffAir, goOnAir  }
+export default { connectTo, createUser, persistUser, loginUser, goOffAir, goOnAir, getOnlineUsers }
