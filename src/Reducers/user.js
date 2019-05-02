@@ -60,15 +60,21 @@ function userReducer (state = initialState, action) {
     case GET_PLAYLISTS:
       return {...state, playlists: action.payload}
     case ADD_TO_PLAYLIST:
-      console.log("Inside ADD_TO_PLAYLIST in reducer")
       let playlist = state.playlists.find(playlist => playlist.id === action.payload.playlist.id)
       playlist.songs.push(action.payload.song)
       let playlistIndex = state.playlists.indexOf(playlist)
       let newPlaylists = state.playlists
       newPlaylists[playlistIndex] = playlist;
-      return {...state, playlists: newPlaylists}
+      return {...state, playlists: state.playlists}
     case REMOVE_FROM_PLAYLIST:
-      return state
+      console.log("What is my payload? ", action.payload)
+      // let playlistToEdit = state.playlists.find(playlist => playlist.id === action.payload.playlist_id)
+      // console.log("Playlist To Edit: ", playlistToEdit)
+      // let playlistToSwitchIndex = state.playlists.indexOf(playlistToEdit)
+      // console.log("Playlists' Index to swtich at: ", playlistToSwitchIndex)
+      // let newPlaylist = playlistToEdit.songs.filter(song => song.id !== action.payload.song_id)
+      // console.log("New Playlist is: ", newPlaylist)
+      return {...state, playlists: action.payload}
     default:
       return state
   }

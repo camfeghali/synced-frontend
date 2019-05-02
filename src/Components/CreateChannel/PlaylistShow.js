@@ -27,17 +27,20 @@ class PlaylistShow extends React.Component{
   }
 
   handleReceived = (data) => {
-    console.log("FIRING FIRING !")
-    this.setState({songs: [...this.state.songs, data]})
+    console.log("FIRING FIRING !", data)
+    if (Array.isArray(data)) {
+      console.log("LOL")
+      this.setState({songs: data})
+    } else {
+      this.setState({songs: [...this.state.songs, data]})
+    }
   }
 
   render(){
     console.log("What are my props in playlistShow? ", this.props)
     console.log("What are my user playlists in playlistShow? ", this.props.userPlaylists)
-    // let zongz = this.songs(this.props.playlist.id, this.props.userPlaylists)
-    // console.log("ZongZ: ", zongz)
 
-    let songs = this.state.songs.map(song => <Song joinId={song.join} playlistId={this.props.playlist.id} key={song.id} albumId={song.album_id} id={song.id} imageUrl={song.image_url} previewUrl={song.preview_url} name={song.name}/>)
+    let songs = this.state.songs.map(song => <Song joinId={song.joinId} playlistId={this.props.playlist.id} key={song.id} albumId={song.album_id} id={song.id} imageUrl={song.image_url} previewUrl={song.preview_url} name={song.name}/>)
     return(
       <Segment>
       <ActionCableConsumer channel={{channel: 'PlaylistChannel', playlistId: this.props.playlist.id }} onReceived={(data)=>{this.handleReceived(data)}}/>

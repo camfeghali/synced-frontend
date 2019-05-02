@@ -8,9 +8,9 @@ import {
 
 import adapter from '../Utilities/playlistsAdapter'
 
-export const removeFromPlaylist = () => {
+export const removeFromPlaylist = (songId, playlistId) => {
   return (dispatch) => {
-    adapter.removeFromPlaylist()
+    adapter.removeFromPlaylist(songId, playlistId)
     .then(resp => resp.json())
     .then(data => {
       console.log("Return data is: ", data)

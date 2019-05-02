@@ -4,7 +4,7 @@ const SONG_PLAYLISTS_URL = `${BASE_URL}song_playlists`
 
 
 const removeFromPlaylist = (songId, playlistId) => {
-  let data = {
+    let data = {
     songId: songId,
     playlistId: playlistId
   }
@@ -15,7 +15,10 @@ const removeFromPlaylist = (songId, playlistId) => {
     },
     body: JSON.stringify(data)
   }
-  return fetch(SONG_PLAYLISTS_URL, config)
+  console.log("Data is: ", data)
+  console.log("Sending song id: ", songId)
+  console.log("Sending playlist id: ", playlistId)
+  return fetch(`http://localhost:3000/remove_song`, config)
 }
 
 const addToPlaylist = (songId, playlistName) => {
