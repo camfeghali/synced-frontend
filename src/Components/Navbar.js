@@ -18,8 +18,9 @@ class Navbar extends React.Component{
 
   directToLogout = () => {
     console.log("FIRING!")
-    this.props.logOut()
-    this.props.history.push("/login")
+    console.log("What user DATA do i have in my navbar? ", this.props)
+    this.props.logOut(this.props.username)
+    // this.props.history.push("/login")
   }
 
   directToLogin = () => {
@@ -77,6 +78,7 @@ class Navbar extends React.Component{
 
 const mapStateToProps = (state) => {
   return {
+    // state: state,
     username: state.user.username
   }
 }

@@ -8,7 +8,8 @@ import {
   ON_AIR,
   OFF_AIR,
   ADD_ONLINE_USER,
-  GET_ONLINE_USERS
+  GET_ONLINE_USERS,
+  REMOVE_OFFLINE_USER
  } from '../Actions/types'
 
  import {
@@ -77,6 +78,10 @@ function userReducer (state = initialState, action) {
     case GET_ONLINE_USERS:
     console.log("INSIDE GET ONLINE USERS IN REDUCER, payload is: ", action.payload)
       return{...state, onlineUsers: action.payload}
+    case REMOVE_OFFLINE_USER:
+      console.log("INSIDE REMOVE OFFLINE USER IN REDUCER, payload is: ", action.payload)
+      let newOnlineUsers = state.onlineUsers.filter(user => user.username !== action.payload)
+      return {...state, onlineUsers: newOnlineUsers}
     default:
       return state
   }

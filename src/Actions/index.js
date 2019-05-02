@@ -10,7 +10,8 @@ import {
   ON_AIR,
   OFF_AIR,
   ADD_ONLINE_USER,
-  GET_ONLINE_USERS
+  GET_ONLINE_USERS,
+  REMOVE_OFFLINE_USER
 } from './types'
 
 import adapter from '../Utilities/adapter'
@@ -27,6 +28,10 @@ export const getOnlineUsers = () => {
 
 export const addOnlineUser = (user) => {
   return {type: ADD_ONLINE_USER, payload :user}
+}
+
+export const removeOfflineUser = (user) => {
+  return {type: REMOVE_OFFLINE_USER, payload :user}
 }
 
 export const togglePlaylist = () => {
@@ -78,10 +83,17 @@ export const loginUser = (userInfo) => {
   }
 }
 
-export const logOut = () => {
+export const logOut = (username) => {
   console.log("FIRIN!")
   localStorage.setItem("token", null)
-  return { type: LOGOUT, payload: null }
+  return (dispatch) => {
+    adapter.logOutUser(username)
+    .then(resp => resp.json)
+    .then(data => {
+      dispatch({ type: REMOVE_OFFLINE_USER, payload: username })
+      dispatch({ type: LOGOUT, payload: null })
+    })
+  }
 }
 
 export const connectToStation = (stationId) => {

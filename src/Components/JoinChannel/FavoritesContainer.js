@@ -2,15 +2,20 @@ import React from 'react'
 import User from './User'
 import { connect } from 'react-redux'
 import { ActionCableConsumer } from 'react-actioncable-provider'
-import { addOnlineUser, getOnlineUsers } from '../../Actions'
+import { addOnlineUser, getOnlineUsers, removeOfflineUser } from '../../Actions'
 import { Segment, List, Container } from 'semantic-ui-react'
 
 
 class FavoritesContainer extends React.Component{
 
   handleReceived = (data) => {
-    this.props.addOnlineUser (data.user)
-    console.log("Data received: ", data)
+    if(data.offline === true){
+      console.log("HAHAHAHAHA Data is: ", data)
+      this.props.removeOfflineUser(data.user.username)
+    } else{
+      this.props.addOnlineUser (data.user)
+      console.log("Data received: ", data)
+    }
   }
 
   componentDidMount(){
@@ -26,7 +31,7 @@ class FavoritesContainer extends React.Component{
       <Segment style={{borderStyle: 'solid', borderColor:'purple', boxShadow: '0px 0px 2px 1px grey'}}>
         <div>
           <Container textAlign='left'>
-            <h1> Favorites... </h1>
+            <h1> Online Favorites </h1>
           </Container>
         </div>
       </Segment>
@@ -42,4 +47,4 @@ const mapStateToProps = (state) => {
   return {onlineUsers: state.user.onlineUsers}
 }
 
-export default connect(mapStateToProps, {addOnlineUser, getOnlineUsers})(FavoritesContainer)
+export default connect(mapStateToProps, {addOnlineUser, getOnlineUsers, removeOfflineUser})(FavoritesContainer)
