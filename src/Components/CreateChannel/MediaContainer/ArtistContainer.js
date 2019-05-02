@@ -24,11 +24,11 @@ class SimpleSlider extends React.Component {
       centerMode: true,
       arrows:false
     };
-    let artists = this.props.artists.map(artist => {return (
-      <div key={artist.id}>
-        <img id={artist.id} style={{position:'relative', width:'100%'}} onClick = {this.onSongClick} src={artist.image_url}/>
-      </div>
-    )})
+    // let artists = this.props.artists.map(artist => {return (
+    //   <div key={artist.id}>
+    //     <img id={artist.id} style={{position:'relative', width:'100%'}} onClick = {this.onSongClick} src={artist.image_url}/>
+    //   </div>
+    // )})
     return (
       <Slider {...settings} style={{height:'200px'}}>
 

@@ -60,6 +60,7 @@ function userReducer (state = initialState, action) {
     case GET_PLAYLISTS:
       return {...state, playlists: action.payload}
     case ADD_TO_PLAYLIST:
+      console.log("Inside ADD_TO_PLAYLIST in reducer")
       let playlist = state.playlists.find(playlist => playlist.id === action.payload.playlist.id)
       playlist.songs.push(action.payload.song)
       let playlistIndex = state.playlists.indexOf(playlist)

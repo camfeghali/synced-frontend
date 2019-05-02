@@ -1,6 +1,5 @@
 import {
   TOGGLE_PLAYLIST,
-  LISTEN_TO,
   CONNECT,
   DISCONNECT,
   ON_AIR,
