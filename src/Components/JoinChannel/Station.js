@@ -9,6 +9,7 @@ class Channel extends React.Component{
 
   state = {
     trackName: "",
+    artist: "",
     trackUrl: "",
     playing: "",
     hostUsername: "",
@@ -26,7 +27,10 @@ class Channel extends React.Component{
 
   handleReceived = (data) => {
     console.log("Handle receive in station component: ", data)
-    this.setState({trackName: data.trackName})
+    this.setState({
+      trackName: data.trackName,
+      artist: data.artist
+    })
   }
 
 
@@ -41,7 +45,8 @@ class Channel extends React.Component{
           <Item.Header as='a' textalign='left'>Station ID: {this.props.station.id}</Item.Header>
           <Item.Description >
             Listening to
-              <b> - {this.state.trackName} - </b>
+              <b> - {this.state.trackName}  </b>
+              <b> By: {this.state.artist} - </b>
           </Item.Description>
           </Item.Content>
           <Button onClick={this.handleClick} inverted color='blue'>
