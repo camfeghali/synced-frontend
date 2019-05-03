@@ -23,8 +23,9 @@ class MediaPlayer extends React.Component{
 
   sharePlayback = () => {
     let url = `http://localhost:3000/stations/${this.props.stationId}`
-    // let data = {...this.state, timestamp: this.timestamp()}
     let data = {
+      username: this.props.username,
+      trackName: this.props.playback.trackName,
       trackUrl: this.props.playback.trackUrl,
       timestamp: this.timestamp(),
       playing: this.state.playing
@@ -54,6 +55,7 @@ class MediaPlayer extends React.Component{
     if (returnData.joining){
       let url = `http://localhost:3000/stations/${this.props.stationId}`
       let data = {
+        trackName: this.props.playback.trackName,
         trackUrl: this.props.playback.trackUrl,
         timestamp: this.timestamp(),
         playing: this.state.playing
@@ -115,9 +117,11 @@ class MediaPlayer extends React.Component{
 const mapStateToProps = (state) => {
   return {
     playlists: state.user.playlists,
+    username: state.user.username,
     broadcasting: state.user.broadcasting,
     stationId: state.station.broadcast.stationId,
     playback: {
+      trackName: state.station.broadcast.trackName,
       songId: state.station.broadcast.trackId,
       trackUrl: state.station.broadcast.trackUrl,
       playing: state.station.broadcast.playing

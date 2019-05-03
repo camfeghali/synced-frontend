@@ -2,9 +2,18 @@ import React from 'react'
 import monkeyAvatar from'./monkeyAvatar.png';
 import { connect } from 'react-redux'
 import { listenTo, connectToStation } from '../../Actions'
+import { ActionCableConsumer } from 'react-actioncable-provider'
 import { Image, List, Button, Item, Segment } from 'semantic-ui-react'
 
 class Channel extends React.Component{
+
+  state = {
+    trackName: "",
+    trackUrl: "",
+    playing: "",
+    hostUsername: "",
+
+  }
 
   handleClick = () =>{
     console.log("join is firing!")
@@ -15,35 +24,24 @@ class Channel extends React.Component{
     // this.syncToStation()
   }
 
-  syncToStation = () => {
-    // console.log("AAAAAAAAAA syncing! to station #: ",this.props.connectedTo)
-    // let url = `http://localhost:3000/stations/${this.props.connectedTo}`
-    // console.log("the url i'm hitting is: ", url)
-    // let data = {
-    //   stationId: this.props.connectedTo,
-    //   joining: true
-    // }
-    // let config = {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(data)
-    // }
-    // fetch(url, config)
+  handleReceived = (data) => {
+    console.log("Handle receive in station component: ", data)
+    this.setState({trackName: data.trackName})
   }
 
+
   render(){
+    console.log("What are my props in a Station :", this.props)
     return(
       <List.Item>
       <Segment textalign='left' style={{borderStyle: 'solid', borderColor:'purple', boxShadow: '0px 0px 2px 1px grey'}}>
+      <ActionCableConsumer channel={{channel: 'StationChannel', station_id: this.props.station.id}} onReceived={(data) => {this.handleReceived(data)}}/>
         <Image avatar src={monkeyAvatar} />
         <Item.Content textalign='left'>
           <Item.Header as='a' textalign='left'>Station ID: {this.props.station.id}</Item.Header>
           <Item.Description >
-            Listening to {this.props.station.song_id}
-              <b> - {this.props.station.name} - </b>
-            {this.props.station.timestamp} .
+            Listening to
+              <b> - {this.state.trackName} - </b>
           </Item.Description>
           </Item.Content>
           <Button onClick={this.handleClick} inverted color='blue'>
@@ -60,7 +58,8 @@ class Channel extends React.Component{
 const mapStateToProps = (state) => {
   return{
     // listeningTo: state.listeningTo,
-    connectedTo: state.station.tunedTo.stationId
+    // connectedTo: state.station.tunedTo.stationId,
+    state: state
   }
 }
-export default connect(mapStateToProps,{listenTo, connectToStation})(Channel)
+export default connect(mapStateToProps, {connectToStation})(Channel)

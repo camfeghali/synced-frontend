@@ -29,6 +29,7 @@ class CreateChannel extends React.Component{
                   {/* Add Currently Listening to Component here */}
                   {<MediaPlayer />}
                   <h5> Hello {this.props.username} </h5>
+                  <h5> Listening to {this.props.listeningTo} </h5>
                   {/* Add Search Component here */}
                   {/* Add Open Channels Component here */}
                   {<MediaContainer/>}
@@ -53,7 +54,8 @@ class CreateChannel extends React.Component{
 const mapStateToProps = (state) => {
   return {
     stationId: state.station.broadcast.stationId,
-    username: state.user.username
+    username: state.user.username,
+    listeningTo: state.station.broadcast.trackName
   }
 }
 

@@ -8,9 +8,11 @@ class SimpleSlider extends React.Component {
 
   onSongClick = (e) =>{
     let songInfo = {
+      trackName: e.target.name,
       previewUrl: e.target.alt,
       songId: parseInt(e.target.id),
     }
+    console.log("SONG INFO IS: ", songInfo)
     this.props.selectSong(songInfo)
   }
 
@@ -26,7 +28,7 @@ class SimpleSlider extends React.Component {
     };
     let songs = this.props.songs.map(song => {return (
       <div key={song.id}>
-        <img id={song.id} style={{position:'relative', width:'100%'}} onClick = {this.onSongClick} previewurl={song.preview_url} src={song.image_url} alt={song.preview_url}/>
+        <img id={song.id} style={{position:'relative', width:'100%'}} onClick = {this.onSongClick} name={song.name} previewurl={song.preview_url} src={song.image_url} alt={song.preview_url}/>
       </div>
     )})
     return (
