@@ -120,7 +120,7 @@ export const goOnAir = () => {
 }
 
 export const goOffAir = (stationId) => {
-    window.localStorage.setItem("token", null)
+    // window.localStorage.setItem("token", null)
     return (dispatch) => {
       adapter.goOffAir(stationId)
       .then(resp => resp.json())

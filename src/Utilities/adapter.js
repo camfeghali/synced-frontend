@@ -89,17 +89,18 @@ const goOnAir = () => {
   return fetch(STATION_URL, config)
 }
 
-const goOffAir = (stationId) => {
+const goOffAir = (username) => {
   console.log("GO OFF AIR IS FIRING!")
-  let url = `${STATION_URL}/${stationId}`
+  // let url = `${STATION_URL}/${stationId}`
+  let url = `http://localhost:3000/delete_station?username=${username}`
   console.log("Hittin this URL", url)
-  let config = {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }
-  return fetch(url, config)
+  // let config = {
+  //   method: "DELETE",
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   }
+  // }
+  return fetch(url)
 }
 
 export default { connectTo, createUser, persistUser, loginUser, goOffAir, goOnAir, getOnlineUsers, logOutUser }

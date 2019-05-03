@@ -10,10 +10,11 @@ import { Grid } from 'semantic-ui-react'
 class CreateChannel extends React.Component{
 
   componentWillUnmount(){
-    this.props.goOffAir(this.props.stationId)
+    this.props.goOffAir(this.props.username)
   }
 
   render(){
+    console.log("Props in create channel are: ", this.props)
     return(
       <div>
       <Grid divided='vertically' >
@@ -27,6 +28,7 @@ class CreateChannel extends React.Component{
                 <Grid.Column width={11}>
                   {/* Add Currently Listening to Component here */}
                   {<MediaPlayer />}
+                  <h5> Hello {this.props.username} </h5>
                   {/* Add Search Component here */}
                   {/* Add Open Channels Component here */}
                   {<MediaContainer/>}
@@ -49,7 +51,10 @@ class CreateChannel extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  return { stationId: state.station.broadcast.stationId }
+  return {
+    stationId: state.station.broadcast.stationId,
+    username: state.user.username
+  }
 }
 
 export default connect(mapStateToProps, { goOffAir })(CreateChannel)

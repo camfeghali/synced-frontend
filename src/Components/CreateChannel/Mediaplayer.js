@@ -98,7 +98,7 @@ class MediaPlayer extends React.Component{
           controls
           />
         <div>
-        <h1> I am broadcasting: {this.props.broadcasting ? "true" : "false"}</h1>
+        <h1> I am broadcasting: {this.props.broadcasting ? `${this.props.stationId}` : "false"}</h1>
         <Button onClick={this.broadcast}> Broadcast! </Button>
         <Dropdown style={{padding:'8px', borderRadius:'4px', borderStyle:'solid', borderColor:'rgb(143, 208, 135)', color: 'blue'}} text='Add to playlist' >
           <Dropdown.Menu style={{borderStyle:'solid', borderColor:'green'}}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { persistUser} from './Actions'
+import { persistUser, goOffAir} from './Actions'
 import { Route, Switch } from 'react-router-dom';
 import Login from './Components/Login'
 import Signup from './Components/Signup'
@@ -15,6 +15,12 @@ class App extends React.Component{
   componentDidMount(){
     console.log("App refreshed!")
     this.props.persistUser()
+    this.props.goOffAir(this.props.username)
+
+  }
+
+  componentWillUnmount(){
+    this.props.goOffAir(this.props.username)
   }
 
   render(){
@@ -47,10 +53,10 @@ class App extends React.Component{
 const mapStateToProps = (state) => {
   return {
     state : state,
-    user : state.user,
+    username : state.user.username,
     station : state.station,
     media : state.media,
   }
 }
 
-export default connect(null, {persistUser})(App);
+export default connect(mapStateToProps, {persistUser, goOffAir})(App);
