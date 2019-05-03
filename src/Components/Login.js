@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
 import { loginUser } from '../Actions'
 import { Form, Button } from 'semantic-ui-react'
 
@@ -12,6 +13,8 @@ class Login extends React.Component{
 
   handleSubmit = (state) => {
     this.props.loginUser(this.state)
+    this.props.history.push("/my_station")
+
   }
 
   handleChange = (e) => {
@@ -32,4 +35,4 @@ class Login extends React.Component{
   }
 }
 
-export default connect(null, { loginUser })(Login)
+export default withRouter(connect(null, { loginUser })(Login))

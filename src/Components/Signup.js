@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom";
 import { createUser } from '../Actions'
 import { Form, Button } from 'semantic-ui-react'
 
@@ -16,6 +17,7 @@ class Signup extends React.Component{
 
   createUser = () => {
     this.props.createUser(this.state)
+    this.props.history.push("/my_station")
   }
 
   render(){
@@ -34,4 +36,4 @@ class Signup extends React.Component{
 }
 
 
-export default connect(null, {createUser})(Signup)
+export default withRouter(connect(null, {createUser})(Signup))
