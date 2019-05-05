@@ -55,6 +55,7 @@ class MediaPlayer extends React.Component{
   }
 
   handleReceived = (returnData) => {
+    console.log("SOMEONE IS HITTING ME")
     if (returnData.joining){
       let url = `http://localhost:3000/stations/${this.props.stationId}`
       let data = {

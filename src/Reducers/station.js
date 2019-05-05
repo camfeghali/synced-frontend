@@ -48,12 +48,12 @@ function stationReducer (state = initialState, action) {
         broadcast: {
           ...state.broadcast,
         stationId: action.payload.id,
-        trackName: action.payload.trackName,
-        album: action.payload.album,
-        trackId: action.payload.song_id,
-        trackUrl: action.payload.preview_url,
-        timestamp: action.payload.timestamp,
-        playing: action.payload.playing,
+        // trackName: action.payload.trackName,
+        // album: action.payload.album,
+        // trackId: action.payload.song_id,
+        // trackUrl: action.payload.preview_url,
+        // timestamp: action.payload.timestamp,
+        // playing: action.payload.playing,
       }}
     case OFF_AIR:
       return {
