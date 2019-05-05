@@ -14,7 +14,6 @@ class CreateChannel extends React.Component{
   }
 
   render(){
-    console.log("Props in create channel are: ", this.props)
     return(
       <div>
       <Grid divided='vertically' >

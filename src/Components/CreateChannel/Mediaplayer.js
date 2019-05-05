@@ -84,7 +84,6 @@ class MediaPlayer extends React.Component{
   }
 
   render(){
-    console.log("My props in Media Player are: ", this.props)
     let playlists = this.props.playlists.map( playlist => <Dropdown.Item key={playlist.name} onClick={this.addToPlaylist} text={playlist.name} />)
     return(
       <Segment className={'largeContainer'} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
