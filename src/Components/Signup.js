@@ -8,7 +8,8 @@ class Signup extends React.Component{
 
   state = {
     username: "",
-    password: ""
+    password: "",
+    error: null
   }
 
   onChange = (e) => {
@@ -21,13 +22,13 @@ class Signup extends React.Component{
   }
 
   render(){
-    // console.log("what are my props in signup?", this.props)
     return(
       <Form unstackable>
         <Form.Group widths={2}>
           <Form.Input onChange={this.onChange} name='username' label='Username' placeholder='Username' value={this.state.username} />
           <Form.Input onChange={this.onChange} name='password' label='Password' type='password' placeholder='Password' value={this.state.password}/>
         </Form.Group>
+        <h4 style={{color: 'red'}}> {this.state.error} </h4>
         <Form.Checkbox label='I agree to the Terms and Conditions' />
         <Button onClick={this.createUser}>Submit</Button>
       </Form>
@@ -35,5 +36,12 @@ class Signup extends React.Component{
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    username: state.user.username,
+    state: state
+  }
+}
 
-export default withRouter(connect(null, {createUser})(Signup))
+
+export default withRouter(connect(mapStateToProps, {createUser})(Signup))

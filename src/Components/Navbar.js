@@ -17,8 +17,6 @@ class Navbar extends React.Component{
   }
 
   directToLogout = () => {
-    console.log("FIRING!")
-    console.log("What user DATA do i have in my navbar? ", this.props)
     this.props.logOut(this.props.username)
     // this.props.history.push("/login")
   }
@@ -36,7 +34,6 @@ class Navbar extends React.Component{
   }
 
   render(){
-    console.log("PROPS IN NAVBAR: ", this.props)
     return(
       <div>
         <Menu style={{borderStyle:'solid', borderBottomColor:'#757575'}}>

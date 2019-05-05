@@ -50,8 +50,11 @@ export const createUser = (userInfo) => {
     adapter.createUser(userInfo)
     .then(resp => resp.json())
     .then(userData => {
-      localStorage.setItem("token", userData.token)
-      dispatch({type: CREATE_USER, payload: userData.user.username})
+      if(userData.user){
+        console.log("Return data on valid credentials: ", userData)
+        localStorage.setItem("token", userData.token)
+        dispatch({type: CREATE_USER, payload: userData.user.username})
+      }
     })
   }
 }
