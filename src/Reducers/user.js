@@ -62,6 +62,7 @@ function userReducer (state = initialState, action) {
       let playlists = state.playlists.filter(playlist => playlist.id !== action.payload.id)
       return {...state, playlists: playlists}
     case GET_PLAYLISTS:
+      console.log("My playlist return : ", action.payload)
       return {...state, playlists: action.payload}
     case ADD_TO_PLAYLIST:
       let playlist = state.playlists.find(playlist => playlist.id === action.payload.playlist.id)

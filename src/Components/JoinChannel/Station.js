@@ -12,6 +12,7 @@ class Channel extends React.Component{
     artist: "",
     trackUrl: "",
     playing: "",
+    album: "",
     hostUsername: "",
 
   }
@@ -29,7 +30,8 @@ class Channel extends React.Component{
     console.log("Handle receive in station component: ", data)
     this.setState({
       trackName: data.trackName,
-      artist: data.artist
+      artist: data.artist,
+      album: data.album,
     })
   }
 
@@ -47,6 +49,7 @@ class Channel extends React.Component{
             Listening to
               <b> - {this.state.trackName}  </b>
               <b> By: {this.state.artist} - </b>
+              <b> Album: {this.state.album} - </b>
           </Item.Description>
           </Item.Content>
           <Button onClick={this.handleClick} inverted color='blue'>

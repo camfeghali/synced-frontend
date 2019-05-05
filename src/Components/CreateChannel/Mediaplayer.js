@@ -25,11 +25,14 @@ class MediaPlayer extends React.Component{
     let url = `http://localhost:3000/stations/${this.props.stationId}`
     let data = {
       username: this.props.username,
+      album: this.props.playback.album,
+      albumId: this.props.playback.albumId,
       trackName: this.props.playback.trackName,
       trackUrl: this.props.playback.trackUrl,
       timestamp: this.timestamp(),
       playing: this.state.playing
     }
+    console.log("sharing playback, sendig this data to backend: ", data)
     let config = {
       method: "PATCH",
       headers: {
@@ -121,6 +124,8 @@ const mapStateToProps = (state) => {
     stationId: state.station.broadcast.stationId,
     playback: {
       trackName: state.station.broadcast.trackName,
+      album: state.station.broadcast.album,
+      albumId: state.station.broadcast.albumId,
       songId: state.station.broadcast.trackId,
       trackUrl: state.station.broadcast.trackUrl,
       playing: state.station.broadcast.playing

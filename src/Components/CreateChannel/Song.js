@@ -17,6 +17,7 @@ class Song extends React.Component{
     console.log("%c When I click play c%, this is: ","color: red", this)
     let songInfo = {
       trackName: this.props.name,
+      albumId: this.props.albumId,
       previewUrl: this.props.previewUrl,
       songId: parseInt(this.props.id),
     }
@@ -25,7 +26,7 @@ class Song extends React.Component{
   }
 
   render(){
-
+    console.log("Props in Song playlist: ", this.props)
     return(
       <List.Item textAlign='left'>
         <Image floated='left' avatar src={songIcon} />

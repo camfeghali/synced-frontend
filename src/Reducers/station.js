@@ -22,6 +22,7 @@ const initialState = {
   },
   broadcast:{
     stationId: null,
+    album: null,
     trackId: null,
     trackName: null,
     trackUrl: null,
@@ -48,6 +49,7 @@ function stationReducer (state = initialState, action) {
           ...state.broadcast,
         stationId: action.payload.id,
         trackName: action.payload.trackName,
+        album: action.payload.album,
         trackId: action.payload.song_id,
         trackUrl: action.payload.preview_url,
         timestamp: action.payload.timestamp,
@@ -66,11 +68,14 @@ function stationReducer (state = initialState, action) {
         playing: null,
       }}
     case SELECT_SONG:
+    console.log("SELECTED SONG", action.payload)
       return {
         ...state,
         broadcast : {
           ...state.broadcast,
           trackName: action.payload.trackName,
+          album: action.payload.album,
+          albumId: action.payload.albumId,
           trackId: action.payload.songId,
           trackUrl: action.payload.previewUrl,
         }

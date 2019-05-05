@@ -37,7 +37,7 @@ class PlaylistShow extends React.Component{
 
   render(){
 
-    let songs = this.state.songs.map(song => <Song joinId={song.joinId} playlistId={this.props.playlist.id} key={song.id} albumId={song.album_id} id={song.id} imageUrl={song.image_url} previewUrl={song.preview_url} name={song.name}/>)
+    let songs = this.state.songs.map(song => <Song joinId={song.joinId} playlistId={this.props.playlist.id} key={song.id} albumId={song.album_id} album={song.album} id={song.id} imageUrl={song.image_url} previewUrl={song.preview_url} name={song.name}/>)
     return(
       <Segment>
       <ActionCableConsumer channel={{channel: 'PlaylistChannel', playlistId: this.props.playlist.id }} onReceived={(data)=>{this.handleReceived(data)}}/>
