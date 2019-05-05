@@ -24,7 +24,9 @@ class FavoritesContainer extends React.Component{
 
   render(){
     console.log("My props are: ", this.props)
-    let onlineUsers = this.props.onlineUsers.map(user => <User username={user.username}/>)
+    let onlineUsers = this.props.onlineUsers
+    .filter(user => user.username !== this.props.username)
+    .map(user => <User username={user.username}/>)
     return(
       <Segment style={{borderStyle: 'solid', borderColor:'purple', boxShadow: '0px 0px 2px 1px grey'}}>
       <ActionCableConsumer channel={{channel: 'OnlineUserChannel', user: "dude"}} onReceived={(data) => {this.handleReceived(data)}}/>
@@ -44,7 +46,10 @@ class FavoritesContainer extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  return {onlineUsers: state.user.onlineUsers}
+  return {
+    username: state.user.username,
+    onlineUsers: state.user.onlineUsers,
+  }
 }
 
 export default connect(mapStateToProps, {addOnlineUser, getOnlineUsers, removeOfflineUser})(FavoritesContainer)
