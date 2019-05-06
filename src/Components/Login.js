@@ -14,7 +14,6 @@ class Login extends React.Component{
   handleSubmit = (state) => {
     this.props.loginUser(this.state)
     this.props.history.push("/my_station")
-
   }
 
   handleChange = (e) => {

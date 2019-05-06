@@ -9,7 +9,8 @@ import {
   OFF_AIR,
   ADD_ONLINE_USER,
   GET_ONLINE_USERS,
-  REMOVE_OFFLINE_USER
+  REMOVE_OFFLINE_USER,
+  GET_FOLLOWEES
  } from '../Actions/types'
 
  import {
@@ -27,7 +28,8 @@ const initialState = {
   tuned: false,
   broadcasting: false,
   playlists: [],
-  onlineUsers: []
+  onlineUsers: [],
+  followees: []
 }
 
 function userReducer (state = initialState, action) {
@@ -35,10 +37,16 @@ function userReducer (state = initialState, action) {
     case CREATE_USER:
       return{...state, username: action.payload}
     case PERSIST_USER:
-      return{...state, username: action.payload}
+      console.log('%c REFRESHED MY PAYLOAD IS:', 'background: green; color: white; display: block;', action.payload)
+      return{...state,
+        username: action.payload.username,
+        followees: action.payload.followees,
+      }
     case LOGIN:
+      console.log("INSIDE LOG IN - MY PAYLOAD IS: ", action.payload)
       return {
         ...state,
+        followees: action.payload.followees,
         username: action.payload.username,
         token: action.payload.token,
       }
@@ -74,15 +82,16 @@ function userReducer (state = initialState, action) {
     case REMOVE_FROM_PLAYLIST:
       return {...state, playlists: action.payload}
     case ADD_ONLINE_USER:
-      console.log("INSIDE ADD ONLINE USER IN REDUCER, payload is: ", action.payload)
       return {...state, onlineUsers: [...state.onlineUsers, action.payload]}
     case GET_ONLINE_USERS:
-    console.log("INSIDE GET ONLINE USERS IN REDUCER, payload is: ", action.payload)
       return{...state, onlineUsers: action.payload}
     case REMOVE_OFFLINE_USER:
-      console.log("INSIDE REMOVE OFFLINE USER IN REDUCER, payload is: ", action.payload)
       let newOnlineUsers = state.onlineUsers.filter(user => user.username !== action.payload)
       return {...state, onlineUsers: newOnlineUsers}
+    case GET_FOLLOWEES:
+      console.log('%c INSIDE GET FOLLOWEEES!', 'background: green; color: white; display: block;')
+      console.log("Action is: ", action)
+      return {...state, followees: action.payload}
     default:
       return state
   }

@@ -1,14 +1,21 @@
 const STATION_URL = `http://localhost:3000/stations`
 const USERS_URL = `http://localhost:3000/users`
+const ONLINE_USERS_URL = `http://localhost:3000/online_users`
+const GET_FOLLOWEES_URL = `http://localhost:3000/followees`
 const GET_USER = 'http://localhost:3000/get_user'
 const USER_LOGIN = 'http://localhost:3000/login'
 const USER_LOGOUT= 'http://localhost:3000/logout'
 
 
 const getOnlineUsers = () => {
-  console.log("is this firing! ?")
-  return fetch(USERS_URL)
+  return fetch(ONLINE_USERS_URL)
 }
+
+// const getFollowees = (username) => {
+//   console.log('%c Get Followees action creator firing!', 'background: green; color: white; display: block;')
+//   console.log('%c Get Followees action creator firing! username is:', 'background: green; color: white; display: block;', username)
+//   return(fetch(`${GET_FOLLOWEES_URL}?username=${username}`))
+// }
 
 const connectTo = (stationId) => {
   let url = `${STATION_URL}/${stationId}`

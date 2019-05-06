@@ -11,7 +11,8 @@ import {
   OFF_AIR,
   ADD_ONLINE_USER,
   GET_ONLINE_USERS,
-  REMOVE_OFFLINE_USER
+  REMOVE_OFFLINE_USER,
+  GET_FOLLOWEES
 } from './types'
 
 import adapter from '../Utilities/adapter'
@@ -25,6 +26,18 @@ export const getOnlineUsers = () => {
     })
   }
 }
+
+// export const getFollowees = (username) => {
+//   return (dispatch) => {
+//     console.log("Firing in action creator, username is: ", username)
+//     adapter.getFollowees(username)
+//     .then(resp => resp.json())
+//     .then(data => {
+//       console.log("Return data from Get followees: ", data)
+//       dispatch({type: GET_FOLLOWEES, payload: data})
+//     })
+//   }
+// }
 
 export const addOnlineUser = (user) => {
   return {type: ADD_ONLINE_USER, payload :user}
@@ -62,8 +75,9 @@ export const persistUser = () => {
       .then(resp => resp.json())
       .then(data => {
         if(data.user){
+          console.log("Return data on persist is: ", data)
           dispatch({
-            type: PERSIST_USER, payload: data.user.username
+            type: PERSIST_USER, payload: data.user
           })
         }
       })
@@ -75,6 +89,7 @@ export const loginUser = (userInfo) => {
     adapter.loginUser(userInfo)
     .then(resp => resp.json())
     .then(data => {
+      console.log("In login method, return data is: ", data)
       localStorage.setItem("token", data.jwt)
       dispatch({
       type: LOGIN, payload: data.user
