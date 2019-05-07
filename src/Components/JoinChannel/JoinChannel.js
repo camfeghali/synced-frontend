@@ -13,16 +13,17 @@ class JoinChannel extends React.Component{
         <Grid.Row >
           <Grid.Column width={1}>
           </Grid.Column>
-          <Grid.Column width={14}>
+          <Grid.Column width={14} style={{background: 'transparent'}}>
             <div style={{ height:'80em'}}>
-            <Grid celled style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 35px 2px grey'}}>
-              <Grid.Row>
-                <Grid.Column width={11}>
+            <Grid style={{marginTop:'5em'}}>
+              <Grid.Row >
+                <Grid.Column width={11} >
                   {<ListeningTo />}
                   {<StationsContainer />}
                 </Grid.Column>
                 <Grid.Column width={5}>
-                {<FavoritesContainer />}
+                <div className="line"> </div>
+                <FavoritesContainer />
                 </Grid.Column>
               </Grid.Row>
               </Grid>

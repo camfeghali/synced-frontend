@@ -39,13 +39,13 @@ class Channel extends React.Component{
   render(){
     console.log("What are my props in a Station :", this.props)
     return(
-      <List.Item>
-      <Segment textalign='left' style={{borderStyle: 'solid', borderColor:'purple', boxShadow: '0px 0px 2px 1px grey'}}>
+      <List.Item className='playlist-style white-text'>
+      <Segment textalign='left' style={{background: 'transparent'}}>
       <ActionCableConsumer channel={{channel: 'StationChannel', station_id: this.props.station.id}} onReceived={(data) => {this.handleReceived(data)}}/>
         <Image avatar src={monkeyAvatar} />
         <Item.Content textalign='left'>
-          <Item.Header as='a' textalign='left'>Station ID: {this.props.station.id}</Item.Header>
-          <Item.Description >
+          <Item.Header className='white-text lato-font' textalign='left'>Station ID: {this.props.station.id}</Item.Header>
+          <Item.Description className='white-text lato-font' >
             Listening to
               <b> - {this.state.trackName}  </b>
               <b> By: {this.state.artist} - </b>
@@ -54,9 +54,6 @@ class Channel extends React.Component{
           </Item.Content>
           <Button onClick={this.handleClick} inverted color='blue'>
             Join
-          </Button>
-          <Button  floated='right' inverted color='purple'>
-            Add to Favs
           </Button>
           </Segment>
       </List.Item>

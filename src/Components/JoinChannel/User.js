@@ -5,13 +5,13 @@ import { List, Item, Button, Image, Segment } from 'semantic-ui-react'
 class User extends React.Component{
   render(){
     return(
-      <List.Item>
-      <Segment textAlign='left' style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
+      <List.Item className='playlist-style'>
+      <Segment textAlign='left' style={{background: 'transparent'}}>
         <Image avatar src={favoriteMonkeyAvatar} />
         <Item.Content textalign='left'>
 
-          <Item.Header as='a' textalign='left'>{this.props.username}</Item.Header>
-          <Item.Description >
+          <Item.Header  className='white-text' textalign='left'>{this.props.username}</Item.Header>
+          <Item.Description className='white-text' >
             Last seen watching{' '}
               <b>Arrested Development</b>
             just now.

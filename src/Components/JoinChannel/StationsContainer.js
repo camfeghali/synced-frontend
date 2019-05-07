@@ -25,16 +25,15 @@ class FavoritesContainer extends React.Component{
   render(){
     let stations = this.state.stations.map(station => <Station key={station.id} station={station}/>)
     return(
-      <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
+      <Segment style={{background: 'transparent'}}>
       <ActionCableConsumer channel={{channel: 'LobbyChannel', cat: "piss"}} onReceived={(data) => {this.handleReceived(data)}}/>
-      <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
+      <Segment style={{background: 'transparent'}}>
         <div>
           <Container textAlign='left'>
-            <h1> On the airways ... </h1>
+            <h1 className='white-text fjalla-font'> On the airways </h1>
           </Container>
         </div>
       </Segment>
-      {<ChannelSearchForm />}
 
       <List relaxed>
         {stations}

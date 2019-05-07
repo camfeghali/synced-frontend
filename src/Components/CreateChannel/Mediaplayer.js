@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { goOnAir } from '../../Actions'
 import { addToPlaylist } from '../../Actions/playlistActions'
-import ReactAudioPlayer from 'react-audio-player'
 import { Segment, Dropdown, Button } from 'semantic-ui-react'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 
@@ -32,6 +31,7 @@ class MediaPlayer extends React.Component{
       timestamp: this.timestamp(),
       playing: this.state.playing
     }
+    console.log('%c Sending This! ', 'background: #222; color: #bada55', data)
     let config = {
       method: "PATCH",
       headers: {
@@ -57,6 +57,7 @@ class MediaPlayer extends React.Component{
     if (returnData.joining){
       let url = `http://localhost:3000/stations/${this.props.stationId}`
       let data = {
+        album:this.props.playback.album,
         trackName: this.props.playback.trackName,
         trackUrl: this.props.playback.trackUrl,
         timestamp: this.timestamp(),
