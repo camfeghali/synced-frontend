@@ -8,6 +8,8 @@ import { Image, List, Button, Item } from 'semantic-ui-react'
 class Song extends React.Component{
 
   handleRemove = (e) => {
+    console.log("Removing song from playlist!")
+    console.log("Newly added song:", this)
     let songId = this.props.id
     let playlistId = this.props.playlistId
     this.props.removeFromPlaylist(songId, playlistId)
@@ -28,14 +30,15 @@ class Song extends React.Component{
   render(){
     console.log("Props in Song playlist: ", this.props)
     return(
-      <List.Item textAlign='left'>
-        <Image floated='left' avatar src={songIcon} />
+      <List.Item textAlign='left' className='playlist-song-style'>
+        <Image style={{marginTop:'14px'}} floated='left' avatar src={songIcon} />
         <Item.Content>
-          <Item.Header>{this.props.name}</Item.Header>
-          <Item.Content> Album: {this.props.albumId}</Item.Content>
+          <Item.Header style={{wordWrap: 'break-word'}} className="white-text lato-font">Track: {this.props.name}</Item.Header>
+          <Item.Header style={{wordWrap: 'break-word'}} className="white-text lato-font">Album: {this.props.album}</Item.Header>
+          <Item.Header style={{wordWrap: 'break-word'}} className="white-text lato-font">Artist: {this.props.artist}</Item.Header>
         </Item.Content>
-        <Button onClick={this.handleRemove} floated="right" size='mini' inverted color='orange'> Remove </Button>
-        <Button onClick={this.handlePlay} floated="right" size='mini' inverted color='green'> Load </Button>
+        <Button style={{marginTop:'7px'}} onClick={this.handleRemove} floated="right" size='mini' inverted color='orange'> Remove </Button>
+        <Button style={{marginTop:'7px'}} onClick={this.handlePlay} floated="right" size='mini' inverted color='green'> Load </Button>
       </List.Item>
     )
   }

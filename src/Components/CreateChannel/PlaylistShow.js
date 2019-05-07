@@ -28,24 +28,25 @@ class PlaylistShow extends React.Component{
 
   handleReceived = (data) => {
     if (Array.isArray(data)) {
-      console.log("LOL")
+      console.log("Data is an array: ", data)
       this.setState({songs: data})
     } else {
+      console.log("Data is not an array: ", data)
       this.setState({songs: [...this.state.songs, data]})
     }
   }
 
   render(){
-
-    let songs = this.state.songs.map(song => <Song joinId={song.joinId} playlistId={this.props.playlist.id} key={song.id} albumId={song.album_id} album={song.album} id={song.id} imageUrl={song.image_url} previewUrl={song.preview_url} name={song.name}/>)
+    console.log("Song props are: ", this.state.songs)
+    let songs = this.state.songs.map(song => <Song joinId={song.joinId} playlistId={this.props.playlist.id} key={song.id} albumId={song.album_id} album={song.album} artist={song.artist} id={song.id} imageUrl={song.image_url} previewUrl={song.preview_url} name={song.name}/>)
     return(
-      <Segment >
+      <Segment style={{background: 'transparent'}}>
       <ActionCableConsumer channel={{channel: 'PlaylistChannel', playlistId: this.props.playlist.id }} onReceived={(data)=>{this.handleReceived(data)}}/>
-      <Segment>
+      <Segment style={{background: 'transparent'}}>
         <div>
           <Button onClick = {this.handleClick} floated='left' inverted color='green'> Back </Button>
           <Container textAlign='left'>
-            <h1> {this.props.playlist.name} </h1>
+            <h1 className="white-text"> {this.props.playlist.name} </h1>
           </Container>
         </div>
       </Segment>

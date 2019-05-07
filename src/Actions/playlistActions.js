@@ -35,6 +35,7 @@ export const getPlaylists = (username) => {
     adapter.getPlaylists(username)
     .then(resp => resp.json())
     .then(data => {
+      console.log("Return data from playlists fetch is: ", data)
       dispatch({type: GET_PLAYLISTS, payload: data})
     })
   }
