@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom";
 import { createUser } from '../Actions'
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Message, Grid, Header, Image, Segment } from 'semantic-ui-react'
+import logo from'./logo1.png';
 
 class Signup extends React.Component{
 
@@ -11,7 +12,7 @@ class Signup extends React.Component{
     password: ""
   }
 
-  onChange = (e) => {
+  handleChange = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
 
@@ -20,17 +21,54 @@ class Signup extends React.Component{
     this.props.history.push("/my_station")
   }
 
+  directToLogin = () => {
+    console.log("LOGIN FIRING!!!!!!!!!!!!!!!")
+    this.props.history.push("/login")
+  }
+
   render(){
-    // console.log("what are my props in signup?", this.props)
     return(
-      <Form unstackable>
-        <Form.Group widths={2}>
-          <Form.Input onChange={this.onChange} name='username' label='Username' placeholder='Username' value={this.state.username} />
-          <Form.Input onChange={this.onChange} name='password' label='Password' type='password' placeholder='Password' value={this.state.password}/>
-        </Form.Group>
-        <Form.Checkbox label='I agree to the Terms and Conditions' />
-        <Button onClick={this.createUser}>Submit</Button>
-      </Form>
+      <div className='login-form'>
+
+      <style>{`
+         body > div,
+         body > div > div,
+         body > div > div > div.login-form {
+           height: 100%;
+         }
+       `}
+      </style>
+      <Grid textAlign='center' style={{ height: '80%' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450, background:"transparent" }}>
+          <Header as='h2' style={{color:"white", fontFamily: 'Fjalla One', fontSize:'36px'}} textAlign='center' >
+            <Image src={logo}/>
+            Signup
+          </Header>
+          <Form size='large'>
+            <Segment stacked style={{background:'transparent', borderColor:'transparent'}}>
+              <Form.Input style={{color:'blue'}} fluid icon='user' iconPosition='left' onChange={this.handleChange} name='username' label='Username' placeholder='First name' />
+              <Form.Input
+                style={{color:'blue'}}
+                fluid
+                icon='lock'
+                iconPosition='left'
+                placeholder='Password'
+                type='password'
+                autofocus
+                onChange={this.handleChange} name='password' label='Password' type='password' placeholder='Password'
+              />
+
+              <Button style={{backgroundColor:'rgba(0, 48, 255, 0.9)', color:'white'}} fluid size='large' onClick={this.createUser} >
+                Create account
+              </Button>
+            </Segment>
+          </Form>
+          <Message style={{color:'white', background:'transparent', borderColor:'rgba(255,127,128, 0)'}} onClick={this.directToLogin}>
+            Already have an account ? <a style={{color:'rgba(0, 48, 255, 0.9)'}}>Log in</a>
+          </Message>
+        </Grid.Column>
+      </Grid>
+      </div>
     )
   }
 }

@@ -18,7 +18,7 @@ class Navbar extends React.Component{
 
   directToLogout = () => {
     this.props.logOut(this.props.username)
-    // this.props.history.push("/login")
+    this.props.history.push("/login")
   }
 
   directToLogin = () => {
@@ -29,39 +29,34 @@ class Navbar extends React.Component{
     this.props.history.push("/login")
   }
 
-  directToSignup = () => {
-    this.props.history.push("/signup")
-  }
+
 
   render(){
     return(
       <div>
-        <Menu style={{borderStyle:'solid', borderBottomColor:'#757575'}}>
+        <Menu style={{borderStyle:'solid', background:'transparent', borderBottomColor:'rgb(255, 255, 255)'}}>
           <Container >
-            <Menu.Item as="a" header>
+            <Menu.Item as="a" header >
               <Image
                 size="small"
                 src={logo}
                 style={{width: 50, height: 50}}
               />
             </Menu.Item>
-            <Menu.Item as="a" name="username" >
+            <Menu.Item as="a" name="username" className="navbar-text">
               {this.props.username ? this.props.username : " "}
             </Menu.Item>
             <Menu.Menu position="right">
-            <Menu.Item as="a" name="lobby" onClick={this.directToLobby}>
+            <Menu.Item as="a" name="lobby" className="navbar-text" onClick={this.directToLobby}>
               Lobby
             </Menu.Item>
-            <Menu.Item as="a" name="my_station" onClick={this.directToStation}>
+            <Menu.Item className="navbar-text" as="a" name="my_station" onClick={this.directToStation}>
               My Station
             </Menu.Item>
-            <Menu.Item as="a" name="login" onClick={this.directToLogin}>
-              Login
+            <Menu.Item className="navbar-text" as="a" name="login" onClick={this.directToLogin}>
+              Login/Signup
             </Menu.Item>
-            <Menu.Item as="a" name="register" onClick={this.directToSignup}>
-              Signup
-            </Menu.Item>
-            <Menu.Item onClick={this.directToLogout} as="a" name="register">
+            <Menu.Item className="navbar-text" onClick={this.directToLogout} as="a" name="register">
               Logout
             </Menu.Item>
           </Menu.Menu>

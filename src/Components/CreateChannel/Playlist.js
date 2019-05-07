@@ -18,11 +18,10 @@ class Playlist extends React.Component{
 
   render(){
     return(
-      <List.Item  id={this.props.id} textalign='left' >
-        <Image onClick={this.view} id={this.props.id} avatar src={playlistIcon} />
-        <Item.Content onClick={this.view} id={this.props.id} textalign='left'>
-
-          <Item.Header  onClick={this.view} id={this.props.id} as='a' textalign='left'>{this.props.name}</Item.Header>
+      <List.Item id={this.props.id} textalign='left' className="playlist-style">
+        <Image  onClick={this.view} id={this.props.id} avatar src={playlistIcon} style={{marginLeft: '4px', marginTop: '3px'}}/>
+        <Item.Content onClick={this.view} id={this.props.id}>
+          <Item.Header style={{marginTop:'3px', marginBottom:'3px'}} as='h3' className="white-text" onClick={this.view} id={this.props.id} textalign='left'>{this.props.name}</Item.Header>
           </Item.Content>
           <Button id = {this.props.id} onClick={this.deletePlaylist} floated="right" size='mini' inverted color='red'>
           Delete

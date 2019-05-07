@@ -32,7 +32,6 @@ class MediaPlayer extends React.Component{
       timestamp: this.timestamp(),
       playing: this.state.playing
     }
-    console.log("sharing playback, sendig this data to backend: ", data)
     let config = {
       method: "PATCH",
       headers: {
@@ -55,7 +54,6 @@ class MediaPlayer extends React.Component{
   }
 
   handleReceived = (returnData) => {
-    console.log("SOMEONE IS HITTING ME")
     if (returnData.joining){
       let url = `http://localhost:3000/stations/${this.props.stationId}`
       let data = {
@@ -90,22 +88,24 @@ class MediaPlayer extends React.Component{
   render(){
     let playlists = this.props.playlists.map( playlist => <Dropdown.Item key={playlist.name} onClick={this.addToPlaylist} text={playlist.name} />)
     return(
-      <Segment className={'largeContainer'} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
-      <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-      <ActionCableConsumer channel={{channel: 'StationChannel', station_id: this.props.stationId}} onReceived={(data) => {this.handleReceived(data)} }/>
-        <ReactAudioPlayer
-          onPause = {this.handlePause}
-          onPlay = {this.handlePlay}
-          floated='left'
-          style={{width:'35.3em'}}
-          src={this.props.playback.trackUrl}
-          autoPlay={false}
-          controls
-          />
+      <Segment className={'largeContainer'} style={{background:'transparent'}}>
+        <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <ActionCableConsumer channel={{channel: 'StationChannel', station_id: this.props.stationId}} onReceived={(data) => {this.handleReceived(data)} }/>
+          <div className='playback-info' >
+            <h3 className='white-text white-text playback-text'> Artist: </h3>
+            <h3 className='white-text white-text playback-text'> Song: </h3>
+            <h3 className='white-text white-text playback-text'> Album: </h3>
+          </div>
+          <div className='playback-content' >
+            <h4 style={{marginTop:'3px'}} className='white-text playback-text'> {this.props.playback.artist} </h4>
+            <h4 style={{marginTop:'29px'}}className='white-text playback-text'> {this.props.playback.trackName}  </h4>
+            <h4 style={{marginTop:'30px'}}className='white-text playback-text'> {this.props.playback.album}  </h4>
+          </div>
+          <audio paused ='true' autoPlay={false} ref="audio_tag" src={this.props.playback.trackUrl} onPlay={this.handlePlay} onPause={this.handlePause} controls />
         <div>
-        <h1> I am broadcasting: {this.props.broadcasting ? `${this.props.stationId}` : "false"}</h1>
-        <Button onClick={this.broadcast}> Broadcast! </Button>
-        <Dropdown style={{padding:'8px', borderRadius:'4px', borderStyle:'solid', borderColor:'rgb(143, 208, 135)', color: 'blue'}} text='Add to playlist' >
+
+        <Button size='large' color='inverted green' onClick={this.broadcast}> Broadcast! </Button>
+        <Dropdown className="dropdown-style" text='Add to playlist' >
           <Dropdown.Menu style={{borderStyle:'solid', borderColor:'green'}}>
             {playlists}
           </Dropdown.Menu>
@@ -125,6 +125,7 @@ const mapStateToProps = (state) => {
     stationId: state.station.broadcast.stationId,
     playback: {
       trackName: state.station.broadcast.trackName,
+      artist: state.station.broadcast.artist,
       album: state.station.broadcast.album,
       albumId: state.station.broadcast.albumId,
       songId: state.station.broadcast.trackId,
@@ -134,4 +135,14 @@ const mapStateToProps = (state) => {
   }
 }
 
+// <ReactAudioPlayer
+//   onPause = {this.handlePause}
+//   onPlay = {this.handlePlay}
+//   floated='left'
+//   style={{width:'35.3em'}}
+//   src={this.props.playback.trackUrl}
+//   autoPlay={false}
+//   controls
+//   />
+//
 export default connect(mapStateToProps, { goOnAir, addToPlaylist })(MediaPlayer)

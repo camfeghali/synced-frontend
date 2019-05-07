@@ -42,9 +42,9 @@ class PlaylistsContainer extends React.Component{
           path="/my_station"
           render={() => {
             return (
-              <Segment onClick={this.handleClick} style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
+              <Segment onClick={this.handleClick} style={{background: 'transparent'}}>
               <ChannelNameForm> </ChannelNameForm>
-              <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
+              <Segment style={{background: 'transparent'}}>
                 <div>
                   <Popup
                     on="Click"
@@ -52,17 +52,17 @@ class PlaylistsContainer extends React.Component{
                     position='top right'
                     trigger={<Button floated='right' inverted color='blue'> Create playlist </Button>}
                   >
-                  <div className="ui input">
-                    <div className="ui icon input">
+                  <div className="ui input transparent-background" >
+                    <div className="ui icon input transparent-background" >
                       <input onChange={this.handleChange} style={{background: 'rgb(74, 74, 74, 0.05)', width: '10em', textColor:'red'}} className="prompt" type="text" placeholder="Playlist name ..."/>
                       <i style={{color: 'black'}}></i>
                       </div>
-                      <Button onClick={this.createPlaylist} floated='right' inverted color='purple'> Create </Button>
+                      <Button  onClick={this.createPlaylist} floated='right' inverted color='purple'> Create </Button>
                     <div className="results"></div>
                   </div>
                   </Popup>
                   <Container textAlign='left'>
-                    <h1> Playlists... </h1>
+                    <h1 className = "large-font white-text"> Playlists </h1>
                   </Container>
                 </div>
               </Segment>

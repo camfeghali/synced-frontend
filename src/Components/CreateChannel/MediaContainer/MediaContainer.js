@@ -9,25 +9,11 @@ import { Segment, Grid } from 'semantic-ui-react'
 class MediaContainer extends React.Component{
   render(){
     return(
-      <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
-        <Grid.Row >
-        <MediaSearchForm />
-          <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey', height:'250px'}}>
-            Songs
+      <Segment style={{background:'transparent'}}>
+        <Grid.Row style={{background:'transparent'}}>
+        <MediaSearchForm style={{background:'transparent'}}/>
+          <Segment style={{background:'transparent', height:'250px'}}>
             {<SongContainer/>}
-          </Segment>
-        </Grid.Row >
-        <Grid.Row >
-          <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey', height:'250px'}}>
-            Artists
-            {<SongContainer/>}
-            {<ArtistContainer/>}
-          </Segment>
-        </Grid.Row >
-        <Grid.Row >
-          <Segment style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 2px 1px grey'}}>
-            Albums
-            {<AlbumContainer/>}
           </Segment>
         </Grid.Row >
       </Segment>

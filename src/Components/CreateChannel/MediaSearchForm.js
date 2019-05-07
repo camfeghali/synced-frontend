@@ -24,13 +24,13 @@ class MediaSearchForm extends Component {
   render() {
     return (
       <div>
-        <Segment>
+        <Segment style={{background:'transparent'}}>
           <div className="ui search">
             <div className="ui icon input">
-              <input onChange={this.handleChange} style={{background: 'rgb(74, 74, 74, 0.15)', width: '35em'}} className="prompt" type="text" placeholder="Look for tunes..."/>
-              <i style={{color: 'black'}} className="search icon"></i>
+              <input onChange={this.handleChange} style={{background: 'rgb(255, 255, 255, 0.6)', width: '65em'}} className="prompt" type="text" placeholder="Look for tunes..."/>
+              <i style={{color: 'rgb(215, 104, 255)'}} className="search icon"></i>
               </div>
-              <Button onClick={this.handleSubmit} floated='right' inverted color='purple'> Search </Button>
+              <Button size='large' onClick={this.handleSubmit} floated='right' inverted color='purple'> Search </Button>
             <div className="results"></div>
           </div>
         </Segment>

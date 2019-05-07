@@ -74,6 +74,7 @@ function stationReducer (state = initialState, action) {
         broadcast : {
           ...state.broadcast,
           trackName: action.payload.trackName,
+          artist: action.payload.artist,
           album: action.payload.album,
           albumId: action.payload.albumId,
           trackId: action.payload.songId,

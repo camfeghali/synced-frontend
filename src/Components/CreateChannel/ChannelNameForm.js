@@ -4,7 +4,7 @@ import { Segment } from 'semantic-ui-react'
 class ChannelNameForm extends React.Component{
   render(){
     return(
-      <Segment>
+      <Segment style={{background: 'transparent'}}>
         <div className="ui input">
           <input type="text" placeholder="Channel name"/>
           <a className="ui label" >

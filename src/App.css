@@ -1,9 +1,23 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .prompt{
   width: 800px;
+}
+
+.App {
+  background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9) ), url("https://www.blogteraktual.com/wp-content/uploads/2018/06/high-tech-live-wallpaper-awesome-background-hd-page-1-of-high-tech-live-wallpaper.jpg");
+  background-size: cover;
+  font-family: 'Poppins', sans-serif;
+}
+
+.transparent-background {
+  background: 'transparent'
+}
+
+.white-text {
+  text-color: rgba(255,255,255);
 }
 
 .largeContainer{
@@ -21,3 +35,110 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+
+label {
+  color: white !important;
+}
+
+.white-text {
+  color: white !important;
+}
+
+.fjalla-font {
+  font-family: 'Fjalla One' !important;
+}
+
+.large-font {
+  font-size: 34px !important;
+}
+
+
+.navbar-text {
+  color: white !important;
+  font-family: 'Fjalla One' !important;
+  font-size: 18px !important;
+}
+
+.playlist-style {
+  border-style:solid;
+  background:transparent;
+  border-width:1px !important;
+  border-bottom-color: white !important;
+  border-left-color:rgba(255, 0, 0, 0) !important;
+  border-right-color:rgba(255, 255, 255, 0);
+  border-top-color:rgba(255, 255, 255, 0);
+  margin-bottom: 2px;
+}
+
+.left-side {
+  /* border-style: solid ; */
+  border-color: transparent !important;
+}
+
+audio {
+  width: 30em;
+}
+
+.dropdown-style {
+  padding-left: 6px;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+  padding-right:10px;
+  padding-top:9.5px;
+  padding-bottom:6.5px;
+  padding-left:12.5px;
+  border-radius:4px;
+  border-style:solid;
+  border-color:rgb(6, 171, 181);
+  color: rgb(6, 171, 181);
+}
+
+.ui.grid.row{
+  /* color: red; */
+  color: red !important;
+  background: red;
+  border-top: 0px !important;
+}
+
+.line{
+width: 2px;
+height: 150em;
+border: 0.75px solid white;
+position: absolute;
+}
+
+.playback-info{
+  /* border-style: solid ;
+  border-color: red ;
+  border-weight: 6px ; */
+  height: 10em ;
+  width: 5em;
+  padding-left:4em;
+  flex-direction: column;
+}
+
+.playback-content{
+  /* border-style: solid ;
+  border-color: red ;
+  border-weight: 6px ; */
+  height: 10em ;
+  width: 15em;
+  flex-direction: column;
+}
+
+.playback-text{
+  font-family: 'Rubik', sans-serif !important;
+}
+
+.media-results{
+  height: 600px;
+  overflow: auto;
+}
+
+/* .playback-content-text{
+  margin-top: 12px;
+} */
+/* .ui.table tr td { border-top: 0px !important; } */
+
+/* .ui.table.yourClass { } */

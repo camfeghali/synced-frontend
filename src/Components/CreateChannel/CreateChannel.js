@@ -22,19 +22,18 @@ class CreateChannel extends React.Component{
           </Grid.Column>
           <Grid.Column width={14} style={{background: 'transparent'}} >
             <div style={{ height:'80em'}}>
-            <Grid celled style={{borderStyle: 'solid', borderColor:'grey', boxShadow: '0px 0px 35px 2px grey'}}>
+            <Grid style={{marginTop:'5em'}}>
               <Grid.Row>
-                <Grid.Column width={11}>
+                <Grid.Column width={11} >
                   {/* Add Currently Listening to Component here */}
                   {<MediaPlayer />}
-                  <h5> Hello {this.props.username} </h5>
-                  <h5> Listening to {this.props.listeningTo} </h5>
+  
                   {/* Add Search Component here */}
                   {/* Add Open Channels Component here */}
                   {<MediaContainer/>}
                 </Grid.Column>
                 <Grid.Column width={5}>
-                {/* Add Playlist component here */}
+                <div className="line"> </div>
                 {<PlaylistsContainer />}
                 </Grid.Column>
               </Grid.Row>
