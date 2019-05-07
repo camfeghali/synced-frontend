@@ -8,6 +8,8 @@ import Navbar from './Components/Navbar'
 import CreateChannel from './Components/CreateChannel/CreateChannel'
 import JoinChannel from './Components/JoinChannel/JoinChannel'
 import './App.css';
+import Particles from 'react-particles-js'
+
 
 class App extends React.Component{
   // console.log("local storage is: ",localStorage)
@@ -24,9 +26,28 @@ class App extends React.Component{
   }
 
   render(){
+    let params={
+      "particles": {
+          "number": {
+              "value": 100
+          },
+          "size": {
+              "value": 3
+          }
+      },
+      "interactivity": {
+          "events": {
+              "onhover": {
+                  "enable": true,
+                  "mode": "repulse"
+              }
+          }
+      }
+    }
     return (
       <div className="App">
       <Navbar/>
+      <Particles params={params}/>
       <Switch>
       <Route path="/login" render={routerProps => (
         <Login />

@@ -7,7 +7,7 @@
 }
 
 .App {
-  background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9) ), url("https://www.blogteraktual.com/wp-content/uploads/2018/06/high-tech-live-wallpaper-awesome-background-hd-page-1-of-high-tech-live-wallpaper.jpg");
+  background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.95) ), url("https://www.blogteraktual.com/wp-content/uploads/2018/06/high-tech-live-wallpaper-awesome-background-hd-page-1-of-high-tech-live-wallpaper.jpg");
   background-size: cover;
   font-family: 'Poppins', sans-serif;
 }
@@ -116,9 +116,13 @@ audio {
   border-top: 0px !important;
 }
 
+canvas {
+  position: fixed;
+}
+
 .line{
 width: 2px;
-height: 150em;
+height: 81em;
 border: 0.75px solid white;
 position: absolute;
 }
@@ -208,9 +212,9 @@ position: absolute;
   filter: opacity(55%);
 }
 
-.song:before {
+/* .song:before {
   background-color: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9) )
-}
+} */
 
 /* .playback-content-text{
   margin-top: 12px;
