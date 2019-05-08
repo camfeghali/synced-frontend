@@ -1,7 +1,6 @@
 import {
   TOGGLE_PLAYLIST,
   CONNECT,
-  DISCONNECT,
   ON_AIR,
   OFF_AIR,
  } from '../Actions/types'

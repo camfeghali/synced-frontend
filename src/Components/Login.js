@@ -15,7 +15,7 @@ class Login extends React.Component{
 
   handleSubmit = (state) => {
     this.props.loginUser(this.state)
-    this.props.history.push("/my_station")
+    this.props.history.push("/lobby")
 
   }
 
@@ -57,7 +57,7 @@ class Login extends React.Component{
                 placeholder='Password'
                 type='password'
                 autofocus
-                onChange={this.handleChange} name='password' label='Password' type='password' placeholder='Password'
+                onChange={this.handleChange} name='password' label='Password'
               />
 
               <Button style={{backgroundColor:'rgba(0, 48, 255, 0.9)', color:'white'}} fluid size='large' onClick={this.handleSubmit} >

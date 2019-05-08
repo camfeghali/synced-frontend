@@ -15,6 +15,7 @@ class PlaylistsContainer extends React.Component{
   }
 
   componentDidMount(){
+    console.log("about to fetch playlists with username:", this.props.username)
     this.props.getPlaylists(this.props.username)
   }
 
@@ -27,6 +28,7 @@ class PlaylistsContainer extends React.Component{
   }
 
   render(){
+    console.log("username is: ", this.props.username)
     let playlists = this.props.playlists.map(playlist => <Playlist key={playlist.name} id={playlist.id} name={playlist.name} songs={playlist.songs}/>)
     return(
       <Switch>
@@ -47,7 +49,7 @@ class PlaylistsContainer extends React.Component{
               <Segment style={{background: 'transparent'}}>
                 <div>
                   <Popup
-                    on="Click"
+                    on="click"
                     horizontalOffset={-100}
                     position='top right'
                     trigger={<Button floated='right' inverted color='blue'> Create playlist </Button>}

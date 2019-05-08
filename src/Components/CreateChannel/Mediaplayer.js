@@ -105,7 +105,7 @@ class MediaPlayer extends React.Component{
           <audio paused ='true' autoPlay={false} ref="audio_tag" src={this.props.playback.trackUrl} onPlay={this.handlePlay} onPause={this.handlePause} controls />
         <div>
 
-        <Button size='large' color='inverted green' onClick={this.broadcast}> Broadcast! </Button>
+        <Button size='large' inverted  color='green' onClick={this.broadcast}> Broadcast! </Button>
         <Dropdown className="dropdown-style" text='Add to playlist' >
           <Dropdown.Menu style={{borderStyle:'solid', borderColor:'green'}}>
             {playlists}

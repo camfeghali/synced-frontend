@@ -6,7 +6,6 @@ const USER_LOGOUT= 'http://localhost:3000/logout'
 
 
 const getOnlineUsers = () => {
-  console.log("is this firing! ?")
   return fetch(USERS_URL)
 }
 
@@ -24,8 +23,6 @@ const connectTo = (stationId) => {
     },
     body: JSON.stringify(data)
   }
-  console.log("hitting this url: ", url)
-  console.log("sending this data: ", data)
   return fetch(url, config)
 }
 
@@ -90,16 +87,7 @@ const goOnAir = () => {
 }
 
 const goOffAir = (username) => {
-  console.log("GO OFF AIR IS FIRING!")
-  // let url = `${STATION_URL}/${stationId}`
   let url = `http://localhost:3000/delete_station?username=${username}`
-  console.log("Hittin this URL", url)
-  // let config = {
-  //   method: "DELETE",
-  //   headers: {
-  //     "Content-Type": "application/json"
-  //   }
-  // }
   return fetch(url)
 }
 

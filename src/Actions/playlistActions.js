@@ -13,7 +13,6 @@ export const removeFromPlaylist = (songId, playlistId) => {
     adapter.removeFromPlaylist(songId, playlistId)
     .then(resp => resp.json())
     .then(data => {
-      console.log("Return data is: ", data)
       dispatch({type: REMOVE_FROM_PLAYLIST, payload: data})
     })
   }
@@ -24,7 +23,6 @@ export const addToPlaylist = (songId, playlistName) => {
     adapter.addToPlaylist(songId, playlistName)
     .then(resp => resp.json())
     .then(data => {
-      console.log("Return data is: ", data)
       dispatch({type: ADD_TO_PLAYLIST, payload: data})
     })
   }
@@ -35,7 +33,6 @@ export const getPlaylists = (username) => {
     adapter.getPlaylists(username)
     .then(resp => resp.json())
     .then(data => {
-      console.log("Return data from playlists fetch is: ", data)
       dispatch({type: GET_PLAYLISTS, payload: data})
     })
   }

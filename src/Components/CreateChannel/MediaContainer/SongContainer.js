@@ -14,7 +14,6 @@ class SimpleSlider extends React.Component {
       songId: parseInt(e.target.id),
       artist: e.target.getAttribute('artist')
     }
-    console.log("SONG INFO IS: ", songInfo)
     this.props.selectSong(songInfo)
   }
 
@@ -34,8 +33,6 @@ class SimpleSlider extends React.Component {
   }
 
   render() {
-    console.log("What song data is available? :", this.props.songs)
-    console.log("My songs info is: ", this.props.songs)
     const settings = {
       focusOnSelect: true,
       infinite: true,

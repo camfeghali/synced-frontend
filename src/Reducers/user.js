@@ -62,7 +62,6 @@ function userReducer (state = initialState, action) {
       let playlists = state.playlists.filter(playlist => playlist.id !== action.payload.id)
       return {...state, playlists: playlists}
     case GET_PLAYLISTS:
-      console.log("My playlist return : ", action.payload)
       return {...state, playlists: action.payload}
     case ADD_TO_PLAYLIST:
       let playlist = state.playlists.find(playlist => playlist.id === action.payload.playlist.id)
@@ -74,13 +73,10 @@ function userReducer (state = initialState, action) {
     case REMOVE_FROM_PLAYLIST:
       return {...state, playlists: action.payload}
     case ADD_ONLINE_USER:
-      console.log("INSIDE ADD ONLINE USER IN REDUCER, payload is: ", action.payload)
       return {...state, onlineUsers: [...state.onlineUsers, action.payload]}
     case GET_ONLINE_USERS:
-    console.log("INSIDE GET ONLINE USERS IN REDUCER, payload is: ", action.payload)
       return{...state, onlineUsers: action.payload}
     case REMOVE_OFFLINE_USER:
-      console.log("INSIDE REMOVE OFFLINE USER IN REDUCER, payload is: ", action.payload)
       let newOnlineUsers = state.onlineUsers.filter(user => user.username !== action.payload)
       return {...state, onlineUsers: newOnlineUsers}
     default:

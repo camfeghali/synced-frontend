@@ -7,9 +7,7 @@ class ChannelNameForm extends React.Component{
       <Segment style={{background: 'transparent'}}>
         <div className="ui input">
           <input type="text" placeholder="Channel name"/>
-          <a className="ui label" >
           <h4> Channel Name</h4>
-        </a>
         </div>
       </Segment>
     )

@@ -1,6 +1,5 @@
 import React from 'react'
 import Station from './Station'
-import ChannelSearchForm from './ChannelSearchForm'
 import { Segment, List, Container } from 'semantic-ui-react'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 

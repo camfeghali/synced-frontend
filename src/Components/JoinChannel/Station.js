@@ -1,7 +1,7 @@
 import React from 'react'
 import monkeyAvatar from'./monkeyAvatar.png';
 import { connect } from 'react-redux'
-import { listenTo, connectToStation } from '../../Actions'
+import { connectToStation } from '../../Actions'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 import { Image, List, Button, Item, Segment } from 'semantic-ui-react'
 
