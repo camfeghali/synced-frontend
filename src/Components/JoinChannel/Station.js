@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { connectToStation } from '../../Actions'
 import { ActionCableConsumer } from 'react-actioncable-provider'
 import { Image, List, Button, Item, Segment } from 'semantic-ui-react'
+import { capitalize } from "../../Utilities/utility";
+
 
 class Channel extends React.Component{
 

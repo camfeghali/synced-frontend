@@ -4,6 +4,8 @@ import { logOut } from '../Actions'
 import { withRouter } from "react-router-dom";
 import { Container, Image, Menu } from 'semantic-ui-react';
 import logo from'./logo1.png';
+import { capitalize } from "../Utilities/utility";
+
 
 
 class Navbar extends React.Component{
@@ -44,7 +46,7 @@ class Navbar extends React.Component{
               />
             </Menu.Item>
             <Menu.Item as="a" name="username" className="navbar-text">
-              {this.props.username ? this.props.username : " "}
+              {this.props.username ? capitalize(this.props.username) : " "}
             </Menu.Item>
             <Menu.Menu position="right">
             <Menu.Item as="a" name="lobby" className="navbar-text" onClick={this.directToLobby}>

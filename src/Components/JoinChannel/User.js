@@ -1,6 +1,7 @@
 import React from 'react'
 import favoriteMonkeyAvatar from'./favoriteMonkeyAvatar.png';
 import { List, Item, Button, Image, Segment } from 'semantic-ui-react'
+import { capitalize } from "../../Utilities/utility";
 
 class User extends React.Component{
   render(){
@@ -10,7 +11,7 @@ class User extends React.Component{
         <Image avatar src={favoriteMonkeyAvatar} />
         <Item.Content textalign='left'>
 
-          <Item.Header  className='white-text' textalign='left'>{this.props.username}</Item.Header>
+          <Item.Header  className='white-text' textalign='left'>{capitalize(this.props.username)}</Item.Header>
           <Item.Description className='white-text' >
             Last seen watching{' '}
               <b>Arrested Development</b>
