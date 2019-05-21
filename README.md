@@ -38,7 +38,7 @@ Link to demo: https://youtube....... remains to be hosted
   - Run `rails db:migrate`
   - Run `rails db:seed`
   - Run `rails s`
-- In Frontend directory:
+- In frontend directory:
   - Run `npm install`
   - Run `npm start`
   
