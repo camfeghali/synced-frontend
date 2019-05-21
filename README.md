@@ -2,7 +2,7 @@
 Synced is a fullstack web application built with Ruby on Rails and ReactJS. The purpose of this app is to synchronize music so users can listen to songs at the same time regardless of their location. It is my final project as part of Flatiron School's Software Engineering Bootcamp.
 
 ### Motivation
-I built Synced because I always imagined a world where people can experience music together and not be bound by spatial constraints. With Synced, people in the same room working, having lunch, or doing any other activity can listen together, but furthermore, people across the world can listen to albums together, or a person can throw a multi-location parrty from one spot.
+I built Synced because I always imagined a world where people can experience music together and not be bound by spatial constraints. With Synced, people in the same room working, having lunch, or doing any other activity can listen together through their own devices, but furthermore, people across the world can listen to albums together, or a person can throw a multi-location parrty from one spot.
 
 ### Demo 
 Link to demo: https://youtube....... remains to be hosted
