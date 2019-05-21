@@ -42,13 +42,13 @@ Link to demo: https://youtube....... remains to be hosted
   - Run `npm start`
   
 ### How to use?
-1 - Open two browsers, the second in incognito mode.
-2 - Signup up into a different account in each browser.
-3 - In browser A, navigate to the "lobby" using the navbar up-top.
-4 - In browser B, navigate to "my station" using the navbar.
-5 - in Browser B, select a song, play it, and hit the "Broadcast button"
-6 - In browser A, join into the station, and see how from browser B, you can control browser A's music.
-7 - Share music with friends!
+- Open two browsers, the second in incognito mode.
+- Signup up into a different account in each browser.
+- In browser A, navigate to the "lobby" using the navbar up-top.
+- In browser B, navigate to "my station" using the navbar.
+- in Browser B, select a song, play it, and hit the "Broadcast button"
+- In browser A, join into the station, and see how from browser B, you can control browser A's music.
+- Share music with friends!
 
 ### Credit
 I would like to thank my instructional team especially @alexgriff, https://github.com/alexgriff, for their support.
