@@ -28,6 +28,7 @@ Link to demo: https://youtube....... remains to be hosted
 - Users can see which stations are available.
 - Users can see who is online.
 - Users can broadcast a station.
+- Users can see online stations' activity (artist, song name and album).
 - Users can join a station and be synced to it.
 - There is no limit on how many people can join a station, but more than four users slows down your machine!
 
@@ -49,6 +50,18 @@ Link to demo: https://youtube....... remains to be hosted
 - in Browser B, select a song, play it, and hit the "Broadcast button"
 - In browser A, join into the station, and see how from browser B, you can control browser A's music.
 - Share music with friends!
+
+### Bugs and missing features
+#### Bugs
+- Crashes when users create account with already existing username.
+- Crashes when users login with invalid credentials.
+##### Bug fixes:
+- Must create new dispatch action to handle invalid user creation or login from backend response.
+#### Missing features
+- Users should be able to add favorites, and see their activity.
+- Users should be able to join favorite's stations whether they be hosts or tuned into one.
+- Users should be able to continuously play music after clicking on a playlist's song and not have to load a song everytime.
+- Implement the full Spotify API and not use the 30 seconds preview urls but complete tracks.
 
 ### Credit
 I would like to thank my instructional team especially @alexgriff, https://github.com/alexgriff, for their support.
