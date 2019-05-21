@@ -1,68 +1,62 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Synced
+Synced is a fullstack web application built with Ruby on Rails and ReactJS. The purpose of this app is to synchronize music so users can listen to songs at the same time regardless of their location. It is my final project as part of Flatiron School's Software Engineering Bootcamp.
 
-## Available Scripts
+### Motivation
+I built because I always imagined a world where people can experience music together and not be bound by spatial constraints. With Synced, people in the same room working, having lunch, or doing any other activity can listen together, but furthermore, people across the world can listen to albums together, or a person can throw a multi-location parrty from one spot.
 
-In the project directory, you can run:
+### Demo 
+Link to demo: https://youtube....... remains to be hosted
 
-### `npm start`
+### Tech / Frameworks
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Built with
+- Ruby on Rails
+- ReactJS
+- Redux
+- Websockets with Rails' ActionCable
+- srpotify: https://github.com/guilhermesad/rspotify
+- PostgreSQL
+- OAuth using Bcrypt & JWT
+- Semantic UI
+- ParticlesJS: https://github.com/Wufe/react-particles-js
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Features
 
-### `npm test`
+- Users can look up songs seeded in the database, select and play it. 
+- Users can create / delete playlists.
+- Users can add / remove songs from a playlist.
+- Users can see which stations are available.
+- Users can see who is online.
+- Users can broadcast a station.
+- Users can join a station and be synced to it.
+- There is no limit on how many people can join a station, but more than four users slows down your machine!
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
+1 - Clone this repository and the backend found here: https://github.com/camfeghali/synced-backend
+2 - In backend directory: 
+  a - Run `rails db:migrate`
+  b - Run `rails db:seed`
+  c - Run `rails s`
+3 - In Frontend directory:
+  a - Run `npm install`
+  b - Run `npm start`
+  
+### How to use?
+1 - Open two browsers, the second in incognito mode.
+2 - Signup up into a different account in each browser.
+3 - In browser A, navigate to the "lobby" using the navbar up-top.
+4 - In browser B, navigate to "my station" using the navbar.
+5 - in Browser B, select a song, play it, and hit the "Broadcast button"
+6 - In browser A, join into the station, and see how from browser B, you can control browser A's music.
+7 - Share music with friends!
 
-### `npm run build`
+### Credit
+I would like to thank my instructional team especially @alexgriff, https://github.com/alexgriff, for their support.
+Also the makers of: 
+- ParticleJS: https://github.com/Wufe/react-particles-js
+- rspotify: https://github.com/guilhermesad
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### License
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Not really sure, everyone can use it!
+  
