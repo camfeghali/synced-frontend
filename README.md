@@ -32,14 +32,14 @@ Link to demo: https://youtube....... remains to be hosted
 - There is no limit on how many people can join a station, but more than four users slows down your machine!
 
 ### Installation
-1 - Clone this repository and the backend found here: https://github.com/camfeghali/synced-backend
-2 - In backend directory: 
-  a - Run `rails db:migrate`
-  b - Run `rails db:seed`
-  c - Run `rails s`
-3 - In Frontend directory:
-  a - Run `npm install`
-  b - Run `npm start`
+- Clone this repository and the backend found here: https://github.com/camfeghali/synced-backend
+- In backend directory: 
+  - Run `rails db:migrate`
+  - Run `rails db:seed`
+  - Run `rails s`
+- In Frontend directory:
+  - Run `npm install`
+  - Run `npm start`
   
 ### How to use?
 1 - Open two browsers, the second in incognito mode.
