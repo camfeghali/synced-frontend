@@ -11,7 +11,7 @@ class Board extends React.Component{
 
 
   handleReceived = () => {
-    console.log("Received data biiitch!!")
+    console.log("Received data ")
   }
   handleChange = (e) =>{
     this.setState({myInput: e.target.value})
